@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "API Monitor Extension",
     "version": "1.0",
-    "description": "Monitors API requests and responses for specific endpoints.",
+    "description": "Monitors API requests.",
     "permissions": [
       "webRequest",
       "webRequestBlocking",
@@ -10,13 +10,7 @@
       "scripting"
     ],
     "host_permissions": [
-        "https://wwwcie.ups.com/*",
-        "https://api-sandbox.fedex.com/*",
-        "https://api.usps.com/*",
-        "https://api-sandbox.dhl.com/*",
-        "https://api-sandbox-eu.dhl.com/*",
-        "https://express.api.dhl.com/mydhlapi/test*",
-        "https://api-uat-vzen.dhl.com/*"
+         "<all_urls>"
     ],
    "background": {
     "service_worker": "src/background.js"
