@@ -240,7 +240,7 @@ flowchart TD
     linkStyle 42 stroke:#000000,fill:none
     linkStyle 43 stroke:#000000,fill:none
     linkStyle 44 stroke:#000000,fill:none
-
+```
 
 **User Stories: **
 - As a user, I want the ability to login to the system using my existing web2 credentials, so that I can maintain ease of use across different platforms.
