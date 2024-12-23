@@ -1,9 +1,19 @@
-//service to ingest data from the front end
-use axum::{routing::post, Router};
+use axum::{routing::post, Json, Router};
+use serde::Deserialize;
 use tokio::sync::mpsc;
 use std::net::SocketAddr;
 
-mod queue;
+mod queue; // Import the queue module
+
+#[derive(Debug, Deserialize)]
+struct CapturedData {
+    id: String,
+    url: String,
+    headers: serde_json::Value,
+    body: serde_json::Value,
+    timestamp: u64,
+    sensitive_data: bool,
+}
 
 #[tokio::main]
 async fn main() {
@@ -17,7 +27,9 @@ async fn main() {
 
     // Create the Axum router
     let app = Router::new()
-        .route("/ingest", post(move |payload| queue::ingest_data(payload, tx.clone())));
+        .route("/ingest", post(move |Json(payload): Json<Vec<CapturedData>>| {
+            queue::ingest_data(payload, tx.clone())
+        }));
 
     // Define the address for the server
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
