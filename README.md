@@ -64,7 +64,7 @@ This application seeks to give end users complete autonomy over the data they cr
     - Role support for other actors in the internet ecosystem will be deferred. Additional functionality and application suites can be added down the road to support other players in the ecosystem shown.
 
 
-**Functional Requirements: **
+**Functional Requirements:**
 - The collector application(s) must support secure login and authentication using various web2 logins.
 
 - The identity management system must be capable of associating multiple instances of the application that are part of the same organization with each other.
@@ -134,7 +134,7 @@ This application seeks to give end users complete autonomy over the data they cr
 
 - A web based portal for community governance where participants can help grow and shape the direction of the network.
 
-**Non-Functional Requirements: **
+**Non-Functional Requirements:**
 - Performance of the data exchange platforms cannot be reduced in any meaningful way. Users should not be able to notice any difference in the speed at which they are able to carry out internet based activities.
 
 - The system should be able to run on all operating systems and browsers.
@@ -144,12 +144,28 @@ This application seeks to give end users complete autonomy over the data they cr
 - Data cannot take up unsustainable amounts of space on user devices.
 
 
-**Architectural Overview: **
+**Architectural Overview:**
+
 The system will have a user facing application that consists of 2 parts. A browser extension for cloud based manifest systems and a lightweight application installed on the device targeting desktop systems. The 2 applications will use an identity management framework that allows users to use credentials from existing systems to authenticate and establish a presence in the network. Techniques can be used to link these credentials at an organizational level. Each application will need to have different data caching and processing mechanisms to handle the various inputs and outputs that internet based data exchange platforms could be using including databases, API’s, file submissions, etc. These will need to be minimally invasive and not disrupt normal data exchange processes or slow down operations so this integration point must be thoroughly tested to ensure it doesn’t hamper any potential configuration the customer might have. Once data has been properly cached and processed it will be stored securely using decentralized storage protocols that ensure user control over data and privacy. An AI microservice will be in place to allow participation in federated learning to train dedicated AI agents. After data is properly stored the system must publish to the blockchain using privacy preserving techniques that allow for data to be properly anonymized and aggregated for use by the entire network. Machine learning framework will be in place to detect patterns based on the data. An automated process will need to be in place for publishing to the DKG blockchain to prevent the user from having to interact with tokens. Publishing meaningful data will result in token rewards granted to the publisher. This will be handled behind the scenes and can be used on the web based framework. The base model for this architecture should be modular in terms of the data collection schemas and organizational mechanism to publish to the DKG. The result is a system that can have custom components for specific purposes. These will be referred to as Application Specific Integrated Systems (ASIS). 
 
 The system must also include a web based dashboard to allow for AI insights on the DKG that can be personalized for the user. They will be allowed to choose AI models, write custom queries and create visualizations based on the DKG while ensuring proper data privacy concerns and met. Participants can also allocate rewards for more advanced AI analytics. The web based environment will also support an area for community governance where users can participate and drive changes in the network based on token holdings and number of edge nodes. Token rewards will also be issued for participation in community governance.
 
-**Application architecture: **
+**Application Specific Integrated Systems (ASIS) Modular Architecture**
+**Overview**
+
+Application Specific Integrated Systems are software solutions designed to optimize and learn information for a specific use case. This is analogous to the hardware solution for Application Specific Integrated Circuits which use specialized hardware to optimize certain computational procedures. The modular architecture of this system allows for components to easily be modified or swapped out to target a specific use case for the system. Additionally cryptographic procedures and decentralized storage of information ensure that user data can remain private while still contributing to the ecosystem in a meaningful way.
+
+    - Objective: This architecture solves the problem of aggregating and analyzing data in a meaningful way while still upholding user privacy. 
+    - Key Features: 
+        - A front end data collection layer can be modified to target data for any system the user desires.
+        - Local backend to handle several data related tasks
+        - Connecting to the front end securely stores and privatizes the data sufficiently before publishing to a Decentralized Knowledge Graph (DKG) network.
+        - Utilizing federated learning framework to train on their local data set, using the DKG as a distributed aggregator for model changes.
+        - AI/ML framework to analyze and identify patterns in the data on the network and provide specific user insights without the user having to share raw data.
+        - Web portal where authenticated users can view insights on their data, the network data, as well as interact with AI agents trained for specific purposes.
+        - Blockchain based Decentralized Knowledge Graph to handle data storage, governance and incentives for the community.
+
+**Application architecture:**
 
 ```mermaid
 flowchart TD
@@ -202,7 +218,6 @@ flowchart TD
     BE1 --> BE2
     BE2 --> BE3 & BE4 & BE8
     BE3 --> DKG1 & DKG2 & DKG3 & BE4 & BE5
-    BE2 -- Publish to DKG --> BE3
     BE8 -- Retrieve Models --> BE3
     BE8 -- Train Models --> BE3
     DKG1 --> DKG2
@@ -225,24 +240,24 @@ flowchart TD
     style Front_End fill:#00C853
     style Backend fill:#00C853
     style DKG fill:#FFD600
-    linkStyle 9 stroke:#D50000
+    linkStyle 9 stroke:#D50000,fill:none
     linkStyle 14 stroke:#FF6D00,fill:none
     linkStyle 15 stroke:#FF6D00,fill:none
     linkStyle 16 stroke:#FF6D00,fill:none
-    linkStyle 17 stroke:#00C853,fill:none
-    linkStyle 18 stroke:#00C853,fill:none
+    linkStyle 17 stroke:#000000,fill:none
+    linkStyle 18 stroke:#000000,fill:none
+    linkStyle 35 stroke:#D50000,fill:none
     linkStyle 36 stroke:#D50000,fill:none
     linkStyle 37 stroke:#D50000,fill:none
-    linkStyle 38 stroke:#D50000,fill:none
-    linkStyle 39 stroke:#FF6D00,fill:none
-    linkStyle 40 stroke:#000000,fill:none
-    linkStyle 41 stroke:#2962FF,fill:none
+    linkStyle 38 stroke:#FF6D00,fill:none
+    linkStyle 39 stroke:#000000,fill:none
+    linkStyle 40 stroke:#2962FF,fill:none
+    linkStyle 41 stroke:#000000,fill:none
     linkStyle 42 stroke:#000000,fill:none
     linkStyle 43 stroke:#000000,fill:none
-    linkStyle 44 stroke:#000000,fill:none
 ```
 
-**User Stories: **
+**User Stories:**
 - As a user, I want the ability to login to the system using my existing web2 credentials, so that I can maintain ease of use across different platforms.
 
 - As a user, I want the system to provide an organizational linker to allow me to specify that an instance of the application is part of a specific organization.

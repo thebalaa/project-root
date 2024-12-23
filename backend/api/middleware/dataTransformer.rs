@@ -1,6 +1,10 @@
 use serde::{Deserialize, Serialize};
 use reqwest::Client;
 use std::error::Error;
+use chrono::NaiveDateTime;
+
+// Import the IPFS storage logic
+use crate::services::ipfsStorage::{IpfsStorage, TransformedData as IpfsTransformedData};
 
 #[derive(Debug, Deserialize, Serialize)]
 struct CapturedData {
@@ -12,8 +16,12 @@ struct CapturedData {
     sensitive_data: bool,
 }
 
+// We keep a local definition for the 'TransformedData' so we can shape the data
+// exactly how we want for DKG, etc. Then we'll adapt/convert to IpfsTransformedData
+// if needed. Alternatively, you can unify them, but sometimes you want different 
+// fields or formats for different modules.
 #[derive(Debug, Serialize)]
-struct TransformedData {
+struct DkgTransformedData {
     id: String,
     url: String,
     headers: String,
@@ -23,21 +31,24 @@ struct TransformedData {
 
 pub struct DataTransformer {
     dkg_endpoint: String,
-    ipfs_endpoint: String,
     client: Client,
+    ipfs: IpfsStorage,  // IPFS client instance
 }
 
 impl DataTransformer {
     pub fn new(dkg_endpoint: String, ipfs_endpoint: String) -> Self {
         Self {
             dkg_endpoint,
-            ipfs_endpoint,
             client: Client::new(),
+            ipfs: IpfsStorage::new(&ipfs_endpoint),
         }
     }
 
-    // Fetch data from the ingestion queue
-    pub async fn fetch_data_from_queue(&self, queue_url: &str) -> Result<Option<CapturedData>, Box<dyn Error>> {
+    /// Fetch data from an ingestion queue
+    pub async fn fetch_data_from_queue(
+        &self,
+        queue_url: &str
+    ) -> Result<Option<CapturedData>, Box<dyn Error>> {
         let response = self.client.get(queue_url).send().await?;
         if response.status().is_success() {
             let data = response.json::<CapturedData>().await?;
@@ -48,19 +59,33 @@ impl DataTransformer {
         }
     }
 
-    // Transform and normalize data
-    fn transform_data(&self, data: CapturedData) -> TransformedData {
-        TransformedData {
-            id: data.id,
-            url: data.url,
+    /// Transform raw CapturedData into the structure needed for DKG
+    fn transform_for_dkg(&self, data: &CapturedData) -> DkgTransformedData {
+        DkgTransformedData {
+            id: data.id.clone(),
+            url: data.url.clone(),
             headers: serde_json::to_string(&data.headers).unwrap_or_default(),
             content: serde_json::to_string(&data.body).unwrap_or_default(),
-            timestamp: chrono::NaiveDateTime::from_timestamp(data.timestamp as i64, 0).to_string(),
+            timestamp: NaiveDateTime::from_timestamp(data.timestamp as i64, 0).to_string(),
         }
     }
 
-    // Send to DKG integration module
-    pub async fn send_to_dkg(&self, transformed_data: &TransformedData) -> Result<(), Box<dyn Error>> {
+    /// Transform the same data for IPFS usage, if you want a slightly different schema or fields
+    fn transform_for_ipfs(&self, data: &CapturedData) -> IpfsTransformedData {
+        IpfsTransformedData {
+            id: data.id.clone(),
+            url: data.url.clone(),
+            headers: serde_json::to_string(&data.headers).unwrap_or_default(),
+            content: serde_json::to_string(&data.body).unwrap_or_default(),
+            timestamp: NaiveDateTime::from_timestamp(data.timestamp as i64, 0).to_string(),
+        }
+    }
+
+    /// Send to DKG integration module
+    pub async fn send_to_dkg(
+        &self,
+        transformed_data: &DkgTransformedData
+    ) -> Result<(), Box<dyn Error>> {
         let response = self
             .client
             .post(&self.dkg_endpoint)
@@ -68,36 +93,31 @@ impl DataTransformer {
             .send()
             .await?;
         if response.status().is_success() {
-            println!("Data successfully send to DKG integration module");
+            println!("Data successfully sent to DKG integration module.");
         } else {
             eprintln!("Failed to send data to DKG integration module: {}", response.status());
         }
         Ok(())
     }
 
-    // Store data in IPFS
-    pub async fn store_in_ipfs(&self, transformed_data: &TransformedData) -> Result<(), Box<dyn Error>> {
-        let response = self
-            .client
-            .post(&self.ipfs_endpoint)
-            .json(transformed_data)
-            .send()
-            .await?;
-        if response.status().is_success() {
-            let cid: serde_json::Value = response.json().await?;
-            println!("Data stored in IPFS with CID: {}", cid["cid"]);
-        } else {
-            eprintln!("Failed to store data in IPFS: {}", response.status());
-        }
-        Ok(())
-    }
-
-    // Main processing method
+    /// Main processing method
     pub async fn process_data(&self, queue_url: &str) -> Result<(), Box<dyn Error>> {
         if let Some(data) = self.fetch_data_from_queue(queue_url).await? {
-            let transformed_data = self.transform_data(data);
-            self.store_in_dkg(&transformed_data).await?;
-            self.store_in_ipfs(&transformed_data).await?;
+            // Transform for DKG
+            let dkg_data = self.transform_for_dkg(&data);
+            self.send_to_dkg(&dkg_data).await?;
+
+            // Transform for IPFS
+            let ipfs_data = self.transform_for_ipfs(&data);
+            // Delegate storing to IpfsStorage
+            match self.ipfs.store_data(&ipfs_data).await {
+                Ok(cid) => {
+                    println!("Successfully stored data in IPFS with CID: {}", cid);
+                }
+                Err(e) => {
+                    eprintln!("Error storing data in IPFS: {}", e);
+                }
+            }
         }
         Ok(())
     }
@@ -111,7 +131,6 @@ async fn main() -> Result<(), Box<dyn Error>> {
     );
 
     let queue_url = "http://localhost:8080/queue/fetch";
-
     transformer.process_data(queue_url).await?;
     Ok(())
 }
