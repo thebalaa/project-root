@@ -23,7 +23,16 @@ export function monitorAPIRequests() {
     );
 }
 
-function storeRequestData(details) {
+interface RequestDetails {
+    url: string;
+    method: string;
+    requestBody?: any; // Use 'any' as the type for requestBody since it can vary
+    timeStamp: number;
+    initiator?: string;
+    requestId: string;
+}
+
+function storeRequestData(details: RequestDetails): void {
     const requestData = {
         url: details.url,
         method: details.method,
@@ -37,7 +46,7 @@ function storeRequestData(details) {
     });
 };
 
-function injectContentScript(tabId) {
+function injectContentScript(tabId: number) {
     if (tabId > 0) {
         chrome.scripting.executeScript({
             target: { tabId },

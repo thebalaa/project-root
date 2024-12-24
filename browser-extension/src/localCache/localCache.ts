@@ -46,3 +46,5 @@ export class LocalCache {
         }
     }
 }
+
+export { CapturedData };

@@ -1,6 +1,6 @@
 # Internet Footprint Governance and AI/ML Decentralized Application (dApp) Prototype
 
-This application seeks to give end users complete autonomy over the data they create online through targeting devices on which users initiate data exchanges with internet based services by turning them into edge nodes in a Decentralized Knowledge Graph (DKG) network. A user facing overlay application which functions to copy data as the user goes about their online activities will communicate with a local component to retain their activity online. Asynchronous processes to catalog and process the data to the DKG in a way that preserves user privacy and autonomy over the information will be in place. For analytics purposes a web based portal will be created to allow access to AI insights based on the DKG. A blockchain based reward, governance and data privacy system will be in place in the form of a DKG otherwise referred to as a paranet. Privacy and anonymization techniques like cryptographic hashes and zero knowledge proofs will be used to store minimal user data on chain and secure data off chain decentrally in IPFS while still being able to aggregate it with others on the network for potential insights. Additionally federated learning approaches can be explored to develop specific models and AI agents. Users will be able to access and participate in the governance of the network via the web portal. Target base for the application is internet users who want to retain control over their data, generate rewards for contributions to knowledge and gain AI based insights as well as businesses. This is a novel solution to privacy preserving data aggregation, analysis and community governance over information. Potential impacts include a market for data as well as analysis tools and services where the information is stored privately and in complete control of the end users. Network governance and AI insights for individual actors and businesses is an initial starting point for the network but as participation grows this system can include other actors like government entities. Enhancements can allow for effective governance and management of data resulting in community growth for analysis of the information and supply and demand for data in the network. Additionally the modular architecture of the solution will allow for further Application Specific Integrated Systems (ASIS) to be created to target specific use cases.
+This application seeks to give end users complete autonomy over the data they create online through targeting devices on which users initiate data exchanges with internet based services by turning them into edge nodes in a Decentralized Knowledge Graph (DKG) network. A user facing overlay application which functions to copy data as the user goes about their online activities will communicate with a local component to retain their activity online. Client side encryption, anonymization, commodification and aggregation/analysis is the basis for networked data control system that prioritizes end users. Asynchronous processes will be in place to catalog and process the data to the DKG in a way that preserves user privacy and autonomy over the information. For analytics purposes a web based portal will be created to allow access to AI insights based on the DKG. A blockchain based reward, governance and data privacy system will be in place in the form of a DKG otherwise referred to as a paranet. Privacy and anonymization techniques like cryptographic hashes,  zero knowledge proofs and hybrid encryption will be used to store minimal user data on chain and secure data off chain decentrally in IPFS while still being able to aggregate it with others on the network for potential insights. Only users who participate in the network will be able to access the data. Additionally federated learning approaches will be explored to develop specific models and AI agents. Users will be able to access and participate in the governance of the network via the web portal. Target base for the application is internet users who want to retain control over their data, generate rewards for contributions to knowledge and gain AI based insights. This is a novel solution to privacy preserving data aggregation, analysis and community governance over information. Potential impacts include a market for data as well as analysis tools and services where the information is stored privately and in complete control of the end users. Network governance and AI insights for individual actors and businesses is an initial starting point for the network but as participation grows this system can include other actors like government entities. Enhancements can allow for effective governance and management of data resulting in community growth for analysis of the information and supply and demand for data in the network. Additionally the modular architecture of the solution will allow for further Application Specific Integrated Systems (ASIS) to be created to target specific use cases.
 
 
 **Scope and Assumptions**
@@ -19,7 +19,7 @@ This application seeks to give end users complete autonomy over the data they cr
    - A data management system will need to be established to ensure that the system avoids taking up too much space on user devices.
 
 - DKG and OriginTrail integration 
-    - OriginTrail edge node for interaction with the DKG and offline secure data storage via IPFS. Logic here to ensure data is properly privatized and anonymized before publishing to the DKG.
+    - OriginTrail edge node for interaction with the DKG and offline secure data storage via IPFS. Hybrid encryption and other procedures will be built to ensure data is properly privatized and anonymized before publishing to the DKG.
 
 - Users will need to retain TRAC tokens to publish to the DKG and will be rewarded with NEURO tokens for meaningful data contributions. 
 
@@ -155,15 +155,17 @@ The system must also include a web based dashboard to allow for AI insights on t
 
 Application Specific Integrated Systems are software solutions designed to optimize and learn information for a specific use case. This is analogous to the hardware solution for Application Specific Integrated Circuits which use specialized hardware to optimize certain computational procedures. The modular architecture of this system allows for components to easily be modified or swapped out to target a specific use case for the system. Additionally cryptographic procedures and decentralized storage of information ensure that user data can remain private while still contributing to the ecosystem in a meaningful way.
 
-    - Objective: This architecture solves the problem of aggregating and analyzing data in a meaningful way while still upholding user privacy. 
-    - Key Features: 
-        - A front end data collection layer can be modified to target data for any system the user desires.
-        - Local backend to handle several data related tasks
-        - Connecting to the front end securely stores and privatizes the data sufficiently before publishing to a Decentralized Knowledge Graph (DKG) network.
-        - Utilizing federated learning framework to train on their local data set, using the DKG as a distributed aggregator for model changes.
-        - AI/ML framework to analyze and identify patterns in the data on the network and provide specific user insights without the user having to share raw data.
-        - Web portal where authenticated users can view insights on their data, the network data, as well as interact with AI agents trained for specific purposes.
-        - Blockchain based Decentralized Knowledge Graph to handle data storage, governance and incentives for the community.
+- Objective: This architecture solves the problem of aggregating and analyzing data in a meaningful way while still upholding user privacy. 
+- Key Features: 
+    - A front end data collection layer with client side encryption can be modified to target data for any system the user desires.
+    - Local backend to handle several data related tasks
+    - Connecting to the front end securely stores and privatizes the data sufficiently before publishing to a Decentralized Knowledge Graph (DKG) network.
+    - Utilizing federated learning framework to train on their local data set, using the DKG as a distributed aggregator for model changes.
+    - AI/ML framework to analyze and identify patterns in the data on the network and provide specific user insights without the user having to share raw data.
+    - Web portal where authenticated users can view insights on their data, the network data, as well as interact with AI agents trained for specific purposes.
+    - Blockchain based Decentralized Knowledge Graph to handle data storage, governance and incentives for the community.
+    - Hybrid encryption approach for access to the network. Anonymized data is encrypted with single symmetric key. Symmetric key is encrypted separately using public keys of all network participants. Each user then gets their version of an encrypted symmetric key which they can decrypt with their private key.
+
 
 **Application architecture:**
 
@@ -173,6 +175,7 @@ flowchart TD
         FE1["User Interface"]
         FE2["Data Identification & Caching Layer"]
         FE4["Security & Identity (JWT/DID)"]
+        NEW_FE_ENC["Encryption & Key Management (Client-Side)"]
   end
  subgraph Backend["Backend Middleware"]
         BE1["API Server (Express.js/Fastify)"]
@@ -181,6 +184,7 @@ flowchart TD
         BE4["Off-Chain Storage (IPFS)"]
         BE5["Cache (Redis/PostgreSQL)"]
         BE8["Federated Learning AI Microservice"]
+        NEW_BE_ZKP["ZKP Module (Request/Response Validation)"]
   end
  subgraph DKG["Decentralized Knowledge Graph (OriginTrail)"]
         DKG1["OriginTrail Node"]
@@ -210,13 +214,15 @@ flowchart TD
     User(("User")) -- Interacts with --> FE1
     FE1 --> FE2
     FE1 -- Authenticate/Authorize --> FE4
-    FE2 --> BE1
+    FE2 --> NEW_FE_ENC
+    NEW_FE_ENC --> BE1
     User -- Accesses --> Web_Portal
     Web_Portal --> FE3 & GOV
     FE3 -- Retrieve Insights --> AI_Service
     GOV -- Submit Governance Proposals --> DKG1
     BE1 --> BE2
     BE2 --> BE3 & BE4 & BE8
+    BE2 -- Publish to DKG --> BE3
     BE3 --> DKG1 & DKG2 & DKG3 & BE4 & BE5
     BE8 -- Retrieve Models --> BE3
     BE8 -- Train Models --> BE3
@@ -235,27 +241,73 @@ flowchart TD
     BE4 --> DKG1
     FE4 --> User
     DevOps --> Front_End & Backend & DKG & AI_Service & Web_Portal
+    NEW_FE_ENC -- "Zero-Knowledge Request" --> NEW_BE_ZKP
+    NEW_BE_ZKP -- "Zero-Knowledge Response" --> NEW_FE_ENC
     style Web_Portal fill:#2962FF
     style AI_Service fill:#2962FF
     style Front_End fill:#00C853
     style Backend fill:#00C853
     style DKG fill:#FFD600
-    linkStyle 9 stroke:#D50000,fill:none
-    linkStyle 14 stroke:#FF6D00,fill:none
-    linkStyle 15 stroke:#FF6D00,fill:none
-    linkStyle 16 stroke:#FF6D00,fill:none
-    linkStyle 17 stroke:#000000,fill:none
-    linkStyle 18 stroke:#000000,fill:none
-    linkStyle 35 stroke:#D50000,fill:none
-    linkStyle 36 stroke:#D50000,fill:none
-    linkStyle 37 stroke:#D50000,fill:none
+    linkStyle 16 stroke:#D50000,fill:none
+    linkStyle 17 stroke:#D50000,fill:none
+    linkStyle 37 stroke:#FF6D00,fill:none
     linkStyle 38 stroke:#FF6D00,fill:none
-    linkStyle 39 stroke:#000000,fill:none
-    linkStyle 40 stroke:#2962FF,fill:none
-    linkStyle 41 stroke:#000000,fill:none
-    linkStyle 42 stroke:#000000,fill:none
-    linkStyle 43 stroke:#000000,fill:none
+    linkStyle 39 stroke:#FF6D00
+    linkStyle 40 stroke:#D50000,fill:none
 ```
+
+**Modules**
+
+**Front End Overlay Application**
+**Module Name: Data Identification and Caching Layer**
+- **Purpose:** Identify data exchanges between the user and other sources and cache information.
+- **Input/Output:** Collects all raw data and outputs it into the backend.
+- **Key Interfaces:** General purpose framework captures data from all online services. This can be modified to target specific APIs or data integrations.
+- **Dependencies:** This module should not have any upstream dependencies due to the fact that it can be configured to handle all types of data.
+
+**Module Name: Encryption and Key Management (client side)**
+- **Purpose:** Encrypt user data using Zero Knowledge Proofs 
+- **Input/Output:** Collects all raw data, encrypts it and outputs it into the backend. Services in the backend like the Federated Learning AI decrypt when necessary to train. 
+- **Key Interfaces:** Data identification and Caching layer directly provides data upstream and Zero Knowledge Proof(ZKP) module interacts with it.
+- **Dependencies:** Data Identification and Caching Layer as well as Zero Knowledge Proof module(ZKP)
+
+**Backend Middleware**
+**Module Name: API Server (user backend)**
+- **Purpose:** Capture data from the front end system and store it in a queue for transformation and other downstream processing.
+- **Input/Output:** Raw data from front end, organized raw data that can be used by the transformation module.
+- **Key Interfaces:** Data Identification and Caching Layer, the API must be able to integrate with this module and change depending on the data captured. 
+- **Dependencies:** Upstream dependency on the Data Identification and Caching Layer,
+
+**Module Name: Zero Knowledge Proof Module**
+- **Purpose:** Store logic for creating Zero Knowledge Proofs
+- **Input/Output:** Data exchanges provided by encryption and key management module.
+- **Key Interfaces:** Encryption and Key management module.
+- **Dependencies:** Encryption and Key management module.
+
+**Module Name: Data Transformation Module**
+- **Purpose:** Transform data into a format that can be stored securely and privately and be used for model training purposes.
+- **Input/Output:** Organized raw data from the user backend API server is fed in and transformation services structure the data for downstream storage and training purposes.
+- **Key Interfaces:** User backend API Server for upstream data and interfaces for the storage and training purposes.
+- **Dependencies:** User backend API server.
+
+**Module Name: Federated Learning AI Microservice**
+- **Purpose:** Train on local user dataset and communicate with the DKG integration module for model updates.
+- **Input/Output:** Data from the data transformation model. Model information.
+- **Key Interfaces:** Data transformation module and DKG integration module. 
+- **Dependencies:** Data transformation module and DKG integration module. 
+
+**Module Name: DKG Integration Module (user backend)**
+- **Purpose:** Format the data and model changes into a knowledge asset and handle publishing to the DKG blockchain.
+- **Input/Output:** Anonymized and privatized user data as well as model changes.
+- **Key Interfaces:** Data transformation module for upstream data, the federated learning AI microservice, and the DKG blockchain for downstream.
+- **Dependencies:** Data transformation module and federated learning AI microservice.
+
+**Module Name: Off-chain storage (IPFS)**
+- **Purpose:** Securely store user data.
+- **Input/Output:** Encrypted user data
+- **Key Interfaces:** Data transformation module and DKG integration module upstream, and the DKG blockchain for downstream.
+- **Dependencies:** Data transformation module, DKG integration module.
+
 
 **User Stories:**
 - As a user, I want the ability to login to the system using my existing web2 credentials, so that I can maintain ease of use across different platforms.
