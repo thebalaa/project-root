@@ -1,0 +1,16 @@
+{
+    "name": "zkp-module",
+    "version": "1.0.0",
+    "description": "Simple Zero-Knowledge Proof module (request/response)",
+    "main": "src/index.js",
+    "scripts": {
+      "test": "node ../node_modules/mocha/bin/mocha tests/*.test.js"
+    },
+    "dependencies": {
+      "crypto-js": "^4.1.1"
+    },
+    "devDependencies": {
+       "mocha": "^10.0.0"
+    }
+  }
+  
