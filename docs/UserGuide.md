@@ -1,4 +1,4 @@
-## Target Audience and User Personas
+# Target Audience and User Personas
 
 ## User Personas or Profiles:
 
