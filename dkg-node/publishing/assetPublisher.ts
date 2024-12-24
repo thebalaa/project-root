@@ -1,46 +1,30 @@
 /**
  * assetPublisher.ts
- * 
- * Placeholder module to handle publishing assets or knowledge data to the DKG.
+ *
+ * Existing file to handle publishing assets to the DKG.
+ * We'll integrate our new PrivacyTxManager for on-chain interactions.
  */
 
-import fs from 'fs';
-import path from 'path';
-// Optionally import your DKG client or an HTTP library here
-// import { DKGClient } from 'dkg-sdk';
+import { PrivacyTxManager } from './privacyTxManager';
 
-interface PublishOptions {
-  assetType: string;
-  filePath?: string;
-  metadata?: Record<string, unknown>;
-  ipfsHash?: string;
-}
-
-/**
- * Publish an asset to the DKG network
- * @param options - Options controlling what/where/how data is published
- */
-export async function publishAsset(options: PublishOptions): Promise<void> {
+export async function publishAssetToDKG(assetCid: string) {
   try {
-    console.log("Publishing asset to DKG...");
-    // Example: read file if provided
-    if (options.filePath) {
-      const data = fs.readFileSync(path.resolve(options.filePath), 'utf-8');
-      console.log(`Data loaded from file: ${options.filePath}`);
-      // Perform IPFS upload or DKG asset creation here
-    }
+    // Initialize your ephemeral or permanent tx manager
+    const manager = new PrivacyTxManager({
+      rpcUrl: 'https://your-blockchain-node.example.com',
+      ephemeral: true
+    });
 
-    // Example: store or update metadata
-    if (options.metadata) {
-      console.log("Metadata provided:", JSON.stringify(options.metadata, null, 2));
-    }
+    // Hash the IPFS CID or some anonymized reference
+    const hashedRef = PrivacyTxManager.hashData(assetCid);
 
-    // Example: integrate with DKG or IPFS
-    // const response = await DKGClient.publish(...)
+    // Some minimal metadata; keep it general to avoid leaks
+    const metadata = 'Asset metadata or classification only';
 
-    console.log(`Asset of type "${options.assetType}" published successfully!`);
+    // Publish the hashed reference
+    const tx = await manager.publishHashedReference(hashedRef, metadata);
+    console.log('Asset published with ephemeral Tx:', tx.hash);
   } catch (error) {
-    console.error("Error publishing asset:", error);
-    throw error;
+    console.error('Error publishing asset to DKG with privacy:', error);
   }
 }
