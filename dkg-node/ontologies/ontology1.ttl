@@ -1,0 +1,19 @@
+@prefix ex: <http://example.org/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# This Turtle file defines an example ontology for the DKG node.
+
+ex:DataAsset a rdfs:Class ;
+    rdfs:label "Data Asset" ;
+    rdfs:comment "A data asset on the DKG network." .
+
+ex:hasOwner a rdf:Property ;
+    rdfs:label "hasOwner" ;
+    rdfs:comment "Relationship linking a data asset to its owner." ;
+    rdfs:domain ex:DataAsset ;
+    rdfs:range ex:User .
+
+ex:User a rdfs:Class ;
+    rdfs:label "User" ;
+    rdfs:comment "A participant or user on the DKG." .

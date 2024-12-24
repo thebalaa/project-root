@@ -1,0 +1,7 @@
+ai_service:
+  host: "0.0.0.0"
+  port: 5000
+  model_path: "./models"
+  default_model: "gpt-3.5-turbo"
+logging:
+  level: "INFO"

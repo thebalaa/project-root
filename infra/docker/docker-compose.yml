@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ../..         # Adjust path if necessary
+      dockerfile: infra/docker/Dockerfile
+    container_name: backend_app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    # If you have a .env, reference it here:
+    # env_file: .env
+
+  ai_service:
+    image: python:3.9
+    container_name: ai_service
+    working_dir: /usr/src/ai_service
+    volumes:
+      - ../../ai_service:/usr/src/ai_service  # Adjust path
+    command: python main.py
+    ports:
+      - "5000:5000"
+    # Example environment variables
+    environment:
+      - FLASK_ENV=development
+
+  ipfs:
+    image: ipfs/go-ipfs:latest
+    container_name: ipfs_node
+    ports:
+      - "4001:4001"
+      - "8080:8080"
+
+  redis:
+    image: redis:latest
+    container_name: redis_cache
+    ports:
+      - "6379:6379"
+
+  # Example: Postgres if needed
+  postgres:
+    image: postgres:14-alpine
+    container_name: db_postgres
+    environment:
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5432:5432"
+
+  # Example: Monitoring stack
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ../monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../monitoring/grafana.json:/etc/grafana/provisioning/dashboards/default-dashboard.json
+
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    volumes:
+      - ../monitoring/loki-config.yaml:/etc/loki/local-config.yaml
+    command: -config.file=/etc/loki/local-config.yaml
+    ports:
+      - "3100:3100"
+
+networks:
+  default:
+    name: dkg_network

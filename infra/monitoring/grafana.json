@@ -1,0 +1,29 @@
+{
+    "dashboard": {
+      "id": null,
+      "title": "DKG Project Dashboard",
+      "tags": [ "dkg", "monitoring" ],
+      "timezone": "browser",
+      "version": 1,
+      "panels": [
+        {
+          "type": "graph",
+          "title": "CPU Usage",
+          "targets": [
+            {
+              "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+              "legendFormat": "{{instance}}"
+            }
+          ],
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 0
+          }
+        }
+        // Add more panels here
+      ]
+    }
+  }
+  

@@ -1,0 +1,13 @@
+client:
+  host: "0.0.0.0"
+  port: 9000
+  client_id: "client_01"
+aggregator:
+  url: "http://localhost:8000"
+training:
+  batch_size: 32
+  epochs: 1
+  dataset_path: "./data"
+  model_type: "CNN"
+logging:
+  level: "INFO"

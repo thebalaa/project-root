@@ -1,0 +1,8 @@
+dkg:
+  url: "http://localhost:8900"
+  api_key: "your_dkg_api_key"
+  paranet_network_id: "12345"
+
+governance:
+  contract_address: "0xABCDEF1234567890"
+  token_symbol: "TRAC"

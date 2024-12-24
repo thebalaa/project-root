@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-ml-deployment
+  labels:
+    app: ai-ml-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ai-ml-service
+  template:
+    metadata:
+      labels:
+        app: ai-ml-service
+    spec:
+      containers:
+      - name: ai-ml-container
+        image: your_registry/ai-ml-service:latest
+        ports:
+          - containerPort: 5000
+        env:
+          - name: ENV
+            value: "production"
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
