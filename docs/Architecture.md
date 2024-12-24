@@ -24,696 +24,696 @@ Application Specific Integrated Systems are software solutions designed to optim
 **Module Name: Data Identification and Caching Layer**
 - **Purpose:** The Data Identification and Caching Layer is responsible for intercepting and identifying user activity data from various sources in real-time. It determines which data is relevant, applies caching mechanisms to store it temporarily, and ensures efficient communication with backend systems for further processing. This module forms the backbone of data ingestion in the Front-End Overlay Application, enabling seamless, secure, and real-time data management.
 - **Input:**
-      - User activity data (e.g., browsing, interactions) from the User Interface.
-      - Security and identity tokens (e.g., JWT, DID) from the Security & Identity module for ensuring user authentication and authorization.
+  - User activity data (e.g., browsing, interactions) from the User Interface.
+  - Security and identity tokens (e.g., JWT, DID) from the Security & Identity module for ensuring user authentication and authorization.
 - **Output:**
-      - Filtered, formatted, and cached data ready for processing by the backend.
-      - Temporary storage of identified data for asynchronous processing by backend services.
-      - Alerts or logs for invalid or unauthorized data activities.
+  - Filtered, formatted, and cached data ready for processing by the backend.
+  - Temporary storage of identified data for asynchronous processing by backend services.
+  - Alerts or logs for invalid or unauthorized data activities.
 - **Key Interfaces:**
-      - **User Interface:**
-            - Receives raw user activity data and identifies relevant actions for processing.
-      - **Security & Identity Module:**
-            - Verifies user credentials and ensures only authenticated data is processed and cached.
-      - **Encryption and Key Management:**
-            - Data will be encrypted before sending to the backend middleware.
-      - **Backend Middleware:**
-            - Sends identified and cached data to the backend API for further anonymization, transformation, and storage.
+  - **User Interface:**
+      - Receives raw user activity data and identifies relevant actions for processing.
+  - **Security & Identity Module:**
+      - Verifies user credentials and ensures only authenticated data is processed and cached.
+  - **Encryption and Key Management:**
+      - Data will be encrypted before sending to the backend middleware.
+  - **Backend Middleware:**
+      - Sends identified and cached data to the backend API for further anonymization, transformation, and storage.
 - **Dependencies:**
-      - **Security & Identity Module:**
-            - Ensures that all identified data complies with user authentication and authorization protocols.
-      - **Backend Middleware:**
-            - Relies on APIs to send cached and identified data for processing.
-      - **Caching Mechanisms:**
-            - Uses in-memory caches or lightweight storage (e.g., IndexedDB, LocalStorage) to temporarily store identified data for efficiency.
-      - **Data Parsing Libraries:**
-            - To standardize and structure raw user data into usable formats before transmission.
-      - **Encryption Libraries:**
-            - Secures cached data to prevent unauthorized access before it is transmitted to the backend.
+  - **Security & Identity Module:**
+      - Ensures that all identified data complies with user authentication and authorization protocols.
+  - **Backend Middleware:**
+      - Relies on APIs to send cached and identified data for processing.
+   - **Caching Mechanisms:**
+      - Uses in-memory caches or lightweight storage (e.g., IndexedDB, LocalStorage) to temporarily store identified data for efficiency.
+   - **Data Parsing Libraries:**
+      - To standardize and structure raw user data into usable formats before transmission.
+   - **Encryption Libraries:**
+      - Secures cached data to prevent unauthorized access before it is transmitted to the backend.
 
 **Module Name: Encryption and Key Management (client side)**
 - **Purpose:** The Encryption and Key Management module ensures secure handling of sensitive user data on the client-side. It manages encryption processes, key generation, and secure storage of keys. This module enables data encryption at the source, maintaining user privacy and ensuring that only authorized entities can decrypt and process the data.
 - **Input:**
-      - User activity data or sensitive information identified by the Data Identification and Caching Layer.
-      - Authentication credentials (e.g., user identity tokens from Security & Identity module).
-      - Encryption policies and algorithms defined by the system.
+  - User activity data or sensitive information identified by the Data Identification and Caching Layer.
+  - Authentication credentials (e.g., user identity tokens from Security & Identity module).
+  - Encryption policies and algorithms defined by the system.
 - **Output:**
-      - Encrypted data ready for storage or transmission to the backend.
-      - Securely stored encryption keys for future use.
-      - Error logs or alerts in case of encryption or key management failures.
+  - Encrypted data ready for storage or transmission to the backend.
+  - Securely stored encryption keys for future use.
+  - Error logs or alerts in case of encryption or key management failures.
 - **Key Interfaces:**
-      - **Data Identification and Caching Layer:**
-            - Receives raw or pre-processed data that requires encryption.
-      - **Security & Identity Module:**
-            - Uses authentication credentials (e.g., JWT, DID) to validate key access.
-      - **Backend Middleware:**
-            - Transmits encrypted data securely for further processing or storage.
-      - **Local Secure Storage:**
-            - Stores encryption keys and metadata securely on the client device (e.g., using WebCrypto APIs, secure enclaves, or hardware-backed solutions).
-- **Dependencies:**
+  - **Data Identification and Caching Layer:**
+      - Receives raw or pre-processed data that requires encryption.
+  - **Security & Identity Module:**
+      - Uses authentication credentials (e.g., JWT, DID) to validate key access.
+  - **Backend Middleware:**
+      - Transmits encrypted data securely for further processing or storage.
+  - **Local Secure Storage:**
+      - Stores encryption keys and metadata securely on the client device (e.g., using WebCrypto APIs, secure enclaves, or hardware-backed solutions).
+  - **Dependencies:**
       - **Cryptographic Libraries:**
-            - Uses industry-standard cryptographic algorithms (e.g., AES, RSA, ECDSA) for encryption and decryption.
+        - Uses industry-standard cryptographic algorithms (e.g., AES, RSA, ECDSA) for encryption and decryption.
       - **Secure Key Storage:**
-            - Relies on browser APIs (e.g., WebCrypto, IndexedDB) or secure device environments (e.g., Trusted Platform Modules, Secure Enclaves).
+        - Relies on browser APIs (e.g., WebCrypto, IndexedDB) or secure device environments (e.g., Trusted Platform Modules, Secure Enclaves).
       - **Security & Identity Module:**
-            - Provides user authentication for access control during encryption and decryption.
+        - Provides user authentication for access control during encryption and decryption.
       - **Backend Middleware:**
-            - Ensures secure transmission of encrypted data using protocols like HTTPS or TLS.
+        - Ensures secure transmission of encrypted data using protocols like HTTPS or TLS.
       - **Key Rotation Policies:**
-            - Implements key rotation schedules to enhance security and mitigate risks of key compromise.
+        - Implements key rotation schedules to enhance security and mitigate risks of key compromise.
 
 ## Backend Middleware
 **Module Name: API Server (user backend)**
 - **Purpose:** The API Server acts as the primary communication hub between the front-end overlay application and the backend systems. It handles incoming requests, processes them according to business logic, and routes them to appropriate backend modules. Additionally, it ensures secure, efficient, and scalable data transfer between components, enforcing access control and data validation.
 - **Input:**
-      - Requests from the front-end (e.g., user activity data, configuration updates, or queries).
-      - Data from backend modules (e.g., transformed, anonymized, or cached data).
-      - Security tokens and authentication credentials for user access validation.
+  - Requests from the front-end (e.g., user activity data, configuration updates, or queries).
+  - Data from backend modules (e.g., transformed, anonymized, or cached data).
+  - Security tokens and authentication credentials for user access validation.
 - **Output:**
-      - Responses to the front-end (e.g., success/error status, requested data, or analytics results).
-      - Processed data forwarded to backend modules (e.g., anonymization or storage services).
-      - Logs and metrics for monitoring and debugging purposes.
+  - Responses to the front-end (e.g., success/error status, requested data, or analytics results).
+  - Processed data forwarded to backend modules (e.g., anonymization or storage services).
+  - Logs and metrics for monitoring and debugging purposes.
 - **Key Interfaces:**
-      - **Front-End Overlay Application:**
-            - Receives and processes requests from the front-end, providing APIs for data submission and retrieval.
-      - **Data Transformation and Anonymization Module:**
-            - Routes raw user data for processing and ensures compliance with privacy standards.
-      - **DKG Integration Module (Backend):**
-            - Communicates with the DKG to register, retrieve, or query knowledge assets.
-      - **Off-Chain Storage (IPFS):**
-            - Facilitates secure storage and retrieval of data assets via IPFS.
-      - **Cache (Redis/PostgreSQL):**
-            - Uses caching mechanisms to optimize response times and handle high-frequency requests.
-      - **Federated Learning AI Microservice:**
-            - Routes data and requests related to model training or insights to the AI microservice.
+  - **Front-End Overlay Application:**
+    - Receives and processes requests from the front-end, providing APIs for data submission and retrieval.
+  - **Data Transformation and Anonymization Module:**
+      - Routes raw user data for processing and ensures compliance with privacy standards.
+  - **DKG Integration Module (Backend):**
+      - Communicates with the DKG to register, retrieve, or query knowledge assets.
+  - **Off-Chain Storage (IPFS):**
+      - Facilitates secure storage and retrieval of data assets via IPFS.
+   - **Cache (Redis/PostgreSQL):**
+      - Uses caching mechanisms to optimize response times and handle high-frequency requests.
+  - **Federated Learning AI Microservice:**
+      - Routes data and requests related to model training or insights to the AI microservice.
 - **Dependencies:**
-      - **API Framework (e.g., Fastify or Express.js):**
-            - Provides a scalable and high-performance framework for handling HTTP and WebSocket requests.
+  - **API Framework (e.g., Fastify or Express.js):**
+      - Provides a scalable and high-performance framework for handling HTTP and WebSocket requests.
       - **Security Modules:**
-            - Uses authentication and authorization mechanisms (e.g., JWT or OAuth) to ensure secure access to APIs.
+        - Uses authentication and authorization mechanisms (e.g., JWT or OAuth) to ensure secure access to APIs.
       - **Asynchronous Processing Queues:**
-            - Integrates with queues (e.g., NATS, Redis Streams) for handling background tasks like batch processing or notifications.
+        - Integrates with queues (e.g., NATS, Redis Streams) for handling background tasks like batch processing or notifications.
       - **Data Parsing Libraries:**
-            - Processes incoming data in various formats (e.g., JSON, XML, CSV) for further use.
+        - Processes incoming data in various formats (e.g., JSON, XML, CSV) for further use.
       - **Logging and Monitoring Tools:**
-            - Generates logs and metrics to track API performance, detect errors, and monitor system health.
+        - Generates logs and metrics to track API performance, detect errors, and monitor system health.
 
 **Module Name: Zero Knowledge Proof Module**
 - **Purpose:** The ZKP (Zero Knowledge Proof) module is designed to enhance user privacy and security by enabling cryptographic proofs that allow verification of data or transactions without revealing the underlying information. It ensures data integrity, authentication, and compliance with privacy-preserving protocols within the system.
 - **Input:**
-      - Claims or data assertions (e.g., user credentials, transaction details, or ownership proofs) from other modules.
-      - Verifier requests to validate claims without exposing raw data.
-      - Predefined ZKP schemas and cryptographic parameters.
+  - Claims or data assertions (e.g., user credentials, transaction details, or ownership proofs) from other modules.
+  - Verifier requests to validate claims without exposing raw data.
+  - Predefined ZKP schemas and cryptographic parameters.
 - **Output:**
-      - Cryptographic proofs (e.g., zk-SNARKs, zk-STARKs) that validate the authenticity of claims or data.
-      - Verification results (e.g., true/false) indicating whether a proof was successfully validated.
-      - Logs or error messages for invalid proofs or verification failures.
+  - Cryptographic proofs (e.g., zk-SNARKs, zk-STARKs) that validate the authenticity of claims or data.
+  - Verification results (e.g., true/false) indicating whether a proof was successfully validated.
+  - Logs or error messages for invalid proofs or verification failures.
 - **Key Interfaces:**
-      - **API Server:**
-            - Receives requests to generate or validate ZKPs and forwards them to the relevant modules.
-      - **Security & Identity Module:**
-            - Works in tandem to verify user identity or access rights without exposing sensitive information.
-      - **Data Transformation and Anonymization Module:**
-            - Ensures that data being used for ZKPs is pre-processed or anonymized if necessary.
-      - **Blockchain Integration Module:**
-            - Records ZKPs or verification results on-chain for immutability and traceability (if applicable).
-      - **DKG Integration Module (Backend):**
-            - Publishes and retrieves cryptographic proofs related to knowledge assets or relationships.
+  - **API Server:**
+      - Receives requests to generate or validate ZKPs and forwards them to the relevant modules.
+  - **Security & Identity Module:**
+       - Works in tandem to verify user identity or access rights without exposing sensitive information.
+  - **Data Transformation and Anonymization Module:**
+      - Ensures that data being used for ZKPs is pre-processed or anonymized if necessary.
+  - **Blockchain Integration Module:**
+      - Records ZKPs or verification results on-chain for immutability and traceability (if applicable).
+  - **DKG Integration Module (Backend):**
+      - Publishes and retrieves cryptographic proofs related to knowledge assets or relationships.
 - **Dependencies:**
-      - **Cryptographic Libraries:**
-            - Implements ZKP protocols such as zk-SNARKs, zk-STARKs, or Bulletproofs for generating and verifying proofs.
-      - **ZKP Frameworks:**
-            - Utilizes frameworks like Circom, Libsnark, or ZoKrates for proof construction.
-      - **Security Modules:**
-            - Enforces secure key handling and access control during proof generation and validation.
-      - **Data Serialization Tools:**
-            - Structures data inputs for proof generation in formats compatible with ZKP frameworks.
-      - **Blockchain Nodes:**
-            - Works with blockchain components to store cryptographic proofs or validation results immutably.
-      - **Governance Module (if applicable):**
-            - Enforces policies for the use and validation of ZKPs within the system.
+  - **Cryptographic Libraries:**
+      - Implements ZKP protocols such as zk-SNARKs, zk-STARKs, or Bulletproofs for generating and verifying proofs.
+  - **ZKP Frameworks:**
+      - Utilizes frameworks like Circom, Libsnark, or ZoKrates for proof construction.
+  - **Security Modules:**
+      - Enforces secure key handling and access control during proof generation and validation.
+  - **Data Serialization Tools:**
+      - Structures data inputs for proof generation in formats compatible with ZKP frameworks.
+  - **Blockchain Nodes:**
+      - Works with blockchain components to store cryptographic proofs or validation results immutably.
+  - **Governance Module (if applicable):**
+      - Enforces policies for the use and validation of ZKPs within the system.
 
 **Module Name: Data Transformation and Anonymization Module**
 - **Purpose:** The Data Transformation and Anonymization module processes raw user data to ensure it meets the system's privacy and usability requirements. It applies transformations to standardize data formats, anonymizes sensitive information to protect user privacy, and prepares data for publishing or storage in the Decentralized Knowledge Graph (DKG).
 - **Input:**
-      - Raw user activity data from the API Server or Data Identification and Caching Layer.
-      - User metadata, schemas, and ontologies from the Schema & Ontologies Module for structuring data.
-      - Security tokens or credentials for enforcing data processing policies.
+  - Raw user activity data from the API Server or Data Identification and Caching Layer.
+  - User metadata, schemas, and ontologies from the Schema & Ontologies Module for structuring data.
+  - Security tokens or credentials for enforcing data processing policies.
 - **Output:**
-      - Transformed and anonymized data ready for storage in the DKG or off-chain systems (e.g., IPFS).
-      - Metadata or logs detailing the transformations applied for auditing purposes.
-      - Error logs or alerts in case of transformation or anonymization failures.
+  - Transformed and anonymized data ready for storage in the DKG or off-chain systems (e.g., IPFS).
+  - Metadata or logs detailing the transformations applied for auditing purposes.
+  - Error logs or alerts in case of transformation or anonymization failures.
 - **Key Interfaces:**
-      - **API Server:**
-            - Receives raw user data for processing and returns transformed and anonymized data.
-      - **Schema & Ontologies Module:**
-            - Uses schema definitions to structure transformed data appropriately.
-      - **DKG Integration Module (Backend):**
-            - Publishes processed data assets to the DKG after anonymization.
-      - **Off-Chain Storage (IPFS):**
-            - Sends transformed and anonymized data for decentralized storage.
-      - **Security & Identity Module:**
-            - Ensures compliance with user authentication and privacy preferences during data processing.
+  - **API Server:**
+      - Receives raw user data for processing and returns transformed and anonymized data.
+  - **Schema & Ontologies Module:**
+       - Uses schema definitions to structure transformed data appropriately.
+  - **DKG Integration Module (Backend):**
+      - Publishes processed data assets to the DKG after anonymization.
+  - **Off-Chain Storage (IPFS):**
+      - Sends transformed and anonymized data for decentralized storage.
+  - **Security & Identity Module:**
+      - Ensures compliance with user authentication and privacy preferences during data processing.
 - **Dependencies:**
-      - **Data Parsing and Transformation Libraries:**
-            - Tools to parse data formats (e.g., JSON, XML, CSV) and apply standardization.
+  - **Data Parsing and Transformation Libraries:**
+      - Tools to parse data formats (e.g., JSON, XML, CSV) and apply standardization.
       - **Anonymization Libraries and Techniques:**
-            - Implements methods such as masking, tokenization, or generalization to anonymize sensitive information.
+        - Implements methods such as masking, tokenization, or generalization to anonymize sensitive information.
       - **Schema Validation Tools:**
-            - Ensures transformed data complies with the schemas defined by the Schema & Ontologies Module.
+        - Ensures transformed data complies with the schemas defined by the Schema & Ontologies Module.
       - **Encryption Libraries:**
-            - Secures sensitive data before or after anonymization, if required.
+        - Secures sensitive data before or after anonymization, if required.
       - **Logging and Monitoring Tools:**
-            - Tracks the transformations and anonymization processes for transparency and debugging.
+        - Tracks the transformations and anonymization processes for transparency and debugging.
       - **Asynchronous Queues:**
-            - Manages batch or real-time processing of incoming data streams efficiently.
+        - Manages batch or real-time processing of incoming data streams efficiently.
 
 **Module Name: Federated Learning AI Microservice**
 - **Purpose:** The Federated Learning AI Microservice enables the decentralized training of machine learning models on data distributed across multiple nodes or devices without sharing the raw data. It enhances privacy by keeping data local while aggregating model updates to improve the overall system's AI capabilities. This module is key to creating collaborative AI models that respect user privacy and data autonomy.
 - **Input:**
-      - Local datasets or anonymized data streams from nodes/devices.
-      - Pre-trained models or model parameters for further training.
-      - Federated learning protocols and configurations (e.g., learning rates, update frequencies).
-      - User or system-defined tasks for model training or insights generation.
+  - Local datasets or anonymized data streams from nodes/devices.
+  - Pre-trained models or model parameters for further training.
+  - Federated learning protocols and configurations (e.g., learning rates, update frequencies).
+  - User or system-defined tasks for model training or insights generation.
 - **Output:**
-      - Updated model parameters after local training.
-      - Aggregated global model combining updates from multiple nodes.
-      - Insights or predictions derived from the trained models.
-      - Logs or metrics for monitoring training progress and performance.
+  - Updated model parameters after local training.
+  - Aggregated global model combining updates from multiple nodes.
+  - Insights or predictions derived from the trained models.
+  - Logs or metrics for monitoring training progress and performance.
 - **Key Interfaces:**
-      - **API Server:**
-            - Receives task requests for training or insights and sends results back to the requesting component.
-      - **Data Transformation and Anonymization Module:**
-            - Ensures that training data is pre-processed and anonymized if required before local training begins.
-      - **DKG Integration Module (Backend):**
-            - Publishes aggregated models, training metadata, or insights into the Decentralized Knowledge Graph.
-      - **AI Integration Module:**
-            - Works with symbolic reasoning engines, vector databases, or LLMs for advanced AI operations.
-      - **Cache (Redis/PostgreSQL):**
-            - Temporarily stores model parameters, training logs, or intermediate results.
+  - **API Server:**
+      - Receives task requests for training or insights and sends results back to the requesting component.
+  - **Data Transformation and Anonymization Module:**
+      - Ensures that training data is pre-processed and anonymized if required before local training begins.
+  - **DKG Integration Module (Backend):**
+      - Publishes aggregated models, training metadata, or insights into the Decentralized Knowledge Graph.
+  - **AI Integration Module:**
+      - Works with symbolic reasoning engines, vector databases, or LLMs for advanced AI operations.
+  - **Cache (Redis/PostgreSQL):**
+      - Temporarily stores model parameters, training logs, or intermediate results.
 - **Dependencies:**
-      - **Federated Learning Frameworks:**
-            - Tools like TensorFlow Federated, PySyft, or OpenFL for implementing federated learning workflows.
-      - **ML Frameworks:**
-            - Machine learning libraries such as TensorFlow, PyTorch, or Scikit-learn for model development and training.
-      - **Secure Aggregation Protocols:**
-            - Implements techniques like homomorphic encryption or secure multi-party computation (MPC) to ensure privacy during parameter aggregation.
-      - **Data Processing Libraries:**
-            - Libraries for handling and preparing local data streams for training.
-      - **Orchestration Services:**
-            - Manages the scheduling and synchronization of training tasks across multiple nodes.
-      - **Logging and Monitoring Tools:**
-            - Tracks training progress, performance, and system health during federated learning.
+  - **Federated Learning Frameworks:**
+      - Tools like TensorFlow Federated, PySyft, or OpenFL for implementing federated learning workflows.
+  - **ML Frameworks:**
+      - Machine learning libraries such as TensorFlow, PyTorch, or Scikit-learn for model development and training.
+  - **Secure Aggregation Protocols:**
+      - Implements techniques like homomorphic encryption or secure multi-party computation (MPC) to ensure privacy during parameter aggregation.
+  - **Data Processing Libraries:**
+      - Libraries for handling and preparing local data streams for training.
+  - **Orchestration Services:**
+      - Manages the scheduling and synchronization of training tasks across multiple nodes.
+  - **Logging and Monitoring Tools:**
+      - Tracks training progress, performance, and system health during federated learning.
 
 **Module Name: DKG Integration Module (user backend)**
 - **Purpose:** The DKG Integration Module (Backend) manages interactions between the backend systems and the Decentralized Knowledge Graph (DKG). It handles the publishing, querying, and retrieval of knowledge assets in compliance with DKG protocols, ensuring secure and efficient data exchange with the decentralized network.
 - **Input:**
-      - Transformed and anonymized data from the Data Transformation and Anonymization Module.
-      - Schema and ontology definitions from the Schema & Ontologies Module for structuring knowledge assets.
-      - Requests for publishing, querying, or retrieving knowledge assets from the API Server or other modules.
-      - Cryptographic proofs and metadata for publishing on-chain references (e.g., CIDs, hashes).
+  - Transformed and anonymized data from the Data Transformation and Anonymization Module.
+  - Schema and ontology definitions from the Schema & Ontologies Module for structuring knowledge assets.
+  - Requests for publishing, querying, or retrieving knowledge assets from the API Server or other modules.
+  - Cryptographic proofs and metadata for publishing on-chain references (e.g., CIDs, hashes).
 - **Output:**
-      - Published knowledge assets registered on the DKG.
-      - Query results or retrieved knowledge assets requested by other modules.
-      - Status updates or logs for successful/failed publishing and querying operations.
-      - Metadata or proof-of-publication to the Blockchain Integration Module.
+  - Published knowledge assets registered on the DKG.
+  - Query results or retrieved knowledge assets requested by other modules.
+  - Status updates or logs for successful/failed publishing and querying operations.
+  - Metadata or proof-of-publication to the Blockchain Integration Module.
 - **Key Interfaces:**
-      - **API Server:**
-            - Processes requests for publishing or retrieving data and forwards them to the DKG.
-      - **Data Transformation and Anonymization Module:**
-            - Ensures data assets are prepared and privacy-compliant before publishing to the DKG.
-      - **Schema & Ontologies Module:**
-            - Validates that data adheres to DKG schemas and ontologies before publishing.
-      - **Off-Chain Storage (IPFS):**
-            - Links off-chain data stored in IPFS with its corresponding DKG references.
-      - **Blockchain Integration Module:**
-            - Publishes cryptographic proofs (e.g., hashes, CIDs) on the blockchain for traceability and immutability.
-      - **OriginTrail Node:**
-            - Interacts directly with the OriginTrail DKG node for data publishing, querying, and retrieval.
+  - **API Server:**
+      - Processes requests for publishing or retrieving data and forwards them to the DKG.
+  - **Data Transformation and Anonymization Module:**
+      - Ensures data assets are prepared and privacy-compliant before publishing to the DKG.
+  - **Schema & Ontologies Module:**
+      - Validates that data adheres to DKG schemas and ontologies before publishing.
+  - **Off-Chain Storage (IPFS):**
+      - Links off-chain data stored in IPFS with its corresponding DKG references.
+  - **Blockchain Integration Module:**
+      - Publishes cryptographic proofs (e.g., hashes, CIDs) on the blockchain for traceability and immutability.
+  - **OriginTrail Node:**
+      - Interacts directly with the OriginTrail DKG node for data publishing, querying, and retrieval.
 - **Dependencies:**
-      - **DKG Protocols:**
-            - Utilizes protocols provided by the DKG (e.g., OriginTrail) to interact with the decentralized graph.
-      - **Blockchain APIs:**
-            - Works with blockchain nodes or APIs for publishing proofs of knowledge assets.
-      - **Schema Validation Tools:**
-            - Ensures compliance with DKG-defined schemas and ontologies.
-      - **Off-Chain Storage:**
-            - Integrates with IPFS or similar systems for decentralized data storage.
-      - **Cryptographic Libraries:**
-            - Handles hashing, signing, and other cryptographic operations needed for DKG interactions.
-      - **Logging and Monitoring Tools:**
-            - Tracks the status of interactions with the DKG and provides logs for auditing or debugging.
+  - **DKG Protocols:**
+      - Utilizes protocols provided by the DKG (e.g., OriginTrail) to interact with the decentralized graph.
+  - **Blockchain APIs:**
+      - Works with blockchain nodes or APIs for publishing proofs of knowledge assets.
+  - **Schema Validation Tools:**
+      - Ensures compliance with DKG-defined schemas and ontologies.
+  - **Off-Chain Storage:**
+      - Integrates with IPFS or similar systems for decentralized data storage.
+  - **Cryptographic Libraries:**
+      - Handles hashing, signing, and other cryptographic operations needed for DKG interactions.
+  - **Logging and Monitoring Tools:**
+      - Tracks the status of interactions with the DKG and provides logs for auditing or debugging.
 
 **Module Name: Off-Chain Storage (IPFS)**
 - **Purpose:** The Off-Chain Storage module integrates with IPFS (InterPlanetary File System) to handle decentralized storage of large data assets that cannot be efficiently stored on-chain. It ensures secure, immutable, and distributed data storage while linking these assets with references (e.g., Content Identifiers, or CIDs) stored in the Decentralized Knowledge Graph (DKG) or blockchain.
 - **Input:**
-      - Transformed and anonymized data from the Data Transformation and Anonymization Module.
-      - Metadata and references for storage from the DKG Integration Module (Backend).
-      - User or system-defined configurations for storage parameters (e.g., data redundancy levels).
+  - Transformed and anonymized data from the Data Transformation and Anonymization Module.
+  - Metadata and references for storage from the DKG Integration Module (Backend).
+  - User or system-defined configurations for storage parameters (e.g., data redundancy levels).
 - **Output:**
-      - Content Identifiers (CIDs) generated by IPFS for stored data.
-      - Links or references for stored data assets to be registered in the DKG or blockchain.
-      - Retrieval of requested data assets from IPFS.
-      - Logs or alerts for storage failures or retrieval errors.
+  - Content Identifiers (CIDs) generated by IPFS for stored data.
+  - Links or references for stored data assets to be registered in the DKG or blockchain.
+  - Retrieval of requested data assets from IPFS.
+  - Logs or alerts for storage failures or retrieval errors.
 - **Key Interfaces:**
-      - **Data Transformation and Anonymization Module:**
-            - Receives pre-processed and privacy-compliant data for storage.
-      - **DKG Integration Module (Backend):**
-            - Provides CIDs and metadata for linking off-chain data to the DKG.
-      - **Blockchain Integration Module:**
-            - Stores cryptographic proofs of CIDs on-chain for traceability and immutability.
-      - **Cache (Redis/PostgreSQL):**
-            - Temporarily stores CIDs and metadata for quick access during data publishing or retrieval processes.
-      - **API Server:**
-            - Receives requests for storing or retrieving data from the front-end or other modules.
+  - **Data Transformation and Anonymization Module:**
+      - Receives pre-processed and privacy-compliant data for storage.
+  - **DKG Integration Module (Backend):**
+      - Provides CIDs and metadata for linking off-chain data to the DKG.
+  - **Blockchain Integration Module:**
+      - Stores cryptographic proofs of CIDs on-chain for traceability and immutability.
+  - **Cache (Redis/PostgreSQL):**
+       - Temporarily stores CIDs and metadata for quick access during data publishing or retrieval processes.
+  - **API Server:**
+      - Receives requests for storing or retrieving data from the front-end or other modules.
 - **Dependencies:**
-      - **IPFS Node or API:**
-            - Interacts directly with IPFS for data storage, retrieval, and CID generation.
-      - **Cryptographic Libraries:**
-            - Ensures secure hashing of data before storage to generate reliable CIDs.
-      - **Data Serialization Tools:**
-            - Structures data in compatible formats (e.g., JSON, CBOR) for efficient IPFS storage.
-      - **Network Configurations:**
-            - Manages connectivity and bandwidth for efficient interaction with the IPFS network.
-      - **Logging and Monitoring Tools:**
-            - Tracks storage operations, ensures successful pinning of data on IPFS, and logs errors for debugging.
+  - **IPFS Node or API:**
+      - Interacts directly with IPFS for data storage, retrieval, and CID generation.
+  - **Cryptographic Libraries:**
+      - Ensures secure hashing of data before storage to generate reliable CIDs.
+  - **Data Serialization Tools:**
+      - Structures data in compatible formats (e.g., JSON, CBOR) for efficient IPFS storage.
+  - **Network Configurations:**
+      - Manages connectivity and bandwidth for efficient interaction with the IPFS network.
+  - **Logging and Monitoring Tools:**
+      - Tracks storage operations, ensures successful pinning of data on IPFS, and logs errors for debugging.
 
 **Module Name: Cache (Redis/PostgreSQL)**
 - **Purpose:** The Cache module provides high-performance, temporary storage for frequently accessed or intermediate data. It ensures low-latency responses for data queries and optimizes the performance of backend operations. By using technologies like Redis (for in-memory caching) and PostgreSQL (for persistent lightweight storage), this module balances speed and durability in managing system data.
 - **Input:**
-      - Intermediate or processed data from the Data Transformation and Anonymization Module.
-      - Metadata and content identifiers (CIDs) from the Off-Chain Storage (IPFS) module.
-      - Query results, model parameters, or insights from the Federated Learning AI Microservice.
-      - API requests from the API Server for quick data retrieval.
+  - Intermediate or processed data from the Data Transformation and Anonymization Module.
+  - Metadata and content identifiers (CIDs) from the Off-Chain Storage (IPFS) module.
+  - Query results, model parameters, or insights from the Federated Learning AI Microservice.
+  - API requests from the API Server for quick data retrieval.
 - **Output:**
-      - Cached data for rapid responses to queries or requests.
-      - Logs for cache hits, misses, and evictions.
-      - Temporarily stored data for asynchronous processing or backend operations.
+  - Cached data for rapid responses to queries or requests.
+  - Logs for cache hits, misses, and evictions.
+  - Temporarily stored data for asynchronous processing or backend operations.
 - **Key Interfaces:**
-      - **API Server:**
-            - Serves cached data for API requests to minimize latency.
-      - **Data Transformation and Anonymization Module:**
-            - Stores intermediate data or results for faster backend processing.
-      - **Off-Chain Storage (IPFS):**
-            - Temporarily holds CIDs or metadata before permanent storage or blockchain integration.
-      - **Federated Learning AI Microservice:**
-            - Caches model parameters, insights, or training data for efficient AI operations.
-      - **DKG Integration Module (Backend):**
-            - Caches query results and knowledge asset metadata to optimize DKG interactions.
+  - **API Server:**
+      - Serves cached data for API requests to minimize latency.
+  - **Data Transformation and Anonymization Module:**
+      - Stores intermediate data or results for faster backend processing.
+  - **Off-Chain Storage (IPFS):**
+      - Temporarily holds CIDs or metadata before permanent storage or blockchain integration.
+  - **Federated Learning AI Microservice:**
+      - Caches model parameters, insights, or training data for efficient AI operations.
+  - **DKG Integration Module (Backend):**
+      - Caches query results and knowledge asset metadata to optimize DKG interactions.
 - **Dependencies:**
-      - **Caching Technology (Redis):**
-            - Provides in-memory storage for high-speed data retrieval and eviction strategies for managing cache size.
-      - **Database (PostgreSQL):**
-            - Offers persistent lightweight storage for data that needs durability but not full-fledged DKG storage.
-      - **Data Serialization Tools:**
-            - Structures cached data in formats compatible with Redis and PostgreSQL (e.g., JSON, Protobuf).
-      - **Monitoring and Metrics Tools:**
-            - Tracks cache performance, including hit/miss rates and storage utilization.
-      - **Backup Mechanisms:**
-            - Ensures cached data in PostgreSQL can be restored in case of failure.
+  - **Caching Technology (Redis):**
+      - Provides in-memory storage for high-speed data retrieval and eviction strategies for managing cache size.
+  - **Database (PostgreSQL):**
+      - Offers persistent lightweight storage for data that needs durability but not full-fledged DKG storage.
+  - **Data Serialization Tools:**
+      - Structures cached data in formats compatible with Redis and PostgreSQL (e.g., JSON, Protobuf).
+  - **Monitoring and Metrics Tools:**
+      - Tracks cache performance, including hit/miss rates and storage utilization.
+  - **Backup Mechanisms:**
+      - Ensures cached data in PostgreSQL can be restored in case of failure.
 
 
 ## Decentralized Knowledge Graph (DKG) Paranet
 **Module Name: Knowledge Asset Publishing**
 - **Purpose:** The Knowledge Asset Publishing module is responsible for managing the logic and processes involved in publishing knowledge assets to the DKG. This includes preparing the data, ensuring it adheres to the required schema and ontologies, and registering it with the DKG nodes.
 - **Input:**
-      - Transformed and anonymized data assets from the Data Transformation and Anonymization Module.
-      - Schema definitions and ontology rules from the Schema & Ontologies module.
-      - Metadata and cryptographic proofs generated by the system (e.g., hashes and CIDs from IPFS).
-      - Governance-related attributes (permissions and incentives) from the Governance module (if applicable).
+  - Transformed and anonymized data assets from the Data Transformation and Anonymization Module.
+  - Schema definitions and ontology rules from the Schema & Ontologies module.
+  - Metadata and cryptographic proofs generated by the system (e.g., hashes and CIDs from IPFS).
+  - Governance-related attributes (permissions and incentives) from the Governance module (if applicable).
 - **Output:** 
-      - Published knowledge assets in a format compliant with DKG schemas, stored on the DKG nodes.
-      - References (e.g., CIDs, hashes) registered on the blockchain for immutability and traceability.
-      - Validation logs or error reports if publishing fails or data violates schema rules.
+  - Published knowledge assets in a format compliant with DKG schemas, stored on the DKG nodes.
+  - References (e.g., CIDs, hashes) registered on the blockchain for immutability and traceability.
+  - Validation logs or error reports if publishing fails or data violates schema rules.
 - **Key Interfaces:** 
-      - **Backend Middleware:**
-            - Receives prepared and validated data from the DKG Integration Module.
-      - **Schema & Ontologies:**
-            - Ensures that knowledge assets conform to the established ontologies for compatibility with the DKG.
-      - **Off-Chain Storage (IPFS):**
-            - Stores large datasets securely and decentrally while publishing only references (CIDs) on the DKG.
-      - **DKG Node (OriginTrail):**
-            - Interacts with the OriginTrail node to register knowledge assets and metadata on the DKG.
-      - **Blockchain:**
-            - Interacts with the blockchain to record hashes, CIDs, or other cryptographic proofs.
+   - **Backend Middleware:**
+      - Receives prepared and validated data from the DKG Integration Module.
+  - **Schema & Ontologies:**
+      - Ensures that knowledge assets conform to the established ontologies for compatibility with the DKG.
+  - **Off-Chain Storage (IPFS):**
+      - Stores large datasets securely and decentrally while publishing only references (CIDs) on the DKG.
+  - **DKG Node (OriginTrail):**
+      - Interacts with the OriginTrail node to register knowledge assets and metadata on the DKG.
+  - **Blockchain:**
+      - Interacts with the blockchain to record hashes, CIDs, or other cryptographic proofs.
 - **Dependencies:** 
-      - **Schema & Ontologies Module:**
-            - To ensure published assets comply with the semantic rules and standards of the DKG.
-      - **Off-Chain Storage (IPFS):**
-            - To manage and store the bulk of the knowledge asset data, ensuring decentralized access.
-      - **DKG Integration Module:**
-            - For communicating with the DKG and managing interactions with nodes.
-      - **Governance Module (optional):**
-            - For embedding permissions, access policies, or incentive structures into the published assets.
-      - **Blockchain and Signing Library:**
-            - For registering asset references and cryptographic proofs on the blockchain.
+  - **Schema & Ontologies Module:**
+      - To ensure published assets comply with the semantic rules and standards of the DKG.
+  - **Off-Chain Storage (IPFS):**
+      - To manage and store the bulk of the knowledge asset data, ensuring decentralized access.
+  - **DKG Integration Module:**
+      - For communicating with the DKG and managing interactions with nodes.
+  - **Governance Module (optional):**
+      - For embedding permissions, access policies, or incentive structures into the published assets.
+  - **Blockchain and Signing Library:**
+      - For registering asset references and cryptographic proofs on the blockchain.
 
 **Module Name: Schema & Ontologies**
 - **Purpose:** The Schema & Ontologies module defines and manages the semantic structure of data within the DKG. It ensures that knowledge assets adhere to standard formats, enabling interoperability, discoverability, and structured analysis. This module provides the rules and frameworks (schemas, ontologies) that govern how data and relationships are represented and validated within the DKG.
 - **Input:**
-      - Domain-specific requirements or user-defined schemas and ontologies.
-      - Updates or extensions to existing ontologies (e.g., OWL/RDF definitions).
-      - Data assets to be validated against the defined schemas.
-      - Governance policies for schema updates or new ontology approvals (if applicable).
+  - Domain-specific requirements or user-defined schemas and ontologies.
+  - Updates or extensions to existing ontologies (e.g., OWL/RDF definitions).
+  - Data assets to be validated against the defined schemas.
+  - Governance policies for schema updates or new ontology approvals (if applicable).
 - **Output:** 
-      - Schema definitions and ontology structures in machine-readable formats (e.g., OWL, RDF).
-      - Validation results for data assets against the defined schemas.
-      - Updates to the DKG with new or modified schema definitions.
-      - Error logs or feedback for incompatible data assets.
+  - Schema definitions and ontology structures in machine-readable formats (e.g., OWL, RDF).
+  - Validation results for data assets against the defined schemas.
+  - Updates to the DKG with new or modified schema definitions.
+  - Error logs or feedback for incompatible data assets.
 - **Key Interfaces:** 
-      - **Knowledge Asset Publishing Module:**
-            - Provides schema definitions for validating and structuring data before publishing.
-      - **DKG Node (OriginTrail):**
-            - Synchronizes schema and ontology updates to ensure consistency across the DKG.
-      - **Backend Middleware:**
-            - Facilitates communication of schema validation results and provides access to schema definitions for other modules.
-      - **Governance Module (if applicable):**
-            - Handles governance-related aspects of schema updates, approvals, or deprecations.
+  - **Knowledge Asset Publishing Module:**
+      - Provides schema definitions for validating and structuring data before publishing.
+  - **DKG Node (OriginTrail):**
+      - Synchronizes schema and ontology updates to ensure consistency across the DKG.
+  - **Backend Middleware:**
+      - Facilitates communication of schema validation results and provides access to schema definitions for other modules.
+  - **Governance Module (if applicable):**
+      - Handles governance-related aspects of schema updates, approvals, or deprecations.
 - **Dependencies:** 
-      - **Ontology Standards (e.g., OWL, RDF):**
-            - Provides the foundational technologies for defining schemas and relationships.
-      - **Knowledge Asset Publishing Module:**
-            - Relies on this module to validate and structure data before registration on the DKG.
-      - **DKG Integration Module:**
-            - Manages synchronization of schema updates and compatibility checks within the DKG network.
-      - **Governance Module (if applicable):**
-            - For decision-making processes related to schema and ontology updates or additions.
-      - **AI Modules (optional):**
-            - Utilizes schema definitions for AI-driven data insights and processing.
+  - **Ontology Standards (e.g., OWL, RDF):**
+      - Provides the foundational technologies for defining schemas and relationships.
+  - **Knowledge Asset Publishing Module:**
+      - Relies on this module to validate and structure data before registration on the DKG.
+  - **DKG Integration Module:**
+      - Manages synchronization of schema updates and compatibility checks within the DKG network.
+  - **Governance Module (if applicable):**
+      - For decision-making processes related to schema and ontology updates or additions.
+  - **AI Modules (optional):**
+      - Utilizes schema definitions for AI-driven data insights and processing.
 
 **Module Name: OriginTrail Node**
 - **Purpose:**The OriginTrail Node module serves as the backbone of the Decentralized Knowledge Graph (DKG). It facilitates the storage, querying, and sharing of structured data in a decentralized manner. The module ensures the secure and efficient interaction with the DKG network, managing the registration, discovery, and retrieval of knowledge assets while maintaining data integrity and decentralization.
 - **Input:**
-      - Knowledge assets and metadata from the Knowledge Asset Publishing Module.
-      - Schema definitions and ontologies for asset validation.
-      - Blockchain-based cryptographic proofs (e.g., hashes, CIDs) to ensure data traceability.
-      - Queries from other nodes or external systems requesting data from the DKG.
+  - Knowledge assets and metadata from the Knowledge Asset Publishing Module.
+  - Schema definitions and ontologies for asset validation.
+  - Blockchain-based cryptographic proofs (e.g., hashes, CIDs) to ensure data traceability.
+  - Queries from other nodes or external systems requesting data from the DKG.
 - **Output:** 
-      - Published knowledge assets indexed in the DKG.
-      - Responses to queries for data stored within the DKG.
-      - Data integrity proofs (e.g., hashes) for validation by other modules or nodes.
-      - Synchronization updates to maintain consistency across the decentralized network.
+  - Published knowledge assets indexed in the DKG.
+  - Responses to queries for data stored within the DKG.
+  - Data integrity proofs (e.g., hashes) for validation by other modules or nodes.
+  - Synchronization updates to maintain consistency across the decentralized network.
 - **Key Interfaces:** 
-      - **Knowledge Asset Publishing Module:**
-            - Receives prepared and validated knowledge assets for registration on the DKG.
-      - **Schema & Ontologies Module:**
-            - Ensures published data complies with schema and ontology rules.
-      - **Blockchain Integration Module:**
-            - Works in tandem to store cryptographic proofs and references for published assets.
-      - **Off-Chain Storage (IPFS):**
-            - Integrates with IPFS for managing decentralized data storage and retrieving data based on CIDs.
-      - **AI Integration Module:**
-            - Provides access to stored knowledge assets for AI insights and model training.
-      - **Other DKG Nodes:**
-            - Facilitates synchronization, replication, and querying among nodes in the decentralized network.
+  - **Knowledge Asset Publishing Module:**
+      - Receives prepared and validated knowledge assets for registration on the DKG.
+  - **Schema & Ontologies Module:**
+      - Ensures published data complies with schema and ontology rules.
+  - **Blockchain Integration Module:**
+      - Works in tandem to store cryptographic proofs and references for published assets.
+  - **Off-Chain Storage (IPFS):**
+      - Integrates with IPFS for managing decentralized data storage and retrieving data based on CIDs.
+  - **AI Integration Module:**
+      - Provides access to stored knowledge assets for AI insights and model training.
+  - **Other DKG Nodes:**
+      - Facilitates synchronization, replication, and querying among nodes in the decentralized network.
 - **Dependencies:** 
-      - **Blockchain Integration:**
-            - For recording cryptographic proofs, hashes, and CIDs, ensuring immutability and traceability.
-      - **Off-Chain Storage (IPFS):**
-            - For decentralized storage and efficient retrieval of knowledge asset data.
-      - **Schema & Ontologies Module:**
-            - To validate and maintain semantic consistency of stored knowledge assets.
-      - **Networking Protocols:**
-            - For communication between nodes, enabling peer-to-peer data sharing and query resolution.
-      - **Governance Module (if applicable):**
-            - For handling rules and permissions for data access and participation within the DKG.
+  - **Blockchain Integration:**
+      - For recording cryptographic proofs, hashes, and CIDs, ensuring immutability and traceability.
+  - **Off-Chain Storage (IPFS):**
+      - For decentralized storage and efficient retrieval of knowledge asset data.
+  - **Schema & Ontologies Module:**
+      - To validate and maintain semantic consistency of stored knowledge assets.
+  - **Networking Protocols:**
+      - For communication between nodes, enabling peer-to-peer data sharing and query resolution.
+  - **Governance Module (if applicable):**
+      - For handling rules and permissions for data access and participation within the DKG.
 ## AI/ML Integration
 **Module Name: AI Microservice**
 - **Purpose:** The AI Microservice module provides a scalable and modular framework for hosting machine learning models, generating insights, and supporting AI-driven functionalities within the system. It integrates with other components to process data, perform inference, and return actionable insights to the user or backend systems. This module facilitates advanced analytics and decision-making by leveraging AI models and services.
 - **Input:**
-      - Data and embeddings from the Vector Database (e.g., Pinecone/Weaviate/FAISS).
-      - Contextual data and task-specific inputs from the API Server or Frontend Overlay Application.
-      - Pre-trained or federated models from the Federated Learning AI Microservice.
-      - Schema and ontology definitions from the DKG Integration Module (AI).
+  - Data and embeddings from the Vector Database (e.g., Pinecone/Weaviate/FAISS).
+  - Contextual data and task-specific inputs from the API Server or Frontend Overlay Application.
+  - Pre-trained or federated models from the Federated Learning AI Microservice.
+  - Schema and ontology definitions from the DKG Integration Module (AI).
 - **Output:**
-      - AI-generated insights or predictions for the Web-Based Portal or frontend application.
-      - Processed data or knowledge graphs for the DKG Integration Module (AI).
-      - Updated embeddings or derived features stored in the Vector Database.
-      - Logs, metrics, or error reports for monitoring AI workflows.
+  - AI-generated insights or predictions for the Web-Based Portal or frontend application.
+  - Processed data or knowledge graphs for the DKG Integration Module (AI).
+  - Updated embeddings or derived features stored in the Vector Database.
+  - Logs, metrics, or error reports for monitoring AI workflows.
 - **Key Interfaces:**
-      - **Frontend Overlay Application:**
-            - Provides real-time AI insights or predictions for end-user tasks.
-      - **Web-Based Portal:**
-            - Sends analytics or insights back to the portal for user-facing reports or visualizations.
-      - **Federated Learning AI Microservice:**
-            - Retrieves or updates models for local training and inference tasks.
-      - **Vector Database (Pinecone/Weaviate/FAISS):**
-            - Retrieves embeddings or stores updated representations derived from AI processes.
-      - **DKG Integration Module (AI):**
-            - Publishes or retrieves AI-related knowledge assets and integrates with the Decentralized Knowledge Graph.
-      - **ML Frameworks (TensorFlow/PyTorch):**
-            - Utilizes models for processing data and generating insights.
-      - **Symbolic Reasoning Engine:**
-            - Combines logical reasoning with AI models for enhanced decision-making.
+  - **Frontend Overlay Application:**
+      - Provides real-time AI insights or predictions for end-user tasks.
+  - **Web-Based Portal:**
+      - Sends analytics or insights back to the portal for user-facing reports or visualizations.
+  - **Federated Learning AI Microservice:**
+      - Retrieves or updates models for local training and inference tasks.
+  - **Vector Database (Pinecone/Weaviate/FAISS):**
+      - Retrieves embeddings or stores updated representations derived from AI processes.
+  - **DKG Integration Module (AI):**
+      - Publishes or retrieves AI-related knowledge assets and integrates with the Decentralized Knowledge Graph.
+  - **ML Frameworks (TensorFlow/PyTorch):**
+      - Utilizes models for processing data and generating insights.
+  - **Symbolic Reasoning Engine:**
+      - Combines logical reasoning with AI models for enhanced decision-making.
 - **Dependencies:**
-      - **Machine Learning Frameworks:**
-            - TensorFlow, PyTorch, or Scikit-learn for training, deploying, and inference of models.
-      - **Vector Database:**
-            - Efficient storage and retrieval of vectorized representations and embeddings.
-      - **LLM APIs:**
-            - Large Language Model APIs (e.g., OpenAI GPT) for natural language understanding and generation.
-      - **Symbolic Reasoning Engines:**
-            - Tools like Drools, Prolog, or SPARQL for logic-based decision-making and inference.
-      - **Data Transformation Libraries:**
-            - Prepares input data for AI workflows (e.g., text, numerical, or image processing).
-      - **Asynchronous Processing:**
-            - Background job queues for handling large-scale or batch AI tasks.
-      - **Monitoring and Logging Tools:**
-            - Tracks model performance, inference latency, and system health.
+  - **Machine Learning Frameworks:**
+      - TensorFlow, PyTorch, or Scikit-learn for training, deploying, and inference of models.
+  - **Vector Database:**
+      - Efficient storage and retrieval of vectorized representations and embeddings.
+  - **LLM APIs:**
+      - Large Language Model APIs (e.g., OpenAI GPT) for natural language understanding and generation.
+  - **Symbolic Reasoning Engines:**
+      - Tools like Drools, Prolog, or SPARQL for logic-based decision-making and inference.
+  - **Data Transformation Libraries:**
+      - Prepares input data for AI workflows (e.g., text, numerical, or image processing).
+  - **Asynchronous Processing:**
+      - Background job queues for handling large-scale or batch AI tasks.
+  - **Monitoring and Logging Tools:**
+      - Tracks model performance, inference latency, and system health.
 
 **Module Name: ML Framework**
 - **Purpose:** The ML Framework module provides the foundational tools for developing, training, and deploying machine learning models. It supports a variety of AI tasks, including supervised and unsupervised learning, deep learning, and federated learning workflows. This module is critical for enabling scalable and efficient model training and inference across the system.
 - **Input:**
-      - Training data and embeddings from the Federated Learning AI Microservice or Vector Database.
-      - Pre-processed or anonymized data from the Data Transformation and Anonymization Module.
-      - AI task configurations, hyperparameters, and model architectures from the AI Microservices Module.
-      - Logic or rules for symbolic reasoning integration (if applicable).
+  - Training data and embeddings from the Federated Learning AI Microservice or Vector Database.
+  - Pre-processed or anonymized data from the Data Transformation and Anonymization Module.
+  - AI task configurations, hyperparameters, and model architectures from the AI Microservices Module.
+  - Logic or rules for symbolic reasoning integration (if applicable).
 - **Output:**
-      - Trained machine learning models or updated model parameters for use by the Federated Learning AI Microservice or AI Microservices Module.
-      - Inference results (e.g., predictions or classifications) sent to other system components.
-      - Logs and metrics for model performance, accuracy, and loss during training or inference.
+  - Trained machine learning models or updated model parameters for use by the Federated Learning AI Microservice or AI Microservices Module.
+  - Inference results (e.g., predictions or classifications) sent to other system components.
+  - Logs and metrics for model performance, accuracy, and loss during training or inference.
 - **Key Interfaces:**
-      - **AI Microservices Module:**
-            - Executes model training and inference tasks initiated by the AI microservices.
-      - **Federated Learning AI Microservice:**
-            - Provides support for distributed training workflows and model parameter updates.
-      - **Vector Database (Pinecone/Weaviate/FAISS):**
-            - Retrieves embeddings or vectorized data for training or inference tasks.
-      - **Symbolic Reasoning Engine:**
-            - Combines machine learning results with symbolic reasoning for hybrid AI workflows.
-      - **DKG Integration Module:**
-            - Publishes trained models, insights, or derived knowledge assets to the Decentralized Knowledge Graph.
+  - **AI Microservices Module:**
+      - Executes model training and inference tasks initiated by the AI microservices.
+  - **Federated Learning AI Microservice:**
+      - Provides support for distributed training workflows and model parameter updates.
+  - **Vector Database (Pinecone/Weaviate/FAISS):**
+      - Retrieves embeddings or vectorized data for training or inference tasks.
+  - **Symbolic Reasoning Engine:**
+      - Combines machine learning results with symbolic reasoning for hybrid AI workflows.
+  - **DKG Integration Module:**
+      - Publishes trained models, insights, or derived knowledge assets to the Decentralized Knowledge Graph.
 - **Dependencies:**
-      - **Machine Learning Libraries:**
-            - TensorFlow, PyTorch, or Scikit-learn for building, training, and deploying models.
-      - **Federated Learning Libraries:**
-            - Frameworks like TensorFlow Federated or PySyft for decentralized training workflows.
-      - **Data Processing Libraries:**
-            - Tools for preprocessing input data (e.g., NumPy, pandas, OpenCV) and preparing it for machine learning pipelines.
-      - **Hardware Acceleration:**
-            - Utilizes GPUs or TPUs for accelerated training and inference of large-scale models.
-      - **Hyperparameter Optimization Tools:**
-            - Libraries like Optuna or Ray Tune for optimizing model training configurations.
-      - **Monitoring Tools:**
-            - Tracks training progress, resource utilization, and model performance.
+  - **Machine Learning Libraries:**
+      - TensorFlow, PyTorch, or Scikit-learn for building, training, and deploying models.
+  - **Federated Learning Libraries:**
+      - Frameworks like TensorFlow Federated or PySyft for decentralized training workflows.
+  - **Data Processing Libraries:**
+      - Tools for preprocessing input data (e.g., NumPy, pandas, OpenCV) and preparing it for machine learning pipelines.
+  - **Hardware Acceleration:**
+      - Utilizes GPUs or TPUs for accelerated training and inference of large-scale models.
+  - **Hyperparameter Optimization Tools:**
+      - Libraries like Optuna or Ray Tune for optimizing model training configurations.
+  - **Monitoring Tools:**
+      - Tracks training progress, resource utilization, and model performance.
 
 **Module Name: Symbolic Reasoning Engine**
 - **Purpose:** The Symbolic Reasoning Engine integrates logic-based inference with machine learning to enable advanced decision-making capabilities. It processes structured data, rules, and ontologies to derive new knowledge or validate results. This module supports complex reasoning tasks, such as querying relationships, performing rule-based analyses, and complementing machine learning predictions with logical deductions.
 - **Input:**
-      - Structured data and schema definitions from the Schema & Ontologies Module.
-      - Knowledge assets or relationships from the DKG Integration Module (AI).
-      - Inference results or embeddings from the AI Microservices Module or ML Frameworks.
-      - Rules and constraints (e.g., business logic or domain-specific rules) defined within the system.
+  - Structured data and schema definitions from the Schema & Ontologies Module.
+  - Knowledge assets or relationships from the DKG Integration Module (AI).
+  - Inference results or embeddings from the AI Microservices Module or ML Frameworks.
+  - Rules and constraints (e.g., business logic or domain-specific rules) defined within the system.
 - **Output:**
-      - Deductive reasoning results or new knowledge assets derived from symbolic processing.
-      - Validations or error reports for inconsistencies in data relationships or predictions.
-      - Enhanced insights combining symbolic reasoning and machine learning outputs for downstream modules.
+  - Deductive reasoning results or new knowledge assets derived from symbolic processing.
+  - Validations or error reports for inconsistencies in data relationships or predictions.
+  - Enhanced insights combining symbolic reasoning and machine learning outputs for downstream modules.
 - **Key Interfaces:**
-      - **Schema & Ontologies Module:**
-            - Uses ontologies and schema definitions to ensure logical consistency in reasoning tasks.
-      - **AI Microservices Module:**
-            - Combines symbolic reasoning with AI-driven insights for hybrid decision-making processes.
-      - **DKG Integration Module (AI):**
-            - Publishes or retrieves symbolic reasoning results and knowledge relationships to/from the DKG.
-      - **ML Frameworks Module:**
-            - Complements machine learning models by applying logical rules to refine or validate outputs.
-      - **Vector Database (Pinecone/Weaviate/FAISS):**
-            - Utilizes vectorized relationships for complex symbolic reasoning tasks, if applicable.
+  - **Schema & Ontologies Module:**
+      - Uses ontologies and schema definitions to ensure logical consistency in reasoning tasks.
+  - **AI Microservices Module:**
+      - Combines symbolic reasoning with AI-driven insights for hybrid decision-making processes.
+  - **DKG Integration Module (AI):**
+      - Publishes or retrieves symbolic reasoning results and knowledge relationships to/from the DKG.
+  - **ML Frameworks Module:**
+      - Complements machine learning models by applying logical rules to refine or validate outputs.
+  - **Vector Database (Pinecone/Weaviate/FAISS):**
+      - Utilizes vectorized relationships for complex symbolic reasoning tasks, if applicable.
 - **Dependencies:**
-      - **Reasoning Engines:**
-            - Tools like Drools, Prolog, or SPARQL for performing rule-based and logic-driven inference.
-      - **Knowledge Representation Standards:**
-            - OWL (Web Ontology Language), RDF (Resource Description Framework) for defining entities and relationships.
-      - **Data Parsing Tools:**
-            - Prepares structured data for symbolic processing, ensuring compatibility with reasoning engines.
-      - **AI Integration:**
-            - Hybrid workflows that combine symbolic reasoning with AI models for advanced analytics.
-      - **Logging and Monitoring Tools:**
-            - Tracks reasoning tasks, ensuring logical consistency and system performance.
+  - **Reasoning Engines:**
+      - Tools like Drools, Prolog, or SPARQL for performing rule-based and logic-driven inference.
+  - **Knowledge Representation Standards:**
+      - OWL (Web Ontology Language), RDF (Resource Description Framework) for defining entities and relationships.
+  - **Data Parsing Tools:**
+      - Prepares structured data for symbolic processing, ensuring compatibility with reasoning engines.
+  - **AI Integration:**
+      - Hybrid workflows that combine symbolic reasoning with AI models for advanced analytics.
+  - **Logging and Monitoring Tools:**
+      - Tracks reasoning tasks, ensuring logical consistency and system performance.
 
 **Module Name: Vector Database**
 - **Purpose:** The Vector Database module provides efficient storage, indexing, and retrieval of high-dimensional embeddings generated by machine learning models. It enables similarity searches, clustering, and advanced analytics on vectorized data, serving as the foundation for tasks like semantic search, recommendation systems, and context-aware AI operations.
 - **Input:**
-      - High-dimensional embeddings or feature vectors from the ML Frameworks Module or AI Microservices Module.
-      - Query data or embeddings for similarity searches or nearest neighbor computations.
-      - Metadata or labels associated with the embeddings for contextual search and filtering.
+  - High-dimensional embeddings or feature vectors from the ML Frameworks Module or AI Microservices Module.
+  - Query data or embeddings for similarity searches or nearest neighbor computations.
+  - Metadata or labels associated with the embeddings for contextual search and filtering.
 - **Output:**
-      - Ranked results or similarity scores for queries (e.g., nearest neighbors or similar embeddings).
-      - Updated embeddings or vectorized representations for storage and indexing.
-      - Clustering or grouping results for advanced analytics and insights.
+  - Ranked results or similarity scores for queries (e.g., nearest neighbors or similar embeddings).
+  - Updated embeddings or vectorized representations for storage and indexing.
+  - Clustering or grouping results for advanced analytics and insights.
 - **Key Interfaces:**
-      - **AI Microservices Module:**
-            - Provides embeddings for storage and retrieves similarity search results or contextual data.
-      - **Federated Learning AI Microservice:**
-            - Uses stored embeddings for model updates or decentralized learning workflows.
-      - **DKG Integration Module (AI):**
-            - Publishes or retrieves vectorized data as knowledge assets in the Decentralized Knowledge Graph.
-      - **ML Frameworks Module:**
-            - Supplies embeddings generated during training or inference for storage and retrieval.
-      - **Web-Based Portal:**
-            - Interfaces with the vector database for analytics, recommendations, or insights presented to users.
+  - **AI Microservices Module:**
+      - Provides embeddings for storage and retrieves similarity search results or contextual data.
+  - **Federated Learning AI Microservice:**
+      - Uses stored embeddings for model updates or decentralized learning workflows.
+  - **DKG Integration Module (AI):**
+      - Publishes or retrieves vectorized data as knowledge assets in the Decentralized Knowledge Graph.
+  - **ML Frameworks Module:**
+      - Supplies embeddings generated during training or inference for storage and retrieval.
+  - **Web-Based Portal:**
+      - Interfaces with the vector database for analytics, recommendations, or insights presented to users.
 - **Dependencies:**
-      - **Vector Database Tools:**
-            - Tools like Pinecone, Weaviate, or FAISS for high-dimensional vector storage and retrieval.
-      - **Data Processing Libraries:**
-            - Prepares embeddings and associated metadata for indexing.
-      - **Indexing Algorithms:**
-            - Techniques like HNSW (Hierarchical Navigable Small World) or ANN (Approximate Nearest Neighbor) for fast and scalable similarity searches.
-      - **Hardware Acceleration:**
-            - Utilizes GPUs or optimized CPUs for high-speed vector computations.
-      - **Monitoring and Logging Tools:**
-            - Tracks database performance, query latencies, and system health.
+  - **Vector Database Tools:**
+      - Tools like Pinecone, Weaviate, or FAISS for high-dimensional vector storage and retrieval.
+  - **Data Processing Libraries:**
+      - Prepares embeddings and associated metadata for indexing.
+  - **Indexing Algorithms:**
+      - Techniques like HNSW (Hierarchical Navigable Small World) or ANN (Approximate Nearest Neighbor) for fast and scalable similarity searches.
+  - **Hardware Acceleration:**
+      - Utilizes GPUs or optimized CPUs for high-speed vector computations.
+  - **Monitoring and Logging Tools:**
+      - Tracks database performance, query latencies, and system health.
 
 **Module Name: DKG Integration Module**
-- **Purpose:**The DKG Integration Module (AI) bridges the AI systems and the Decentralized Knowledge Graph (DKG). It manages the storage, retrieval, and publishing of AI-generated insights, models, and related knowledge assets to the DKG. This module ensures that AI outputs are structured, discoverable, and usable by other system components while preserving user privacy and decentralization.
+- **Purpose:** The DKG Integration Module (AI) bridges the AI systems and the Decentralized Knowledge Graph (DKG). It manages the storage, retrieval, and publishing of AI-generated insights, models, and related knowledge assets to the DKG. This module ensures that AI outputs are structured, discoverable, and usable by other system components while preserving user privacy and decentralization.
 - **Input:**
-      - AI-generated insights, predictions, or models from the AI Microservices Module.
-      - Structured data and relationships from the Symbolic Reasoning Engine.
-      - Knowledge assets or vector embeddings from the Vector Database.
-      - Schema and ontology definitions from the Schema & Ontologies Module.
+  - AI-generated insights, predictions, or models from the AI Microservices Module.
+  - Structured data and relationships from the Symbolic Reasoning Engine.
+  - Knowledge assets or vector embeddings from the Vector Database.
+  - Schema and ontology definitions from the Schema & Ontologies Module.
 - **Output:**
-      - Published AI-related knowledge assets, insights, or models to the DKG.
-      - Retrieved knowledge assets or relationships from the DKG for use by the AI components.
-      - Metadata and proof-of-publication to the Blockchain Integration Module.
+  - Published AI-related knowledge assets, insights, or models to the DKG.
+  - Retrieved knowledge assets or relationships from the DKG for use by the AI components.
+  - Metadata and proof-of-publication to the Blockchain Integration Module.
 - **Key Interfaces:**
-      - **AI Microservices Module:**
-            - Publishes AI-generated insights or models to the DKG and retrieves relevant context for AI workflows.
-      - **Symbolic Reasoning Engine:**
-            - Publishes structured knowledge relationships derived from reasoning processes to the DKG.
-      - **Vector Database:**
-            - Integrates vectorized embeddings as knowledge assets into the DKG for discoverability and reuse.
-      - **Schema & Ontologies Module:**
-            - Validates that AI-generated assets conform to DKG schema and ontology standards.
-      - **Blockchain Integration Module:**
-            - Records cryptographic proofs and metadata for AI-published assets on-chain for transparency and traceability.
+  - **AI Microservices Module:**
+      - Publishes AI-generated insights or models to the DKG and retrieves relevant context for AI workflows.
+  - **Symbolic Reasoning Engine:**
+      - Publishes structured knowledge relationships derived from reasoning processes to the DKG.
+  - **Vector Database:**
+      - Integrates vectorized embeddings as knowledge assets into the DKG for discoverability and reuse.
+  - **Schema & Ontologies Module:**
+      - Validates that AI-generated assets conform to DKG schema and ontology standards.
+  - **Blockchain Integration Module:**
+      - Records cryptographic proofs and metadata for AI-published assets on-chain for transparency and traceability.
 - **Dependencies:**
-      - **DKG Protocols:**
-            - Uses DKG protocols (e.g., OriginTrail) for interacting with the decentralized knowledge graph.
-      - **Schema & Ontologies Standards:**
-            - OWL, RDF, or similar standards for structuring AI-related knowledge assets.
-      - **Blockchain APIs:**
-            - Interacts with blockchain nodes to register hashes, CIDs, or proofs for DKG entries.
-      - **Cryptographic Libraries:**
-            - Handles hashing, signing, and encryption for secure interactions with the DKG.
-      - **Data Transformation Tools:**
-            - Processes and formats AI outputs for storage in the DKG.
-      - **Monitoring and Logging Tools:**
-            - Tracks publishing and retrieval operations, ensuring system reliability and performance.
+  - **DKG Protocols:**
+      - Uses DKG protocols (e.g., OriginTrail) for interacting with the decentralized knowledge graph.
+  - **Schema & Ontologies Standards:**
+      - OWL, RDF, or similar standards for structuring AI-related knowledge assets.
+  - **Blockchain APIs:**
+      - Interacts with blockchain nodes to register hashes, CIDs, or proofs for DKG entries.
+  - **Cryptographic Libraries:**
+      - Handles hashing, signing, and encryption for secure interactions with the DKG.
+  - **Data Transformation Tools:**
+      - Processes and formats AI outputs for storage in the DKG.
+  - **Monitoring and Logging Tools:**
+      - Tracks publishing and retrieval operations, ensuring system reliability and performance.
 
 **Module Name: LLM (OpenAI)**
-- **Purpose:**The LLM (OpenAI) module integrates a large language model (LLM) to perform advanced natural language understanding and generation tasks. It processes contextual data, embeddings, or queries to generate human-like responses, insights, or summaries, enhancing the system’s ability to deliver meaningful and context-aware AI-driven outcomes.
+- **Purpose:** The LLM (OpenAI) module integrates a large language model (LLM) to perform advanced natural language understanding and generation tasks. It processes contextual data, embeddings, or queries to generate human-like responses, insights, or summaries, enhancing the system’s ability to deliver meaningful and context-aware AI-driven outcomes.
 - **Input:**
-      - Contextual data or embeddings from the Vector Database.
-      - Query data or user requests from the AI Microservices Module or Web-Based Portal.
-      - Schema definitions or ontologies from the Schema & Ontologies Module for structured natural language tasks.
-      - AI-generated insights or intermediary results from the ML Frameworks Module or Symbolic Reasoning Engine.
+  - Contextual data or embeddings from the Vector Database.
+  - Query data or user requests from the AI Microservices Module or Web-Based Portal.
+  - Schema definitions or ontologies from the Schema & Ontologies Module for structured natural language tasks.
+  - AI-generated insights or intermediary results from the ML Frameworks Module or Symbolic Reasoning Engine.
 - **Output:**
-      - Natural language responses, insights, or summaries tailored to user queries.
-      - Augmented data or predictions to refine downstream AI workflows.
-      - Logs or error reports for monitoring and debugging LLM interactions.
+  - Natural language responses, insights, or summaries tailored to user queries.
+  - Augmented data or predictions to refine downstream AI workflows.
+  - Logs or error reports for monitoring and debugging LLM interactions.
 - **Key Interfaces:**
-      - **AI Microservices Module:**
-         - Processes queries or tasks by leveraging LLM capabilities and returns generated outputs.
-      - **Web-Based Portal:**
-        - Provides user-facing insights, summaries, or predictions in natural language formats.
-      - **Vector Database:**
-        - Retrieves embeddings or contextual information to enrich LLM queries and outputs.
-      - **Symbolic Reasoning Engine:**
-        - Combines logic-based outputs with LLM-generated responses for enhanced decision-making.
-      - **DKG Integration Module (AI):**
-        - Publishes or retrieves LLM-enhanced knowledge assets for storage and discoverability. 
+  - **AI Microservices Module:**
+      - Processes queries or tasks by leveraging LLM capabilities and returns generated outputs.
+  - **Web-Based Portal:**
+      - Provides user-facing insights, summaries, or predictions in natural language formats.
+  - **Vector Database:**
+      - Retrieves embeddings or contextual information to enrich LLM queries and outputs.
+  - **Symbolic Reasoning Engine:**
+      - Combines logic-based outputs with LLM-generated responses for enhanced decision-making.
+  - **DKG Integration Module (AI):**
+      - Publishes or retrieves LLM-enhanced knowledge assets for storage and discoverability. 
 - **Dependencies:**
-      - **OpenAI API (or Equivalent LLM Service):**
-        - Provides access to a hosted LLM for natural language processing tasks.
-      - **Vectorization Tools:**
-        - Prepares contextual embeddings for input into the LLM.
-      - **Data Preprocessing Tools:**
-        - Structures raw input data to align with the LLM’s requirements.
-      - **Monitoring and Logging Tools:**
-       - Tracks query performance, costs, and output accuracy for maintaining system reliability.
-      - **Rate-Limiting or Cost Control Mechanisms:**
-       - Ensures efficient and economical use of external LLM APIs, avoiding overuse or misuse.
+  - **OpenAI API (or Equivalent LLM Service):**
+      - Provides access to a hosted LLM for natural language processing tasks.
+  - **Vectorization Tools:**
+      - Prepares contextual embeddings for input into the LLM.
+  - **Data Preprocessing Tools:**
+      - Structures raw input data to align with the LLM’s requirements.
+  - **Monitoring and Logging Tools:**
+      - Tracks query performance, costs, and output accuracy for maintaining system reliability.
+  - **Rate-Limiting or Cost Control Mechanisms:**
+      - Ensures efficient and economical use of external LLM APIs, avoiding overuse or misuse.
 
 ## Web-Based Portal
 **Module Name: Configuration and Analytics UI**
 - **Purpose:** The Configuration and Analytics Module serves as the user interface for configuring system settings and viewing insights derived from AI and data processing workflows. It provides end-users with a platform to manage preferences, analyze data trends, and access detailed reports or visualizations based on knowledge graph data and AI-generated insights.
 - **Input:**
-      - User configuration settings and preferences from the Web-Based Portal UI.
-      - AI-generated insights, reports, or predictions from the AI Microservices Module.
-      - Knowledge assets or query results from the DKG Integration Module (AI).
-      - Governance-related data or proposals from the Governance Module (if applicable).
+  - User configuration settings and preferences from the Web-Based Portal UI.
+  - AI-generated insights, reports, or predictions from the AI Microservices Module.
+  - Knowledge assets or query results from the DKG Integration Module (AI).
+  - Governance-related data or proposals from the Governance Module (if applicable).
 - **Output:**
-      - Interactive dashboards, visualizations, and reports tailored to user needs.
-      - Configuration updates that propagate to other modules for customization (e.g., notification settings or AI query preferences).
-      - Logs and metrics for user actions or analytics reports to track system performance and user engagement.
+  - Interactive dashboards, visualizations, and reports tailored to user needs.
+  - Configuration updates that propagate to other modules for customization (e.g., notification settings or AI query preferences).
+  - Logs and metrics for user actions or analytics reports to track system performance and user engagement.
 - **Key Interfaces:**
-      - **Web-Based Portal UI:**
-            - Acts as the user-facing interface for interacting with configuration and analytics features.
-      - **AI Microservices Module:**
-            - Provides analytics data, AI-generated insights, or predictive results for display.
-      - **DKG Integration Module (AI):**
-            - Supplies knowledge graph data and related insights for analytics and reporting.
-      - **Governance Module:**
-            - Offers governance-related data (e.g., proposals, voting results) for display or configuration.
+  - **Web-Based Portal UI:**
+      - Acts as the user-facing interface for interacting with configuration and analytics features.
+  - **AI Microservices Module:**
+      - Provides analytics data, AI-generated insights, or predictive results for display.
+  - **DKG Integration Module (AI):**
+      - Supplies knowledge graph data and related insights for analytics and reporting.
+  - **Governance Module:**
+      - Offers governance-related data (e.g., proposals, voting results) for display or configuration.
 - **Dependencies:**
-      - **Data Visualization Tools:**
-            - Libraries like Recharts or D3.js for generating interactive visualizations and reports.
-      - **Configuration Management:**
-            - Handles user preferences and settings across the system (e.g., notifications, AI thresholds).
-      - **Logging and Monitoring Tools:**
-            - Tracks user interactions and module performance for debugging and optimization.
-      - **Database or Caching Systems:**
-            - Stores configuration settings or caches analytics data for efficient retrieval.
-      - **Authentication and Authorization Frameworks:**
-            - Ensures only authorized users can access or modify configuration and analytics settings.
+  - **Data Visualization Tools:**
+      - Libraries like Recharts or D3.js for generating interactive visualizations and reports.
+  - **Configuration Management:**
+      - Handles user preferences and settings across the system (e.g., notifications, AI thresholds).
+  - **Logging and Monitoring Tools:**
+      - Tracks user interactions and module performance for debugging and optimization.
+  - **Database or Caching Systems:**
+      - Stores configuration settings or caches analytics data for efficient retrieval.
+  - **Authentication and Authorization Frameworks:**
+      - Ensures only authorized users can access or modify configuration and analytics settings.
             
 **Module Name: Governance UI**
-- **Purpose:**The Governance UI Module provides users with an interface to participate in the governance of the Decentralized Knowledge Graph (DKG) network. It enables users to view, create, and vote on proposals, manage their roles and permissions within the network, and track governance-related metrics and decisions. This module ensures transparent and user-driven management of the system.
+- **Purpose:** The Governance UI Module provides users with an interface to participate in the governance of the Decentralized Knowledge Graph (DKG) network. It enables users to view, create, and vote on proposals, manage their roles and permissions within the network, and track governance-related metrics and decisions. This module ensures transparent and user-driven management of the system.
 - **Input:**
-      - User actions such as proposals, votes, or governance preferences from the Web-Based Portal UI.
-      - Governance data (e.g., active proposals, voting status) from the DKG Integration Module (Backend).
-      - Role-based access control information from the Security & Identity Module.
+  - User actions such as proposals, votes, or governance preferences from the Web-Based Portal UI.
+  - Governance data (e.g., active proposals, voting status) from the DKG Integration Module (Backend).
+  - Role-based access control information from the Security & Identity Module.
 - **Output:**
-      - User-submitted proposals, votes, or preferences sent to the DKG Integration Module (Backend).
-      - Visualizations of governance activities, including proposal timelines, voting outcomes, and user contributions.
-      - Logs and metrics for user actions and governance participation.
+  - User-submitted proposals, votes, or preferences sent to the DKG Integration Module (Backend).
+  - Visualizations of governance activities, including proposal timelines, voting outcomes, and user contributions.
+  - Logs and metrics for user actions and governance participation.
 - **Key Interfaces:**
-      - **Web-Based Portal UI:**
-        - Provides the front-end interface for user interaction with governance features.
-      - **DKG Integration Module (Backend):**
-        - Retrieves and publishes governance data, such as proposals, voting records, and system-wide decisions.
-      - **Security & Identity Module:**
-        - Ensures only authenticated and authorized users can participate in governance activities.
-      - **Blockchain Integration Module:**
-       - Interacts with on-chain governance mechanisms to record proposals, votes, and results immutably.
+  - **Web-Based Portal UI:**
+      - Provides the front-end interface for user interaction with governance features.
+  - **DKG Integration Module (Backend):**
+      - Retrieves and publishes governance data, such as proposals, voting records, and system-wide decisions.
+  - **Security & Identity Module:**
+      - Ensures only authenticated and authorized users can participate in governance activities.
+  - **Blockchain Integration Module:**
+      - Interacts with on-chain governance mechanisms to record proposals, votes, and results immutably.
 - **Dependencies:**
-      - **Governance Frameworks:**
-        - Implements governance structures for decentralized decision-making (e.g., proposal submission, voting).
-      - **Visualization Tools:**
-        - Libraries like Recharts or D3.js for displaying voting trends, proposal timelines, and outcomes.
-      - **Authentication and Authorization Frameworks:**
-        - Ensures role-based access control and verification of user permissions for governance actions.
-      - **Blockchain APIs:**
-        - Records governance actions on-chain, such as proposals and votes, for transparency and immutability.
-      - **Notification Systems:**
-       - Alerts users to new proposals, upcoming votes, or governance decisions.
+  - **Governance Frameworks:**
+      - Implements governance structures for decentralized decision-making (e.g., proposal submission, voting).
+ - **Visualization Tools:**
+      - Libraries like Recharts or D3.js for displaying voting trends, proposal timelines, and outcomes.
+  - **Authentication and Authorization Frameworks:**
+      - Ensures role-based access control and verification of user permissions for governance actions.
+  - **Blockchain APIs:**
+      - Records governance actions on-chain, such as proposals and votes, for transparency and immutability.
+  - **Notification Systems:**
+      - Alerts users to new proposals, upcoming votes, or governance decisions.
