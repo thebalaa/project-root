@@ -1,0 +1,25 @@
+{
+    "network": {
+      "name": "OriginTrailParanet",
+      "rpcUrl": "https://paranet-rpc.example.org",
+      "chainId": 12345
+    },
+    "ipfs": {
+      "host": "ipfs.local",
+      "port": 5001,
+      "protocol": "http"
+    },
+    "dkg": {
+      "nodeUrl": "http://localhost:8900",
+      "apiKey": "<YOUR_DKG_API_KEY>"
+    },
+    "governance": {
+      "contractAddress": "0x123456789ABCDEF",
+      "tokenName": "TRAC",
+      "rewardDistributionInterval": 3600
+    },
+    "logging": {
+      "level": "info"
+    }
+  }
+  

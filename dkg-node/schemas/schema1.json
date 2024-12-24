@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Example Schema 1",
+    "type": "object",
+    "properties": {
+      "assetId": {
+        "type": "string",
+        "description": "Unique identifier for the data asset."
+      },
+      "owner": {
+        "type": "string",
+        "description": "The address or DID of the asset's owner."
+      },
+      "content": {
+        "type": "string",
+        "description": "An IPFS hash or direct data content. For privacy, prefer IPFS references."
+      }
+    },
+    "required": ["assetId", "owner", "content"]
+  }
+  

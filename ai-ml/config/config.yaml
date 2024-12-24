@@ -1,0 +1,16 @@
+environment: "development"
+
+database:
+  host: "localhost"
+  port: 5432
+  user: "aiuser"
+  password: "secret"
+
+vector_db:
+  type: "weaviate"
+  url: "http://localhost:8080"
+  index_name: "ai_embeddings"
+
+ml_pipeline:
+  batch_size: 32
+  epochs: 10
