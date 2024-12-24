@@ -56,4 +56,6 @@
     - A local AI agent trained and dedicated for needs defined by the network. This will likely take time to develop a federated learning service to handle this.
 
 - Additional role support
-    - Role support for other actors in the internet ecosystem will be deferred. Additional functionality and application suites can be added down the road to support other players in the ecosystem shown.
+    - Role support for other actors in the internet ecosystem will be deferred. Additional functionality and application suites can be added down the road to support other players in the ecosystem shown. 
+- Integration with operating systems
+    - Design packages that directly integrate this functionality into operating systems. 

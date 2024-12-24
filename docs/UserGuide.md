@@ -28,5 +28,5 @@ Customer data will be securely stored and recorded in the network. Contributors 
 
 - The web based solution will also include a governance area where community members can vote on proposals and collaborate with other members of the ecosystem to drive the community forward and shape the network in terms of improvements.
 
-Note: Future enhancements will plan for the ability to ingest data from software running on device locally to target high data transmission throughput.
+Note: Future enhancements will plan for the ability to ingest data from software running on device locally to target high data transmission throughput and integrate directly with operating systems. 
 

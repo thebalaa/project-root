@@ -34,7 +34,7 @@ flowchart TD
   end
  subgraph Backend["Backend Middleware"]
         BE1["API Server (Express.js/Fastify)"]
-        BE2["Data Transformation Module"]
+        BE2["Data Transformation and Anonymization Module"]
         BE3["DKG Integration Module (Backend)"]
         BE4["Off-Chain Storage (IPFS)"]
         BE5["Cache (Redis/PostgreSQL)"]
@@ -139,7 +139,7 @@ flowchart TD
 - **Key Interfaces:** Encryption and Key management module.
 - **Dependencies:** Encryption and Key management module.
 
-**Module Name: Data Transformation Module**
+**Module Name: Data Transformation and Anonymization Module**
 - **Purpose:** Transform data into a format that can be stored securely and privately and be used for model training purposes.
 - **Input/Output:** Organized raw data from the user backend API server is fed in and transformation services structure the data for downstream storage and training purposes.
 - **Key Interfaces:** User backend API Server for upstream data and interfaces for the storage and training purposes.
