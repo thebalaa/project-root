@@ -1,9 +1,9 @@
 # ai_config.yaml
-model_settings:
-  llm_provider: "openai"     # or "hf" (Hugging Face), "local" for local models
-  vector_db: "weaviate"      # or "pinecone" / "faiss"
-  symbolic_reasoning_enabled: true
 
-privacy:
-  anonymize_responses: true
-  maximum_tokens: 1024
+llm_model: "sentence-transformers/all-MiniLM-L6-v2"
+model_path: "models/model.pkl"
+
+vector_store_api_key: "YOUR_PINECONE_API_KEY"
+vector_store_environment: "us-west1-gcp"
+vector_store_index_name: "ai-ml-index"
+vector_store_dimension: 384

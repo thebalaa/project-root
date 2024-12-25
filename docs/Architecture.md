@@ -4,9 +4,9 @@ The system will have a user facing application that consists of 2 parts. A brows
 
 The system must also include a web based dashboard to allow for AI insights on the DKG that can be personalized for the user. They will be allowed to choose AI models, write custom queries and create visualizations based on the DKG while ensuring proper data privacy concerns and met. Participants can also allocate rewards for more advanced AI analytics. The web based environment will also support an area for community governance where users can participate and drive changes in the network based on token holdings and number of edge nodes. Token rewards will also be issued for participation in community governance.
 
-# Application Specific Integrated Systems (ASIS) Modular Architecture
+# Application Specific Integrated Software (ASIS) Modular Architecture
 
-Application Specific Integrated Systems are software solutions designed to optimize and learn information for a specific use case in a secure decentralized way. The naming convention is analogous to the hardware solution for Application Specific Integrated Circuits which use specialized hardware to optimize certain computational procedures. The modular architecture of this system allows for components to easily be modified or swapped out to target a specific use case for the system. Additionally cryptographic procedures and decentralized storage of information ensure that user data can remain private while still contributing to the ecosystem in a meaningful way.
+Application Specific Integrated Software are software solutions designed to optimize and learn information for a specific use case. This solution allows for that in a secure decentralized way. The modular architecture of this system allows for components to easily be modified or swapped out to target a specific use case for the system. Additionally cryptographic procedures decentralized storage and anonymization of information ensure that user data can remain private while still contributing to the ecosystem in a meaningful way.
 
   - **Objective:** This architecture solves the problem of aggregating and analyzing data in a meaningful way while still upholding user privacy. 
   - **Key Features:**

@@ -1,22 +1,73 @@
-# microservices/models/symbolic_reasoning.py
-from typing import Dict
+# symbolic_reasoning.py
+
+"""
+symbolic_reasoning.py
+
+Handles symbolic reasoning tasks using knowledge graphs and logic systems.
+"""
+
+import os
+from typing import Any, List
+from rdflib import Graph, URIRef, Literal
+from rdflib.namespace import RDF, RDFS, OWL
 from ..utils.logger import get_logger
+from ..utils.errorHandler import AppError
 
 logger = get_logger(__name__)
 
-class SymbolicReasoner:
-    """
-    Handles symbolic or rule-based reasoning, e.g. from RDF data, ontologies, or simple logic.
-    """
+class SymbolicReasoning:
+    def __init__(self, ontology_path: str):
+        self.graph = Graph()
+        self.load_ontology(ontology_path)
 
-    def process_knowledge(self, context_data: Dict[str, dict]) -> str:
+    def load_ontology(self, ontology_path: str):
         """
-        Sample method that transforms or extracts relevant facts from context_data.
-        Real logic might involve running SPARQL queries or a rules engine.
+        Loads an ontology file into the RDF graph.
+
+        Args:
+            ontology_path: Path to the ontology file.
         """
-        logger.debug("Performing symbolic reasoning on context data.")
-        # Convert data to a textual summary or set of key facts
-        facts_summary = []
-        for key, content in context_data.items():
-            facts_summary.append(f"Fact from {key}: {content.get('summary', 'No summary available')}")
-        return "\n".join(facts_summary)
+        try:
+            self.graph.parse(ontology_path, format='turtle')
+            logger.info(f"Ontology loaded from {ontology_path}")
+        except Exception as e:
+            logger.error(f"Failed to load ontology: {e}")
+            raise AppError("Ontology loading failed") from e
+
+    def add_data(self, subject: str, predicate: str, obj: str) -> None:
+        """
+        Adds a triple to the RDF graph.
+
+        Args:
+            subject: Subject URI.
+            predicate: Predicate URI.
+            obj: Object value.
+        """
+        try:
+            self.graph.add((URIRef(subject), URIRef(predicate), Literal(obj)))
+            logger.info(f"Added triple: ({subject}, {predicate}, {obj})")
+        except Exception as e:
+            logger.error(f"Failed to add triple: {e}")
+            raise AppError("Failed to add data to knowledge graph") from e
+
+    def query_reasoning(self, query: str) -> List[dict]:
+        """
+        Executes a SPARQL query for symbolic reasoning.
+
+        Args:
+            query: SPARQL query string.
+
+        Returns:
+            List of query results as dictionaries.
+        """
+        try:
+            qres = self.graph.query(query)
+            results = []
+            for row in qres:
+                result = {var: str(row[var]) for var in qres.vars}
+                results.append(result)
+            logger.info(f"SPARQL query executed successfully. Results: {results}")
+            return results
+        except Exception as e:
+            logger.error(f"Failed to execute SPARQL query: {e}")
+            raise AppError("SPARQL query execution failed") from e

@@ -1,10 +1,28 @@
-version: '3.9'
+# docker-compose.yml
+
+version: '3.8'
+
 services:
-  ai-service:
+  ai_service:
     build:
-      context: .
-      dockerfile: devops/Dockerfile
+      context: ./microservices
+      dockerfile: Dockerfile
+      - VECTOR_STORE_API_KEY=${VECTOR_STORE_API_KEY}
+      - VECTOR_STORE_ENVIRONMENT=${VECTOR_STORE_ENVIRONMENT}
+      - VECTOR_STORE_INDEX_NAME=${VECTOR_STORE_INDEX_NAME}
+      - VECTOR_STORE_DIMENSION=${VECTOR_STORE_DIMENSION}
+      - LLM_MODEL=${LLM_MODEL}
+      - MODEL_PATH=${MODEL_PATH}
+    depends_on:
+      - backend
+      - pinecone
     ports:
-      - "8000:8000"
-    volumes:
-      - .:/app
+      - "5000:5000"
+
+  pinecone:
+    image: pinecone/pinecone:latest
+    environment:
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+      - PINECONE_ENVIRONMENT=${PINECONE_ENVIRONMENT}
+    ports:
+      - "8100:8100"

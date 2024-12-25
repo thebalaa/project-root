@@ -1,55 +1,82 @@
-# microservices/ai_service.py
+# ai-ml/microservices/ai_service.py
 
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-from .utils.logger import get_logger
-from .models.ml_pipeline import MLPipeline
-from .utils.preprocessor import Preprocessor
-from .utils.postprocessor import Postprocessor
-from .dkg_integration import DKGIntegration
+"""
+ai_service.py
 
-logger = get_logger(__name__)
+Main AI service handling API requests, orchestrating data fetching,
+decryption, and processing through ML pipelines.
+"""
 
-app = FastAPI(title="AI Microservice")
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+from .dkg_integration import get_decrypted_data
+from .models.ml_pipeline import ML_Pipeline
+from .utils.logger import setup_logger
 
-# Data models for request/response
-class InferenceRequest(BaseModel):
-    text: str
-    context: list = []
+app = Flask(__name__)
+CORS(app)
 
-class InferenceResponse(BaseModel):
-    answer: str
-    metadata: dict
+# Initialize logger
+logger = setup_logger('ai_service')
 
-# Initialize pipeline
-ml_pipeline = MLPipeline()
-preprocessor = Preprocessor()
-postprocessor = Postprocessor()
-dkg_client = DKGIntegration()
+# Initialize ML Pipeline
+ml_pipeline = ML_Pipeline()
 
-@app.post("/predict", response_model=InferenceResponse)
-async def predict(req: InferenceRequest):
+@app.route('/process_data', methods=['POST'])
+def process_data():
     """
-    Accepts user input, optionally fetches relevant context from the DKG,
-    and returns an AI-driven response.
+    API endpoint to process data using ML pipelines.
+    Expects a JSON payload with 'data_id'.
     """
+    data = request.get_json()
+    data_id = data.get('data_id')
+
+    if not data_id:
+        logger.error("No data_id provided in the request.")
+        return jsonify({'success': False, 'message': 'data_id is required.'}), 400
+
+    logger.info(f"Processing data for data_id: {data_id}")
+
+    # Fetch and decrypt data
+    plaintext_data = get_decrypted_data(data_id)
+    if not plaintext_data:
+        logger.error(f"Failed to retrieve or decrypt data for data_id: {data_id}")
+        return jsonify({'success': False, 'message': 'Failed to retrieve or decrypt data.'}), 500
+
+    logger.info(f"Retrieved plaintext data: {plaintext_data}")
+
+    # Process data through ML Pipeline
     try:
-        logger.info("Starting prediction request")
-        # Preprocess text
-        prep_text = preprocessor.clean_text(req.text)
-
-        # Optionally fetch additional context from the DKG
-        # (For instance, if needed to build a knowledge-based answer)
-        dkg_context = dkg_client.get_relevant_data(req.context)
-
-        # Run pipeline inference
-        prediction, meta = ml_pipeline.run_inference(prep_text, dkg_context)
-
-        # Postprocess results if needed
-        final_answer = postprocessor.refine_output(prediction)
-
-        logger.info("Returning prediction result")
-        return InferenceResponse(answer=final_answer, metadata=meta)
+        ml_results = ml_pipeline.run(plaintext_data)
+        logger.info(f"ML processing completed for data_id: {data_id}")
+        return jsonify({'success': True, 'results': ml_results}), 200
     except Exception as e:
-        logger.error(f"Error in /predict endpoint: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error(f"ML processing failed: {e}")
+        return jsonify({'success': False, 'message': 'ML processing failed.'}), 500
+
+@app.route('/federated_learning/start', methods=['POST'])
+def start_federated_learning():
+    """
+    API endpoint to initiate federated learning.
+    Expects a JSON payload with necessary parameters.
+    """
+    data = request.get_json()
+    # Extract necessary parameters from the request
+    # For demonstration, we'll assume some parameters
+    learning_rate = data.get('learning_rate', 0.01)
+    epochs = data.get('epochs', 10)
+
+    logger.info(f"Starting federated learning with lr={learning_rate}, epochs={epochs}")
+
+    # Start federated learning process
+    try:
+        federated_learning = FederatedLearning()
+        federated_learning.start(learning_rate=learning_rate, epochs=epochs)
+        logger.info("Federated learning initiated successfully.")
+        return jsonify({'success': True, 'message': 'Federated learning started.'}), 200
+    except Exception as e:
+        logger.error(f"Failed to start federated learning: {e}")
+        return jsonify({'success': False, 'message': 'Failed to start federated learning.'}), 500
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)

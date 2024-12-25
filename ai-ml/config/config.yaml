@@ -1,16 +1,19 @@
-environment: "development"
+# ai-ml/config/config.yaml
 
-database:
-  host: "localhost"
-  port: 5432
-  user: "aiuser"
-  password: "secret"
+server:
+  host: "0.0.0.0"
+  port: 5000
 
-vector_db:
-  type: "weaviate"
-  url: "http://localhost:8080"
-  index_name: "ai_embeddings"
+dkg:
+  api_url: "http://localhost:8000/api"
+  ipfs_gateway_url: "https://ipfs.io/ipfs/"
+
+key_management:
+  private_key_path: "./keys/private_key.pem"
+  public_key_path: "./keys/public_key.pem"
+  symmetric_key_path: "./keys/symmetric_key.json"
 
 ml_pipeline:
-  batch_size: 32
-  epochs: 10
+  # Add any specific configurations for the ML pipeline here
+  vector_store_path: "./data/embeddings/"
+  llm_model: "gpt-4"  # Example model identifier

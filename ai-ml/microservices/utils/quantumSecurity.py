@@ -1,45 +1,72 @@
+# quantumSecurity.py
+
 """
 quantumSecurity.py
 
-Demonstrates how you might incorporate quantum-safe cryptography in your
-AI/ML microservices, e.g., signing model artifacts or establishing PQ TLS.
-
-NOTE: Real PQC TLS typically requires custom OpenSSL forks or liboqs-based solutions.
-This is a conceptual scaffold.
+Provides functions for post-quantum encryption and decryption.
 """
 
-import logging
+from typing import List
+from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives import serialization, hashes
+from cryptography.hazmat.backends import default_backend
+import binascii
 
-def sign_model_artifact(model_bytes: bytes, private_key_pq: bytes) -> bytes:
-    """
-    Placeholder: sign the model using Dilithium or Falcon private key.
-    Real code would call a PQ signature library with Python bindings.
-    """
-    logging.info("Signing model artifact with PQ signature.")
-    # For demonstration, just append a dummy 'signature'
-    dummy_signature = b"PQ_SIGNATURE"
-    return model_bytes + dummy_signature
+from .logger import get_logger
+from .errorHandler import AppError
 
-def verify_model_artifact(model_bytes: bytes, public_key_pq: bytes) -> bool:
-    """
-    Verify that the model artifact was signed with the corresponding PQ public key.
-    """
-    # In a real scenario, you'd separate the signature from the model data,
-    # then call a PQ library to verify. Below is a naive placeholder check.
-    if model_bytes.endswith(b"PQ_SIGNATURE"):
-        logging.info("Model artifact PQ signature verified.")
-        return True
-    logging.warning("Model artifact does not contain a valid PQ signature.")
-    return False
+logger = get_logger(__name__)
 
-def establish_pq_tls_connection(endpoint: str):
+def encrypt_with_pq_public_key(symmetric_key: bytes, public_key_pem: str) -> bytes:
     """
-    Conceptual function to illustrate establishing a PQ TLS connection 
-    with a remote server. Real implementation would rely on e.g. OpenSSL + liboqs.
+    Encrypts the symmetric key using a member's post-quantum public key.
+
+    Args:
+        symmetric_key: AES symmetric key bytes.
+        public_key_pem: PEM-encoded public key.
+
+    Returns:
+        Encrypted symmetric key bytes.
     """
-    logging.info(f"Establishing quantum-safe TLS to {endpoint} ...")
-    # Pseudocode:
-    # 1) Load or dynamically negotiate a PQ cipher suite (like Kyber + Dilithium)
-    # 2) Perform handshake
-    # 3) Return a secure channel or session object
-    return True
+    try:
+        public_key = serialization.load_pem_public_key(public_key_pem.encode('utf-8'), backend=default_backend())
+        encrypted_key = public_key.encrypt(
+            symmetric_key,
+            padding.OAEP(
+                mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                algorithm=hashes.SHA256(),
+                label=None
+            )
+        )
+        logger.debug("Symmetric key encrypted with post-quantum public key.")
+        return encrypted_key
+    except Exception as e:
+        logger.error(f"Failed to encrypt symmetric key with public key: {e}")
+        raise AppError("Post-quantum encryption failed") from e
+
+def decrypt_with_pq_private_key(encrypted_key: bytes, private_key_pem: str) -> bytes:
+    """
+    Decrypts the symmetric key using the member's post-quantum private key.
+
+    Args:
+        encrypted_key: Encrypted symmetric key bytes.
+        private_key_pem: PEM-encoded private key.
+
+    Returns:
+        Decrypted symmetric key bytes.
+    """
+    try:
+        private_key = serialization.load_pem_private_key(private_key_pem.encode('utf-8'), password=None, backend=default_backend())
+        symmetric_key = private_key.decrypt(
+            encrypted_key,
+            padding.OAEP(
+                mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                algorithm=hashes.SHA256(),
+                label=None
+            )
+        )
+        logger.debug("Symmetric key decrypted with post-quantum private key.")
+        return symmetric_key
+    except Exception as e:
+        logger.error(f"Failed to decrypt symmetric key with private key: {e}")
+        raise AppError("Post-quantum decryption failed") from e

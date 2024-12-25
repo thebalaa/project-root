@@ -1,46 +1,79 @@
+// governance.sol
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-/**
- * @title Governance Contract
- * @notice This is a placeholder for on-chain governance logic within the DKG network.
- */
+/// @title Governance Contract for DKG
+/// @notice This contract manages roles and data references in the DKG network.
+
 contract Governance {
-    // Placeholder variables
-    address public owner;
-    mapping(address => uint256) public stake;
+    // Define roles
+    enum Role { Admin, DataOwner, DataConsumer }
 
-    event ProposalCreated(uint256 proposalId, string description);
-    event VoteSubmitted(uint256 proposalId, address voter, bool support);
+    // Mapping from address to roles
+    mapping(address => Role) public roles;
 
-    constructor() {
-        owner = msg.sender;
+    // DataReference struct
+    struct DataReference {
+        string ipfsHash;
+        EncryptedSymmetricKey[] encryptedKeys;
     }
 
-    /**
-     * @dev Create a proposal for network governance
-     * @param _description A short description of the proposal
-     */
-    function createProposal(string memory _description) external returns (uint256) {
-        uint256 proposalId = block.timestamp; // Placeholder
-        emit ProposalCreated(proposalId, _description);
-        return proposalId;
+    struct EncryptedSymmetricKey {
+        string memberId;
+        string encryptedKey;
     }
 
-    /**
-     * @dev Submit a vote on a proposal
-     * @param _proposalId ID of the proposal
-     * @param _support Boolean indicating support or opposition
-     */
-    function submitVote(uint256 _proposalId, bool _support) external {
-        emit VoteSubmitted(_proposalId, msg.sender, _support);
+    // Mapping from data ID to DataReference
+    mapping(string => DataReference) public dataReferences;
+
+    // Events
+    event RoleAssigned(address indexed user, Role role);
+    event DataReferencePublished(string dataId, string ipfsHash);
+
+    // Modifiers
+    modifier onlyAdmin() {
+        require(roles[msg.sender] == Role.Admin, "Not an admin");
+        _;
     }
 
-    /**
-     * @dev Placeholder function to stake tokens for governance
-     * @param _amount Amount of tokens to stake
-     */
-    function stakeTokens(uint256 _amount) external {
-        stake[msg.sender] += _amount;
+    modifier onlyDataOwner() {
+        require(roles[msg.sender] == Role.DataOwner, "Not a data owner");
+        _;
     }
+
+    /// @notice Assign a role to a user
+    /// @param user Address of the user
+    /// @param role Role to assign
+    function assignRole(address user, Role role) external onlyAdmin {
+        roles[user] = role;
+        emit RoleAssigned(user, role);
+    }
+
+    /// @notice Publish a DataReference
+    /// @param dataId Unique identifier for the data
+    /// @param ipfsHash IPFS hash of the encrypted data
+    /// @param encryptedKeys Array of EncryptedSymmetricKeys
+    function publishDataReference(string memory dataId, string memory ipfsHash, EncryptedSymmetricKey[] memory encryptedKeys) external onlyDataOwner {
+        require(bytes(dataReferences[dataId].ipfsHash).length == 0, "Data ID already exists");
+
+        DataReference storage dr = dataReferences[dataId];
+        dr.ipfsHash = ipfsHash;
+
+        for(uint i = 0; i < encryptedKeys.length; i++) {
+            dr.encryptedKeys.push(encryptedKeys[i]);
+        }
+
+        emit DataReferencePublished(dataId, ipfsHash);
+    }
+
+    /// @notice Retrieve a DataReference
+    /// @param dataId Unique identifier for the data
+    /// @return ipfsHash IPFS hash of the encrypted data
+    /// @return encryptedKeys Array of EncryptedSymmetricKeys
+    function getDataReference(string memory dataId) external view returns (string memory ipfsHash, EncryptedSymmetricKey[] memory encryptedKeys) {
+        DataReference storage dr = dataReferences[dataId];
+        return (dr.ipfsHash, dr.encryptedKeys);
+    }
+
+    // Additional functions for access control, etc., can be added here.
 }

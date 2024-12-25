@@ -1,44 +1,50 @@
+// dkgIntegration.rs
+
+use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use anyhow::Result;
+use std::env;
 
-// Hypothetical import for your Tor client
-use crate::services::torRouting::create_tor_http_client;
+/// Publishes DataReference JSON to DKG.
+/// 
+/// @param data_ref_json: Serialized DataReference
+/// @returns Result<(), ...>
+pub async fn publish_data_reference(data_ref_json: &str) -> Result<()> {
+    // Retrieve DKG API URL from environment variables
+    let dkg_api_url = env::var("DKG_API_URL").unwrap_or_else(|_| "http://localhost:8000/api".to_string());
 
-#[derive(Serialize, Deserialize)]
-struct PublishPayload {
-    // ... fields for data that you publish to the DKG
-    data: String,
-    metadata: String,
-    // etc.
+    let client = Client::new();
+    let res = client.post(&format!("{}/data_reference", dkg_api_url))
+        .json(&serde_json::json!({ "data_reference": data_ref_json }))
+        .send()
+        .await?;
+
+    if res.status().is_success() {
+        Ok(())
+    } else {
+        Err(anyhow::anyhow!("DKG publish failed with status: {}", res.status()))
+    }
 }
 
-pub async fn publish_to_dkg(payload: &PublishPayload) -> Result<()> {
-    // Create a Tor-based HTTP client
-    let client = create_tor_http_client();
+/// Fetches DataReference JSON from DKG given a data ID.
+/// 
+/// @param data_id: Identifier for the data
+/// @returns Serialized DataReference JSON
+pub async fn get_data_reference(data_id: &str) -> Result<String> {
+    let dkg_api_url = env::var("DKG_API_URL").unwrap_or_else(|_| "http://localhost:8000/api".to_string());
 
-    // Hypothetical endpoint. Use your real DKG or blockchain node endpoint here.
-    let dkg_url = "https://some-blockchain-node.onion/publish";
-
-    // Send the request
-    let response = client
-        .post(dkg_url)
-        .json(payload)
+    let client = Client::new();
+    let res = client.get(&format!("{}/data_reference/{}", dkg_api_url, data_id))
         .send()
-        .await
-        .map_err(|err| anyhow::anyhow!("Failed to send request via Tor: {:?}", err))?;
+        .await?;
 
-    // Check status
-    if !response.status().is_success() {
-        return Err(anyhow::anyhow!("Tor request failed with status: {}", response.status()));
+    if res.status().is_success() {
+        let res_json: serde_json::Value = res.json().await?;
+        let data_ref = res_json["data_reference"].as_str()
+            .ok_or_else(|| anyhow::anyhow!("DKG response missing data_reference"))?
+            .to_string();
+        Ok(data_ref)
+    } else {
+        Err(anyhow::anyhow!("DKG fetch failed with status: {}", res.status()))
     }
-
-    // If the response includes data, parse it or handle as needed
-    let body_text = response
-        .text()
-        .await
-        .map_err(|err| anyhow::anyhow!("Failed to parse DKG response: {:?}", err))?;
-
-    println!("DKG publish response (via Tor): {}", body_text);
-
-    Ok(())
 }

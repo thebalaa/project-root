@@ -1,19 +1,24 @@
-@prefix ex: <http://example.org/ontology#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ot: <http://www.origintrail.io/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dkg: <http://example.org/dkg#> .
 
-# This Turtle file defines an example ontology for the DKG node.
+dkg:DataReference a ot:Schema;
+    ot:hasProperty dkg:dataId, dkg:ipfsHash, dkg:encryptedKeys.
 
-ex:DataAsset a rdfs:Class ;
-    rdfs:label "Data Asset" ;
-    rdfs:comment "A data asset on the DKG network." .
+dkg:dataId a ot:Property;
+    ot:datatype xsd:string.
 
-ex:hasOwner a rdf:Property ;
-    rdfs:label "hasOwner" ;
-    rdfs:comment "Relationship linking a data asset to its owner." ;
-    rdfs:domain ex:DataAsset ;
-    rdfs:range ex:User .
+dkg:ipfsHash a ot:Property;
+    ot:datatype xsd:string.
 
-ex:User a rdfs:Class ;
-    rdfs:label "User" ;
-    rdfs:comment "A participant or user on the DKG." .
+dkg:encryptedKeys a ot:Property;
+    ot:datatype dkg:EncryptedSymmetricKeyList.
+
+dkg:EncryptedSymmetricKeyList a ot:Schema;
+    ot:hasProperty dkg:memberId, dkg:encryptedKey.
+
+dkg:memberId a ot:Property;
+    ot:datatype xsd:string.
+
+dkg:encryptedKey a ot:Property;
+    ot:datatype xsd:string.
