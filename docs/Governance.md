@@ -37,3 +37,13 @@
     - Treasury allocation to fund overall improvements to the community.
     - Paranet operators
     - Full node operators
+
+- **Centralized World Adapter**
+  - **Structure**
+    - PFC template, Cayman Islands Incorporation; Magic Ramp FIAT to crypto bridge??
+    - Company structured without assets, shareholders, members, trustees, or beneficiaries
+    - Independent from data contributor interests
+  - **Purpose**
+    - Execute real-world tasks that cannot be performed by the decentralized network
+    - Tasks and responsibilities determined by community governance
+

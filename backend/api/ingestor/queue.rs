@@ -39,3 +39,15 @@ pub async fn process_queue(mut rx: mpsc::Receiver<CapturedData>) {
         // - Caching
     }
 }
+use crate::services::dkgIntegration::publish_to_dkg;
+
+pub async fn process_queue_messages() {
+    while let Some(msg) = pull_next_message_from_queue().await {
+        let payload = parse_payload(msg)?;
+        // route via Tor
+        if let Err(err) = publish_to_dkg(&payload).await {
+            eprintln!("Error publishing to DKG via Tor: {:?}", err);
+            // handle error, maybe retry
+        }
+    }
+}

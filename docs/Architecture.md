@@ -18,6 +18,8 @@ Application Specific Integrated Systems are software solutions designed to optim
     - Web portal where authenticated users can view insights on their data, the network data, as well as interact with AI agents trained for specific purposes.
     - Blockchain based Decentralized Knowledge Graph to handle data storage, governance and incentives for the community.
     - Hybrid encryption approach for access to the network. Anonymized data is encrypted with a single symmetric key. Symmetric key is encrypted separately using public keys of all network participants. Each user then gets their version of an encrypted symmetric key which they can decrypt with their private key.
+    - Tor integration to handle asynchronous publishing of anonymized data to the blockchain.
+    - Quantum secure TLS implementation to handle secure communication with the DKG blockchain.
 
 
 ## Front End Overlay Application
