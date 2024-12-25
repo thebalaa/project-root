@@ -1,35 +1,10 @@
-
----
-
-### `ai-ml/docker-compose.yml`
-
-```yaml
-version: '3.8'
-
+version: '3.9'
 services:
-  ai_service:
+  ai-service:
     build:
       context: .
       dockerfile: devops/Dockerfile
-    container_name: ai_service
-    environment:
-      - PYTHONUNBUFFERED=1
-    volumes:
-      - .:/usr/src/app
     ports:
-      - "5000:5000"
-    command: ["python", "microservices/ai_service.py"]
-
-  # Example: Vector DB (replace with Pinecone, Weaviate, or local container)
-  # vectordb:
-  #   image: weaviate/weaviate:latest
-  #   environment:
-  #     QUERY_DEFAULTS_LIMIT: 25
-  #   ports:
-  #     - "8080:8080"
-
-  # Example: Log aggregator or other service
-
-networks:
-  default:
-    name: ai_ml_network
+      - "8000:8000"
+    volumes:
+      - .:/app

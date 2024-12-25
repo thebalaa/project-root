@@ -1,20 +1,15 @@
-"""
-logger.py
-
-Sets up a project-wide logger to be used throughout the AI microservice.
-"""
-
+# microservices/utils/logger.py
 import logging
-import sys
 
-def get_logger(name: str) -> logging.Logger:
+def get_logger(name: str, level=logging.DEBUG):
     logger = logging.getLogger(name)
     if not logger.handlers:
-        logger.setLevel(logging.INFO)
-        handler = logging.StreamHandler(sys.stdout)
+        logger.setLevel(level)
+        ch = logging.StreamHandler()
         formatter = logging.Formatter(
-            '%(asctime)s - [%(levelname)s] - %(name)s - %(message)s'
+            '[%(asctime)s] [%(levelname)s] [%(name)s] %(message)s',
+            datefmt='%Y-%m-%d %H:%M:%S'
         )
-        handler.setFormatter(formatter)
-        logger.addHandler(handler)
+        ch.setFormatter(formatter)
+        logger.addHandler(ch)
     return logger

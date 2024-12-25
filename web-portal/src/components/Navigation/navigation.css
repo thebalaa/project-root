@@ -1,0 +1,30 @@
+.main-nav {
+    display: flex;
+    align-items: center;
+    background-color: #2962ff;
+    padding: 0.5rem 1rem;
+    color: #fff;
+  }
+  
+  .nav-brand {
+    font-weight: 600;
+    margin-right: 2rem;
+  }
+  
+  .nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+  }
+  
+  .nav-menu li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .nav-menu li a:hover,
+  .nav-menu li a.active {
+    text-decoration: underline;
+  }
+  

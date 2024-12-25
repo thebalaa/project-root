@@ -1,21 +1,11 @@
-# Base Dockerfile for AI/ML microservice
-
+# devops/Dockerfile
 FROM python:3.9-slim
 
-# Set the working directory
-WORKDIR /usr/src/app
-
-# Copy requirement files
-COPY requirements.txt .
-
-# Install Python dependencies
+WORKDIR /app
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the project files
-COPY . .
+COPY . /app
 
-# Expose the AI service port
-EXPOSE 5000
-
-# Default command - run the AI microservice
-CMD [ "python", "microservices/ai_service.py" ]
+EXPOSE 8000
+CMD ["uvicorn", "microservices.ai_service:app", "--host", "0.0.0.0", "--port", "8000"]

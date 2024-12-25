@@ -1,15 +1,18 @@
-"""
-postprocessor.py
+# microservices/utils/postprocessor.py
+from .logger import get_logger
 
-Contains functions to postprocess predictions or reasoning results.
-"""
+logger = get_logger(__name__)
 
-import logging
-
-def format_results(results):
+class Postprocessor:
     """
-    Format the results to a standardized structure or add metadata.
+    Postprocessor for refining and cleaning model output,
+    removing any extraneous or sensitive content before returning to the user.
     """
-    logging.info("Postprocessing results.")
-    # Example: wrap in a dictionary with a status
-    return {"status": "success", "data": results}
+
+    def refine_output(self, output: str) -> str:
+        logger.debug("Refining model output.")
+        # Example: remove disclaimers or system prompts
+        if "LLM error" in output:
+            return "Sorry, I'm experiencing some issues right now."
+        # Additional transformations or anonymization if needed
+        return output.strip()

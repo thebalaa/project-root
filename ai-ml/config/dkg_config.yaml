@@ -1,8 +1,7 @@
-dkg:
-  url: "http://localhost:8900"
-  api_key: "your_dkg_api_key"
-  paranet_network_id: "12345"
+# dkg_config.yaml
+dkg_node:
+  endpoint: "https://dkg-node.example.org"
+  auth_token: "YOUR_SECURE_TOKEN"
 
-governance:
-  contract_address: "0xABCDEF1234567890"
-  token_symbol: "TRAC"
+ipfs:
+  host: "https://ipfs.gateway.example.org"

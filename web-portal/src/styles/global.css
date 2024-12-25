@@ -1,0 +1,13 @@
+/* Example global reset or minimal styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: sans-serif;
+    background-color: #eaeff1;
+    color: #333;
+  }
+  

@@ -1,7 +1,9 @@
-ai_service:
-  host: "0.0.0.0"
-  port: 5000
-  model_path: "./models"
-  default_model: "gpt-3.5-turbo"
-logging:
-  level: "INFO"
+# ai_config.yaml
+model_settings:
+  llm_provider: "openai"     # or "hf" (Hugging Face), "local" for local models
+  vector_db: "weaviate"      # or "pinecone" / "faiss"
+  symbolic_reasoning_enabled: true
+
+privacy:
+  anonymize_responses: true
+  maximum_tokens: 1024

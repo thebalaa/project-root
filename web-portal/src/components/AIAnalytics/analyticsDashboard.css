@@ -1,0 +1,36 @@
+.analytics-dashboard {
+    background-color: #fefefe;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .analytics-header {
+    margin-bottom: 1rem;
+  }
+  
+  .analytics-cards {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1rem;
+    flex: 1;
+    text-align: center;
+  }
+  
+  .analytics-main {
+    background: #fafafa;
+    padding: 1rem;
+    border-radius: 6px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+  }
+  

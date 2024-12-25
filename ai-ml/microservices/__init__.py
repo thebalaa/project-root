@@ -1,2 +1,5 @@
-# This package contains the AI microservice logic
-# along with the DKG integration and supporting modules.
+# microservices/__init__.py
+"""
+Microservices package initialization.
+Manages AI and ML subservices for the privacy-first data pipeline.
+"""
