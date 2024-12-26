@@ -2,13 +2,13 @@
 ## Functional Requirements:
 - The collector application(s) must support secure login and authentication using various web2 logins.
 
-- The identity management system must be capable of associating multiple instances of the application that are part of the same organization with each other.
+- The identity management system must be capable of associating multiple instances of the application that use the same device linker.
 
 - Users must provide the following data elements for initial setup
     - Role
         - Individual
         - Business
-    - Business size
+    - Organization size
         - Small 
         - Medium
         - Large
@@ -28,7 +28,7 @@
         - Furniture and Home Goods
         - Technology and IT Equipment
         - Machinery and Equipment
-- The collector application(s) must provide an organization linker that can be used to link instances of a single organization for proper data tracking. 
+- The collector application(s) must provide a device linker that can be used to link data aggregation and analysis capabilities across devices for proper data tracking. 
 
 - The collector application must automatically detect transmission of data to and from internet based services.
 

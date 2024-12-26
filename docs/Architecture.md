@@ -3,7 +3,7 @@
 ## General Architecture:
 The system is designed with upgrades in mind meaning that any of the components that serve specific purposes can be swapped out if a better technology becomes available. The high level requirements for the architecture itself will remain constant throughout the system.
 
-## Archean system requirements
+## Archean System Requirements
  - Collection of data interchanged between computers to document engagement on both ends by client side end users (request, response).
  - Encryption of data collected.
  - Client side anonymization of raw data through automated procedures.

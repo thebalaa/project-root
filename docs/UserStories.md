@@ -1,9 +1,9 @@
 # User Stories:
 - As a user, I want the ability to login to the system using my existing web2 credentials, so that I can maintain ease of use across different platforms.
 
-- As a user, I want the system to provide an organizational linker to allow me to specify that an instance of the application is part of a specific organization.
+- As a user, I want the system to provide a device linker to allow me to specify that an instance of the application is part of a set of devices that should have data linked.
 
-- As a user, I want the ability to specify my role in the internet ecosystem, the size of my business, and the sector that I am a part of so I can get accurate data insights. 
+- As a user, I want the ability to specify my role in the internet ecosystem, the size of my organization, and the sector that I am a part of so I can get accurate data insights. 
 
 - As a user, I want the ability to automatically detect data exchanges with internet based services.
 

@@ -1,0 +1,35 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace "com.example.androidfrontend"
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.androidfrontend"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion "1.4.7"
+    }
+}
+
+dependencies {
+    implementation "androidx.core:core-ktx:1.9.0"
+    implementation "androidx.compose.ui:ui:1.4.3"
+    implementation "androidx.compose.material:material:1.4.3"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.4.3"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+    // Networking
+    implementation "io.ktor:ktor-client-okhttp:2.2.4"
+    implementation "io.ktor:ktor-client-serialization:2.2.4"
+} 

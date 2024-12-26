@@ -35,7 +35,7 @@
 - Security and Identity Management
     - zkAuth user authentication system to allow web2 logins and easy management of credentials through zero knowledge proofs.
 
-- Users must also be able to link together device identities if they are part of the same organization. This will be used to provide proper visibility into their systems in the case that multiple platforms or instances of platforms are used. 
+- Users must also be able to link together device identities. This will be used to provide proper visibility into their systems in the case that multiple platforms or instances of platforms are used. 
 
 - Governance model for ecosystem improvement
     - A governance web page for the ecosystem that allows for participants to shape the community

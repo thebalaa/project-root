@@ -14,7 +14,7 @@ Customer data will be securely stored and recorded in the network. Contributors 
 
 - Install browser extension and desktop data management and provide their role in the internet data exchange ecosystem.
 
-- An organizational linker can be provided that allows users to indicate instances of the application that are part of the same organization. 
+- A device linker can be provided that allows users to indicate instances of the application that are part of the same organization. 
 
 - Users can continue their internet based data exchange activities as they normally would.
 
