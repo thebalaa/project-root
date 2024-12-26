@@ -8,6 +8,7 @@ Sets up logging for the AI/ML services.
 
 import logging
 import sys
+import json
 
 def get_logger(name: str) -> logging.Logger:
     """
@@ -20,14 +21,22 @@ def get_logger(name: str) -> logging.Logger:
         Configured logger.
     """
     logger = logging.getLogger(name)
+    logger.setLevel(logging.INFO)
+
+    # Clear any existing handlers to avoid duplicates
     if not logger.handlers:
-        logger.setLevel(logging.INFO)
-        # Console handler
-        ch = logging.StreamHandler(sys.stdout)
-        ch.setLevel(logging.INFO)
-        # Formatter
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        ch.setFormatter(formatter)
-        # Add handler
-        logger.addHandler(ch)
+        handler = logging.StreamHandler(sys.stdout)
+        handler.setFormatter(JSONLogFormatter())
+        logger.addHandler(handler)
+
     return logger
+
+class JSONLogFormatter(logging.Formatter):
+    def format(self, record):
+        log_record = {
+            "level": record.levelname,
+            "logger": record.name,
+            "message": record.getMessage(),
+            "timestamp": self.formatTime(record, self.datefmt),
+        }
+        return json.dumps(log_record)

@@ -2,6 +2,7 @@ use axum::extract::Json;
 use serde::{Deserialize, Serialize};
 use tokio::sync::mpsc;
 use std::time::Duration;
+use crate::services::dataTransformation::transform_and_store;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct CapturedData {
@@ -13,6 +14,7 @@ pub struct CapturedData {
     sensitive_data: bool,
 }
 
+/// The ingestion endpoint called by the front-end or other clients.
 pub async fn ingest_data(
     Json(payload): Json<CapturedData>,
     tx: mpsc::Sender<CapturedData>,
@@ -25,29 +27,50 @@ pub async fn ingest_data(
     "Acknowledged"
 }
 
-pub async fn process_queue(mut rx: mpsc::Receiver<CapturedData>) {
-    while let Some(data) = rx.recv().await {
-        // Simulate background processing
-        tokio::time::sleep(Duration::from_secs(1)).await;
-
-        println!("Processing data: {:?}", data);
-
-        // TODO: Implement:
-        // - Data Transformation
-        // - DKG Integration
-        // - Off-Chain Storage (e.g., IPFS)
-        // - Caching
-    }
+/// A dedicated struct to handle consuming the queue in a loop.
+pub struct QueueConsumer {
+    rx: mpsc::Receiver<CapturedData>,
 }
-use crate::services::dkgIntegration::publish_to_dkg;
 
-pub async fn process_queue_messages() {
-    while let Some(msg) = pull_next_message_from_queue().await {
-        let payload = parse_payload(msg)?;
-        // route via Tor
-        if let Err(err) = publish_to_dkg(&payload).await {
-            eprintln!("Error publishing to DKG via Tor: {:?}", err);
-            // handle error, maybe retry
+impl QueueConsumer {
+    pub fn new(rx: mpsc::Receiver<CapturedData>) -> Self {
+        Self { rx }
+    }
+
+    /// Continuously receive data from the channel, then process it.
+    pub async fn run(&mut self) {
+        while let Some(data) = self.rx.recv().await {
+            // Sleep or throttle if needed
+            tokio::time::sleep(Duration::from_millis(100)).await;
+
+            // Call a separate function that transforms & stores the data
+            if let Err(e) = transform_and_store(data).await {
+                eprintln!("Error transforming data: {:?}", e);
+                // Possibly requeue or handle errors
+            }
         }
     }
 }
+
+// This function demonstrates how you might handle a separate queue or process queue messages.
+use crate::services::dkgIntegration::publish_data_reference;
+pub async fn process_queue_messages() {
+    while let Some(msg) = pull_next_message_from_queue().await {
+        let payload = parse_payload(msg)?;
+        // route via Tor, then publish to the DKG
+        if let Err(err) = publish_data_reference(&payload).await {
+            eprintln!("Error publishing to DKG via Tor: {:?}", err);
+            // handle error, maybe requeue
+        }
+    }
+}
+
+// Example placeholders for the missing parts in the snippet
+async fn pull_next_message_from_queue() -> Option<String> {
+    // Implement retrieval from some persistent queue, e.g. Redis, RabbitMQ
+    None
+}
+fn parse_payload(msg: String) -> Result<String, Box<dyn std::error::Error>> {
+    Ok(msg)
+}
+

@@ -6,7 +6,7 @@ The Publishing module is responsible for handling the publishing of assets and d
 
 ## Features
 
-- **Asset Publishing**: Encrypts and publishes assets to IPFS and DKG.
+- **Asset Publishing**: Encrypts and publishes assets to the DKG.
 - **Privacy Management**: Manages privacy settings and policies.
 - **Zero-Knowledge Proofs (ZKP)**: Enhances data integrity and authenticity using ZKPs.
 - **Tor Integration**: Routes all external HTTP requests through the Tor network for enhanced privacy.

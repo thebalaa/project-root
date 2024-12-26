@@ -1,5 +1,19 @@
 # Information Architecture 
-## Architectural Overview: 
+
+## General Architecture:
+The system is designed with upgrades in mind meaning that any of the components that serve specific purposes can be swapped out if a better technology becomes available. The high level requirements for the architecture itself will remain constant throughout the system.
+
+## Archean system requirements
+ - Collection of data interchanged between computers to document engagement on both ends by client side end users (request, response).
+ - Encryption of data collected.
+ - Client side anonymization of raw data through automated procedures.
+ - Client side analysis and intelligence gathering on data.
+ - Decentralized database of encrypted, anonymized, tokenized data assets to allow for managed access.
+ - Secure anonymous transmission between client side and database side to further preserve client side privacy.
+ - Community governance to handle network changes and allow for governace over the data itself.
+
+
+## Application Architecture Overview: 
 The system will have a user facing application that consists of 2 parts. A browser extension for cloud based manifest systems and a lightweight application installed on the device targeting desktop systems. The 2 applications will use an identity management framework that allows users to use credentials from existing systems to authenticate and establish a presence in the network. Techniques can be used to link these credentials at an organizational level. Each application will need to have different data caching and processing mechanisms to handle the various inputs and outputs that internet based data exchange platforms could be using including databases, API’s, file submissions, etc. These will need to be minimally invasive and not disrupt normal data exchange processes or slow down operations so this integration point must be thoroughly tested to ensure it doesn’t hamper any potential configuration the customer might have. Once data has been properly cached it will be encrypted, transformed and stored using decentralized storage protocols that ensure user control over data and privacy. An AI microservice will be in place to allow participation in federated learning to train dedicated AI agents. After data is properly stored the system must publish to the blockchain using privacy preserving techniques that allow for data to be properly anonymized and aggregated for use by the entire network. Machine learning framework will be in place to detect patterns based on the data. An automated process will need to be in place for publishing to the DKG blockchain to prevent the user from having to interact with tokens. Publishing meaningful data will result in token rewards granted to the publisher. This will be handled behind the scenes and can be used on the web based framework. The base model for this architecture should be modular in terms of the data collection schemas and organizational mechanism to publish to the DKG. The result is a system that can have custom components for specific purposes.
 
 The system must also include a web based dashboard to allow for AI insights on the DKG that can be personalized for the user. They will be allowed to choose AI models, write custom queries and create visualizations based on the DKG while ensuring proper data privacy concerns and met. Participants can also allocate rewards for more advanced AI analytics. The web based environment will also support an area for community governance where users can participate and drive changes in the network based on token holdings and number of edge nodes. Token rewards will also be issued for participation in community governance.
@@ -21,99 +35,6 @@ Application Specific Integrated Software are software solutions designed to opti
     - Tor integration to handle asynchronous publishing of anonymized data to the blockchain.
     - Quantum secure TLS implementation to handle secure communication with the DKG blockchain.
 
-#Application Architecture
-```mermaid
-flowchart TD
- subgraph Front_End["Front-End Overlay Application"]
-        FE1["User Interface"]
-        FE2["Data Identification & Caching Layer"]
-        FE4["Security & Identity (JWT/DID)"]
-        NEW_FE_ENC["Encryption & Key Management (Client-Side)"]
-  end
- subgraph Backend["Backend Middleware"]
-        BE1["API Server (Express.js/Fastify)"]
-        BE2["Data Transformation and Anonymization Module"]
-        BE3["DKG Integration Module (Backend)"]
-        BE4["Off-Chain Storage (IPFS)"]
-        BE5["Cache (Redis/PostgreSQL)"]
-        BE8["Federated Learning AI Microservice"]
-        NEW_BE_ZKP["ZKP Module (Request/Response Validation)"]
-  end
- subgraph DKG["Decentralized Knowledge Graph (OriginTrail)"]
-        DKG1["OriginTrail Node"]
-        DKG2["Knowledge Asset Publishing"]
-        DKG3["Schema & Ontologies"]
-  end
- subgraph AI_Service["AI / Machine Learning Integration"]
-        AI1["AI Microservice (Python)"]
-        ML_Framework["ML Framework (e.g., TensorFlow/PyTorch)"]
-        Symbolic_Reasoning["Symbolic Reasoning Engine"]
-        AI_DKG_Integration["DKG Integration Module (AI)"]
-        AI2["LLM (OpenAI/API)"]
-        AI3["Vector Database (Pinecone/Weaviate/FAISS)"]
-  end
- subgraph Web_Portal["Web-Based Portal"]
-        FE3["Configuration & Analytics UI"]
-        GOV["Governance UI"]
-        Agent["Custom AI Agent"]
-  end
- subgraph DevOps["DevOps & Infrastructure"]
-        DEV1["Containerization (Docker)"]
-        DEV2["CI/CD (GitHub Actions)"]
-        DEV3["Hosting (VPS/Kubernetes)"]
-        DEV4["Monitoring & Logging"]
-        DEV5["Testing & QA"]
-  end
-    Shipment_Data["Data Source"] -- Send Data --> FE2
-    User(("User")) -- Interacts with --> FE1
-    FE1 --> FE2
-    FE1 -- Authenticate/Authorize --> FE4
-    FE2 --> NEW_FE_ENC
-    NEW_FE_ENC --> BE1
-    User -- Accesses --> Web_Portal
-    Web_Portal --> FE3 & GOV
-    FE3 -- Retrieve Insights --> AI_Service
-    GOV -- Submit Governance Proposals --> DKG1
-    BE1 --> BE2
-    BE2 --> BE3 & BE4 & BE8
-    BE2 -- Publish to DKG --> BE3
-    BE3 --> DKG1 & DKG2 & DKG3 & BE4 & BE5
-    BE8 -- Retrieve Models --> BE3
-    BE8 -- Train Models --> BE3
-    DKG1 --> DKG2
-    DKG2 --> DKG3
-    DKG3 --> DKG1
-    AI_Service --> AI_DKG_Integration & AI1 & AI2 & AI3
-    AI1 -- Send Data to ML Framework --> ML_Framework
-    ML_Framework -- Process Data --> Symbolic_Reasoning
-    Symbolic_Reasoning -- Validated Results --> AI1
-    AI1 -- Interact with LLM --> AI2
-    AI1 -- Store/Retrieve Embeddings --> AI3
-    AI1 -- Publish Insights to DKG --> AI_DKG_Integration
-    AI1 -- Send Insights to Web Portal --> FE3
-    AI_DKG_Integration --> DKG1 & DKG2 & DKG3
-    BE4 --> DKG1
-    FE4 --> User
-    DevOps --> Front_End & Backend & DKG & AI_Service & Web_Portal
-    NEW_FE_ENC -- "Zero-Knowledge Request" --> NEW_BE_ZKP
-    NEW_BE_ZKP -- "Zero-Knowledge Response" --> NEW_FE_ENC
-    NEW_BE_ZKP --> BE2 & DKG1
-    Agent --> AI1
-    Agent --> IPFS("Off-Chain Storage (IPFS pinning service)")
-    AI1 --> IPFS
-    style Web_Portal fill:#2962FF
-    style AI_Service fill:#2962FF
-    style Front_End fill:#00C853
-    style Backend fill:#00C853
-    style DKG fill:#FFD600
-    linkStyle 16 stroke:#D50000,fill:none
-    linkStyle 17 stroke:#D50000,fill:none
-    linkStyle 37 stroke:#FF6D00,fill:none
-    linkStyle 38 stroke:#FF6D00,fill:none
-    linkStyle 39 stroke:#FF6D00,fill:none
-    linkStyle 40 stroke:#D50000,fill:none
-    linkStyle 50 stroke:#D50000
-```mermaid
 
 ## Front End Overlay Application
 **Module Name: Data Identification and Caching Layer**
@@ -814,3 +735,25 @@ flowchart TD
       - Records governance actions on-chain, such as proposals and votes, for transparency and immutability.
   - **Notification Systems:**
       - Alerts users to new proposals, upcoming votes, or governance decisions.
+
+      **Module Name: Custom AI Agents**
+- **Purpose:** Custom AI Agents are AI agents that are created by users and deployed to the system. They are used to perform tasks such as data analysis, data mining, data visualization, and data reporting.
+- **Input:**
+  - User input on the agent configuration and deployment.
+- **Output:**
+  - The agent is deployed to the system and is ready to perform tasks.
+  - Logs and metrics for user actions and governance participation.
+- **Key Interfaces:**
+  - **Web-Based Portal UI:**
+      - Provides the front-end interface for user interaction and management of custom AI agents.
+  - **AI Microservice:**
+     - Interacts with the agent to perform tasks.
+  -**IPFS**
+     - Stores the agent's data and configuration details.
+- **Dependencies:**
+  - **Eliza framework**
+     - Provides the framework for creating and deploying custom AI agents.
+ - **LLM providers**
+     - Provides the language model for the agent.
+  - **Encryption and storage mechanisms**
+     - Provides the encryption and storage mechanisms for the agent's data and configuration details.

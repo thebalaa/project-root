@@ -32,6 +32,16 @@ interface IPFSUploadResponse {
   ipfsHash: string;
 }
 
+async function encryptAndPinAgentData(agentData: Agent): Promise<string> {
+  // 1) Hybrid-encrypt the agentData
+  // 2) Upload to IPFS
+  // 3) Return IPFS hash
+  const authorizedMembers = agentData.settings?.secrets
+    ? Object.keys(agentData.settings?.secrets)
+    : [];
+  return await agentService.uploadDataToIPFS(agentData, authorizedMembers);
+}
+
 const agentService = {
   /**
    * Fetch all AI agents from the AI Microservice.
@@ -60,16 +70,19 @@ const agentService = {
    */
   createAgent: async (agentData: Agent): Promise<Agent> => {
     try {
-      // Encrypt agent data using hybrid encryption
-      const encryptedData: EncryptedAgentData = encryptData(agentData, agentData.settings.secrets);
-
-      const response: AxiosResponse<Agent> = await axios.post(`${AI_MICROSERVICE_URL}/agents`, encryptedData, {
+      // Pin the agent data to IPFS first
+      const ipfsHash = await encryptAndPinAgentData(agentData);
+      
+      // Then call AI microservice with minimal data or just the IPFS hash
+      const response: AxiosResponse<Agent> = await axios.post(`${AI_MICROSERVICE_URL}/agents`, {
+        ipfsHash,
+        // Possibly additional direct fields
+      }, {
         headers: {
           Authorization: `Bearer ${getAuthToken()}`,
           'Content-Type': 'application/json',
         },
       });
-
       return response.data;
     } catch (error: any) {
       if (error.response && error.response.status === 401) {

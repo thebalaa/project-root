@@ -7,6 +7,7 @@ Handles the machine learning pipeline, including data preprocessing,
 model training, and encryption integration.
 """
 
+import asyncio
 import os
 import json
 from typing import Any, Dict
@@ -22,9 +23,9 @@ class MLPipeline:
         self.config = config
         self.llm_handler = LLMHandler(config)
         self.vector_store = VectorStore(config)
-        self.model = self.load_model()
+        self.model = self._load_model()
 
-    def load_model(self):
+    def _load_model(self):
         """
         Loads the ML model from disk or initializes a new model.
         """
@@ -40,11 +41,12 @@ class MLPipeline:
             logger.info("Initialized new ML model.")
         return model
 
-    def save_model(self):
+    def _save_model(self):
         """
         Saves the ML model to disk.
         """
         model_path = self.config.get("model_path", "models/model.pkl")
+        os.makedirs(os.path.dirname(model_path), exist_ok=True)
         with open(model_path, "wb") as f:
             import pickle
             pickle.dump(self.model, f)
@@ -79,20 +81,19 @@ class MLPipeline:
         X = [[0], [1]]
         y = [0, 1]
         self.model.fit(X, y)
-        self.save_model()
+        self._save_model()
         logger.info("Model training completed.")
 
-    def run_pipeline(self, raw_data: str) -> None:
+    async def run_pipeline_async(self, raw_data: str) -> None:
         """
-        Runs the full ML pipeline: preprocessing and training.
-
-        Args:
-            raw_data: Raw plaintext data.
+        Example async method that can be invoked if your framework supports async.
         """
         try:
             preprocessed_data = self.preprocess_data(raw_data)
+            # Simulate an async training call
+            await asyncio.sleep(1)  # Example: placeholder for a real async step
             self.train_on_data(preprocessed_data)
-            logger.info("ML pipeline run successfully.")
+            logger.info("ML pipeline run successfully (async).")
         except Exception as e:
             logger.error(f"Error during ML pipeline run: {e}")
             raise AppError("ML pipeline run failed") from e
@@ -109,7 +110,7 @@ class MLPipeline:
         """
         try:
             embeddings = self.llm_handler.generate_embeddings(data)
-            logger.info("Embeddings generated successfully.")
+            logger.debug("Embeddings generated successfully in pipeline.")
             return embeddings
         except AppError as e:
             logger.error(f"Failed to generate embeddings: {e}")
@@ -125,12 +126,11 @@ class MLPipeline:
         """
         try:
             self.vector_store.store(data_id, embeddings)
-            logger.info(f"Embeddings stored successfully for data_id: {data_id}")
         except AppError as e:
             logger.error(f"Failed to store embeddings: {e}")
             raise e
 
-    def retrieve_similar_data(self, query: str) -> List[str]:
+    def retrieve_similar_data(self, query: str) -> Any:
         """
         Retrieves data IDs of similar data based on query embeddings.
 

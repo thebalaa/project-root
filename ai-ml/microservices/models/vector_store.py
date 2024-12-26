@@ -7,11 +7,12 @@ Handles storage and retrieval of embedding vectors using a vector database.
 """
 
 import os
+import time
 from typing import Any, Dict, List
-from dotenv import load_dotenv
 import pinecone
 from ..utils.logger import get_logger
 from ..utils.errorHandler import AppError
+from tenacity import retry, wait_fixed, stop_after_attempt
 
 logger = get_logger(__name__)
 
@@ -20,7 +21,8 @@ class VectorStore:
         self.api_key = config.get("vector_store_api_key")
         self.environment = config.get("vector_store_environment", "us-west1-gcp")
         self.index_name = config.get("vector_store_index_name", "ai-ml-index")
-        self.dimension = config.get("vector_store_dimension", 384)  # Example dimension
+        self.dimension = config.get("vector_store_dimension", 384)
+        self.index = None
         self.init_pinecone()
 
     def init_pinecone(self):
@@ -39,6 +41,7 @@ class VectorStore:
             logger.error(f"Failed to initialize Pinecone: {e}")
             raise AppError("Vector store initialization failed") from e
 
+    @retry(wait=wait_fixed(2), stop=stop_after_attempt(3))
     def store(self, data_id: str, embeddings: List[float]) -> None:
         """
         Stores embeddings in the vector database.
@@ -53,7 +56,7 @@ class VectorStore:
             )
             logger.info(f"Embeddings upserted for data_id: {data_id}")
         except Exception as e:
-            logger.error(f"Failed to upsert embeddings: {e}")
+            logger.error(f"Failed to upsert embeddings, retrying: {e}")
             raise AppError("Failed to upsert embeddings") from e
 
     def query(self, query_embeddings: List[float], top_k: int = 5) -> List[str]:
