@@ -31,5 +31,6 @@
 
 - As a user I want the ability to participate in community governance that drives changes to the DKG as well as the application and ecosystem itself, so I can help grow and change the network based on my needs.
 
-- As a user I want to be rewarded tokens(NEURO) for participating in the governance of the community. 
+- As a user I want to be rewarded tokens(NEURO) for participating in the governance of the community.
 
+- As a user I want to be able to deploy my own AI agents.

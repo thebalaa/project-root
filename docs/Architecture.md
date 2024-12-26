@@ -21,6 +21,99 @@ Application Specific Integrated Software are software solutions designed to opti
     - Tor integration to handle asynchronous publishing of anonymized data to the blockchain.
     - Quantum secure TLS implementation to handle secure communication with the DKG blockchain.
 
+#Application Architecture
+```mermaid
+flowchart TD
+ subgraph Front_End["Front-End Overlay Application"]
+        FE1["User Interface"]
+        FE2["Data Identification & Caching Layer"]
+        FE4["Security & Identity (JWT/DID)"]
+        NEW_FE_ENC["Encryption & Key Management (Client-Side)"]
+  end
+ subgraph Backend["Backend Middleware"]
+        BE1["API Server (Express.js/Fastify)"]
+        BE2["Data Transformation and Anonymization Module"]
+        BE3["DKG Integration Module (Backend)"]
+        BE4["Off-Chain Storage (IPFS)"]
+        BE5["Cache (Redis/PostgreSQL)"]
+        BE8["Federated Learning AI Microservice"]
+        NEW_BE_ZKP["ZKP Module (Request/Response Validation)"]
+  end
+ subgraph DKG["Decentralized Knowledge Graph (OriginTrail)"]
+        DKG1["OriginTrail Node"]
+        DKG2["Knowledge Asset Publishing"]
+        DKG3["Schema & Ontologies"]
+  end
+ subgraph AI_Service["AI / Machine Learning Integration"]
+        AI1["AI Microservice (Python)"]
+        ML_Framework["ML Framework (e.g., TensorFlow/PyTorch)"]
+        Symbolic_Reasoning["Symbolic Reasoning Engine"]
+        AI_DKG_Integration["DKG Integration Module (AI)"]
+        AI2["LLM (OpenAI/API)"]
+        AI3["Vector Database (Pinecone/Weaviate/FAISS)"]
+  end
+ subgraph Web_Portal["Web-Based Portal"]
+        FE3["Configuration & Analytics UI"]
+        GOV["Governance UI"]
+        Agent["Custom AI Agent"]
+  end
+ subgraph DevOps["DevOps & Infrastructure"]
+        DEV1["Containerization (Docker)"]
+        DEV2["CI/CD (GitHub Actions)"]
+        DEV3["Hosting (VPS/Kubernetes)"]
+        DEV4["Monitoring & Logging"]
+        DEV5["Testing & QA"]
+  end
+    Shipment_Data["Data Source"] -- Send Data --> FE2
+    User(("User")) -- Interacts with --> FE1
+    FE1 --> FE2
+    FE1 -- Authenticate/Authorize --> FE4
+    FE2 --> NEW_FE_ENC
+    NEW_FE_ENC --> BE1
+    User -- Accesses --> Web_Portal
+    Web_Portal --> FE3 & GOV
+    FE3 -- Retrieve Insights --> AI_Service
+    GOV -- Submit Governance Proposals --> DKG1
+    BE1 --> BE2
+    BE2 --> BE3 & BE4 & BE8
+    BE2 -- Publish to DKG --> BE3
+    BE3 --> DKG1 & DKG2 & DKG3 & BE4 & BE5
+    BE8 -- Retrieve Models --> BE3
+    BE8 -- Train Models --> BE3
+    DKG1 --> DKG2
+    DKG2 --> DKG3
+    DKG3 --> DKG1
+    AI_Service --> AI_DKG_Integration & AI1 & AI2 & AI3
+    AI1 -- Send Data to ML Framework --> ML_Framework
+    ML_Framework -- Process Data --> Symbolic_Reasoning
+    Symbolic_Reasoning -- Validated Results --> AI1
+    AI1 -- Interact with LLM --> AI2
+    AI1 -- Store/Retrieve Embeddings --> AI3
+    AI1 -- Publish Insights to DKG --> AI_DKG_Integration
+    AI1 -- Send Insights to Web Portal --> FE3
+    AI_DKG_Integration --> DKG1 & DKG2 & DKG3
+    BE4 --> DKG1
+    FE4 --> User
+    DevOps --> Front_End & Backend & DKG & AI_Service & Web_Portal
+    NEW_FE_ENC -- "Zero-Knowledge Request" --> NEW_BE_ZKP
+    NEW_BE_ZKP -- "Zero-Knowledge Response" --> NEW_FE_ENC
+    NEW_BE_ZKP --> BE2 & DKG1
+    Agent --> AI1
+    Agent --> IPFS("Off-Chain Storage (IPFS pinning service)")
+    AI1 --> IPFS
+    style Web_Portal fill:#2962FF
+    style AI_Service fill:#2962FF
+    style Front_End fill:#00C853
+    style Backend fill:#00C853
+    style DKG fill:#FFD600
+    linkStyle 16 stroke:#D50000,fill:none
+    linkStyle 17 stroke:#D50000,fill:none
+    linkStyle 37 stroke:#FF6D00,fill:none
+    linkStyle 38 stroke:#FF6D00,fill:none
+    linkStyle 39 stroke:#FF6D00,fill:none
+    linkStyle 40 stroke:#D50000,fill:none
+    linkStyle 50 stroke:#D50000
+```mermaid
 
 ## Front End Overlay Application
 **Module Name: Data Identification and Caching Layer**

@@ -1,0 +1,135 @@
+## Technology Stack and Tools
+
+### Front-End Technology
+- **Framework**: React with TypeScript
+- **UI Library**: Material UI or Chakra UI
+- **Browser Extension Overlay**
+  - Manifest with Vite or Webpack
+- **Desktop Overlay**
+  - Electron.js or Tauri
+- **Quantum Resistant Encryption of Data**
+- **State Management**: Redux Toolkit or Zustand
+- **Web Portal**
+  - Recharts or D3.js
+- **Eliza framework AI agent creation**
+Interface on web portal to maintain them and IPFS pinning service to ensure agents have access to encrypted data in IPFS whenever needed.
+
+
+### Back-End and APIs
+- **Language/Runtime**: 
+  - Go (Golang) or Rust or C++ for the ingestion layer
+  - Node.js/TypeScript for main API gateway
+- **API Framework**: Fastify
+- **Data Transformation**
+- **API Specs**
+  - XML Parsing
+  - CSV Parsing
+  - ODBC
+- **Federated Learning AI Microservice**
+  - TensorFlow Federated, PySyft, plus base ML libraries
+- **Asynchronous Queues**
+  - Local in-memory queue (Go channels, Rust lock-free queues)
+  - Background processing (NATS, ZeroMQ, or Redis stream)
+
+### Off-Chain Storage
+- **IPFS** (Node.js or Go)
+- **Lightweight Database**: PostgreSQL, SQLite
+- **Local Indexing and Vector Stores**: Weaviate, Pinecone
+
+### Security
+- **zkAuth User Authentication**
+- **Tor Routing via Asynchronous Message Queues**
+
+### Blockchain and DKG Integration
+- **OriginTrail DKG**
+  - Official Node.js/TypeScript and APIs
+  - Store CID references from IPFS and cryptographic proofs on-chain
+  - TRAC/NEURO tokens
+  - Wallet or signing library (@polkadot/api)
+  - Minimal on-chain data: Hashes and CIDs stored, not full shipment data
+  - Entities and relationships for use in symbolic AI: OWL (Web Ontology Language) or RDF (Resource Description Framework) to define entities and relationships.
+
+### Custom Paranet
+- A dedicated paranet for internet-based data exchange.
+- Custom governance that defines access and incentive structure.
+
+### AI/ML Integration
+- **AI Microservice**: Python
+- **Model Hosting**
+  - External API (ability to add own API keys to use another provider)
+- **ML Framework**: TensorFlow or PyTorch
+- **Symbolic Reasoning Engine**: Drools, Prolog, or SPARQL query engines
+- **Vector Database**: Pinecone or Weaviate
+- **Integration Flow**
+  - Front-end analytics browser calls the AI microservice.
+  - AI microservice retrieves relevant embeddings from DKG and vector stores.
+  - LLM uses retrieved context to produce insights.
+  - Return insights to the user-facing front-end.
+
+### DevOps, Deployment, and Scalability
+- **Containerization**: Docker for all components
+- **Orchestration**: Docker Compose for MVP, Kubernetes for scaling later
+- **CI/CD**: GitHub Actions or GitLab CI
+- **Monitoring and Logging**
+  - Prometheus + Grafana for system metrics.
+  - EFK/ELK stack (Elasticsearch, Fluentd, Kibana) or Loki for logs.
+- **Testing**
+  - Front-end: Cypress or Playwright for E2E tests.
+  - Back-end: Jest (Node.js) or Go’s built-in testing framework.
+  - AI Pipelines: Pytest for Python AI components.
+
+### Future Expansion
+- **Dedicated AI Agents Served Locally**
+- **LLM Framework**: LangChain or LlamaIndex
+- **Federated Learning**
+  - AI models to train on user data locally without transferring raw data to central servers. Only model updates are shared, enhancing privacy.
+- **Differential Privacy**
+  - Privacy techniques to add noise to data or query responses, ensuring that individual user data cannot be reverse-engineered from aggregated insights.
+- **Homomorphic Encryption**
+  - Use homomorphic encryption to perform computations on encrypted data, allowing AI/ML systems to process data without decrypting it.
+
+### Join Accumulate Machine (JAM) Considerations
+- **JAM Services and Authorizers**
+  - Rust + JAM SDK
+  - PVM (Polkadot Virtual Machine) builder tools
+  - Off-chain workers: Rust-based off-chain workers for periodic data verification tasks.
+- **Custom Blockchain**
+  - Depending on the needs of the network, a custom blockchain could be implemented.
+
+## 7. Development and Testing Approach
+
+### Development Methodology
+- Agile development methodology will be used, ensuring components provide a smooth, intuitive user experience. Deploying an MVP will allow feedback to be generated and drive enhancements to the solution.
+
+### Testing Plan
+- Ability to record data without sacrificing use of existing systems will need to be tested and verified on multiple platforms.
+- A large sample and variety of integrations will need to be tested to ensure the application doesn’t interfere with anything the customer already has in place.
+- Sample testnet DKG will need to be created in order to test LLM capabilities. Data from the collector app tests can be used to populate this in the test environment.
+- A set of questions will be put together and used for evaluation.
+- Data privacy for users and security of the system must be pen tested to ensure the resilience of the application and network.
+- Unit tests will be designed and conducted on individual components to ensure modularity of the system.
+
+## 8. Risks and Mitigation Strategies
+
+### Identified Risks
+- Stored data sets can grow very quickly and result in large amounts of space being taken up on user devices.
+- The large number of integrations and platforms that internet-based data exchange systems use means that there are a lot of different scenarios for problems to occur when running the application.
+- Ensuring that the speeds of these exchange systems are not reduced by the product in any meaningful way poses a technical complexity that is difficult to develop for as well as test.
+- Crypto-economic structure of the system means complex tools and processes need to be put in place to ensure price stability for the end users.
+- Additionally, configuring the system to handle proper use of tokens for publishing data without the user having to disrupt any of their processes or introduce a new step poses a technical challenge as well as a design challenge to ensure users are able to accurately record data and the system is adaptable to changes.
+- Implementing a custom governance and incentive model in a crypto-economic system poses design as well as technical complexity.
+- Properly integrating the AI system to ensure the information on the DKG is queried efficiently and accurately.
+- Ensuring data privacy, security, and autonomy for users of the system poses technical complexity and design decisions for data structuring.
+- Successfully training via federated learning poses numerous technical complexities and design decisions.
+- Due to rewards for network contributions being issued at the application instance level, there are technical challenges in terms of aggregating their rewards at the organizational level.
+
+### Mitigation Plans
+- A process will need to be in place for capacity management of data. This might involve some way of cataloging and compressing older data after a certain amount of time.
+- Specific platforms and integrations can be targeted to reduce scope/complexity. Only browser-based platforms will be targeted first before moving to on-device software and other data exchange tools that use different data communication methods.
+- Most commonly used data exchange types can be targeted for stress tests to evaluate the speed of the system with and without the application in place and running.
+- Existing crypto-economic governance and incentive models will be studied and used to facilitate design. Additional tools like smart contracts and stable coin reserves will be explored to ensure that customers can expect predictable prices.
+- Automated processes will need to be in place for token management. This will likely involve some process where the user pays for analytics on their expected data exchange usage and their edge node wallet is populated with enough tokens for publishing the expected amount. The submission is then handled programmatically so all the shipper has to do is continue with internet-based data exchange activities.
+- Query tests with different sets of DKG data to observe responses and direct comparison and verification with the data on the DKG.
+- Security auditing of the system to ensure no data privacy issues arise.
+- Pattern recognition systems for the network will need to be developed to assist with building out a federated learning system that is accurate and effective.
+- An organizational linker will be used and processes will have to be put in place to consolidate rewards and also view data so they can be used at the organization, not instance level.

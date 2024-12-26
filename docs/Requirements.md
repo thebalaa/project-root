@@ -71,6 +71,8 @@
 
 - A web based portal for community governance where participants can help grow and shape the direction of the network.
 
+- The web based portal must allow for the management and deployment of AI agents.
+
 ## Non-Functional Requirements:
 - Performance of the data exchange platforms cannot be reduced in any meaningful way. Users should not be able to notice any difference in the speed at which they are able to carry out internet based activities.
 
