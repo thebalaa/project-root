@@ -1,25 +1,31 @@
 {
-    "network": {
-      "name": "OriginTrailParanet",
-      "rpcUrl": "https://paranet-rpc.example.org",
-      "chainId": 12345
-    },
-    "ipfs": {
-      "host": "ipfs.local",
-      "port": 5001,
-      "protocol": "http"
-    },
-    "dkg": {
-      "nodeUrl": "http://localhost:8900",
-      "apiKey": "<YOUR_DKG_API_KEY>"
-    },
-    "governance": {
-      "contractAddress": "0x123456789ABCDEF",
-      "tokenName": "TRAC",
-      "rewardDistributionInterval": 3600
-    },
-    "logging": {
-      "level": "info"
+  "server": {
+    "address": "127.0.0.1",
+    "port": 8080
+  },
+  "database": {
+    "connectionString": "postgres://user:pass@localhost/dbname"
+  },
+  "ipfs": {
+    "apiUrl": "http://localhost:5001",
+    "gatewayUrl": "https://ipfs.io/ipfs/"
+  },
+  "dkg": {
+    "apiUrl": "http://localhost:8000/api"
+  },
+  "tor": {
+    "enabled": true,
+    "socks5Host": "127.0.0.1",
+    "socks5Port": 9050,
+    "controlPort": 9051,
+    "password": "your_tor_control_password",
+    "timeoutSec": 60
+  },
+  "security": {
+    "encryption": {
+      "algorithm": "AES-256-GCM",
+      "keyLength": 32,
+      "ivLength": 12
     }
   }
-  
+}

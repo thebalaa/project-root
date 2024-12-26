@@ -1,22 +1,30 @@
-# DKG Node
-
-This directory contains the Decentralized Knowledge Graph (DKG) Node components for the project.
+# Publishing Module
 
 ## Overview
 
-- **config/**: Configuration files for the DKG node
-- **contracts/**: Smart contract files (e.g., governance)
-- **ontologies/**: RDF/Turtle files defining domain ontologies
-- **publishing/**: Scripts and modules for publishing data to the DKG
-- **schemas/**: JSON schema definitions for validating incoming/outgoing data
+The Publishing module is responsible for handling the publishing of assets and data references to the Decentralized Knowledge Graph (DKG). It ensures that all external communications are routed through the Tor network to maintain privacy and anonymity.
 
-## Getting Started
+## Features
 
-1. Install dependencies: `npm install` or `yarn install` (if you set up a Node/TS project).
-2. Update configurations in `config/nodeConfig.json`.
-3. Deploy or interact with smart contracts in `contracts/`.
-4. Use publishing scripts in `publishing/` to publish assets or data to the DKG.
+- **Asset Publishing**: Encrypts and publishes assets to IPFS and DKG.
+- **Privacy Management**: Manages privacy settings and policies.
+- **Zero-Knowledge Proofs (ZKP)**: Enhances data integrity and authenticity using ZKPs.
+- **Tor Integration**: Routes all external HTTP requests through the Tor network for enhanced privacy.
 
-## Contributing
+## Tor Integration
 
-Please follow the project's coding guidelines and open a pull request for any changes.
+To ensure that all communications are anonymized, the Publishing module integrates with the Tor network. This is achieved by routing all HTTP requests through a SOCKS5 proxy provided by Tor.
+
+### Configuration
+
+Tor settings are defined in the `nodeConfig.json` file located in the `config/` directory. Below is a sample configuration:
+
+```json
+"tor": {
+  "enabled": true,
+  "socks5Host": "127.0.0.1",
+  "socks5Port": 9050,
+  "controlPort": 9051,
+  "password": "your_tor_control_password",
+  "timeoutSec": 60
+}

@@ -38,6 +38,8 @@
 
 - The collector application(s) must be able to publish the agreed upon aspects of the data to the DKG in the form of a daily data exchange knowledge asset. 
 
+- When publishing to the DKG blockchain the system must use a tor routing to ensure user privacy is fully preserved. 
+
 - The collector application(s) must be able to display basic information on the data activity of the user. 
 
 - The collector application(s) must have an AI microservice in place to start training dedicated AI agents via federated learning.

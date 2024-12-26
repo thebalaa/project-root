@@ -1,0 +1,131 @@
+MIT License
+
+Copyright (c) 2024 Matt Hans
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+**Explanation**:
+
+- **Tor Integration Documentation**:
+  - Provides clear instructions on configuring Tor settings within `nodeConfig.json`.
+  - Details the purpose and usage of Tor within the Publishing module.
+  
+- **Dependencies and Installation**:
+  - Lists necessary dependencies and their installation commands, ensuring that developers can set up the environment correctly.
+  
+- **Usage Example**:
+  - Demonstrates how to utilize the `publishAsset` function, illustrating the process of publishing assets through Tor.
+  
+- **Error Handling**:
+  - Highlights the use of `AppError` for consistent and meaningful error management.
+  
+- **Additional Resources**:
+  - Links to relevant documentation for further reference and deeper understanding.
+  
+- **Best Practices**:
+  - Encourages adherence to code styles and comprehensive testing, promoting maintainability and reliability.
+
+---
+
+### **3.8. Updating `publishing/privacyManager.ts`**
+
+*Note: Already updated in section 3.4.*
+
+---
+
+### **3.9. Updating `publishing/zkProofUtils.ts`**
+
+*Note: Already updated in section 3.5.*
+
+---
+
+### **3.10. Updating `contracts/governance.sol`**
+
+**Purpose**:  
+Typically, smart contracts do not require changes to accommodate Tor routing as they operate on the blockchain. However, if there are any functionalities that involve direct network communications (which is uncommon), they should be reviewed.
+
+**Recommendation**:  
+No changes are necessary for `governance.sol` regarding Tor integration unless there's a specific network interaction that necessitates it.
+
+**File Path**:  
+`dkg-node/contracts/governance.sol`
+
+**No changes made.**
+
+---
+
+## **4. Additional Considerations**
+
+### **4.1. Security Best Practices**
+
+- **Private Key Management**:
+  - Ensure that private keys are never exposed or logged.
+  - Utilize secure storage solutions like Hardware Security Modules (HSMs) or encrypted storage for sensitive keys.
+  
+- **Input Validation**:
+  - Rigorously validate all inputs to prevent injection attacks or malformed data entries.
+  
+- **Dependency Management**:
+  - Regularly update dependencies to patch known vulnerabilities.
+  - Utilize tools like `npm audit` to identify and address security issues in dependencies.
+  
+- **Access Control**:
+  - Implement strict access controls to ensure that only authorized entities can perform publishing operations.
+  
+- **Logging**:
+  - Avoid logging sensitive information.
+  - Ensure that logs are securely stored and access is restricted.
+
+### **4.2. Testing**
+
+- **Unit Tests**:
+  - Develop comprehensive unit tests for all new and updated modules, especially those handling encryption and Tor routing.
+  
+- **Integration Tests**:
+  - Test the end-to-end publishing process, ensuring that assets are correctly encrypted, uploaded to IPFS, and references are published to the DKG via Tor.
+  
+- **Tor Connectivity Tests**:
+  - Verify that all external communications are successfully routed through Tor.
+  - Monitor Tor connection stability and handle potential downtimes or connectivity issues gracefully.
+
+### **4.3. Monitoring and Logging**
+
+- **Monitoring Tor Usage**:
+  - Implement monitoring to ensure that Tor connections are active and functioning as expected.
+  
+- **Log Analysis**:
+  - Analyze logs regularly to detect and respond to any anomalies or unauthorized access attempts.
+
+### **4.4. Documentation**
+
+- **Comprehensive Documentation**:
+  - Maintain detailed documentation for all modules, especially those involving complex operations like hybrid encryption and Tor routing.
+  
+- **Developer Guides**:
+  - Provide guides for setting up the development environment, including Tor configuration and dependency installations.
+
+---
+
+## **5. Final Notes**
+
+Integrating Tor into your DKG node significantly enhances the privacy and anonymity of network communications. By routing all external HTTP requests through Tor, you mitigate the risk of traffic analysis and protect the identities of node participants. However, it's crucial to ensure that the Tor service is reliably operational and that all configurations are meticulously managed to prevent inadvertent leaks of sensitive information.
+
+Adhering to the security best practices outlined above will fortify your DKG node against potential threats, ensuring robust and secure interactions within your decentralized network.
+
+By implementing the above updates and additions, your DKG node will be well-equipped to interact securely with Tor nodes, maintaining the integrity and privacy of your decentralized knowledge graph.

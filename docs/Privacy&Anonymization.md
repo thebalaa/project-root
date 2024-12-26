@@ -5,3 +5,4 @@
 - A tor integration will be built into the backend to handle asynchronous publishing of anonymized data to the blockchain. 
 - A quantum secure TLS implementation will be built into the backend to handle secure communication with the DKG blockchain.
 - All data including user data and model information will be encrypted when published to the blockchain. Only users who are a participant or have sufficient privileges as defined by governance are able to access and decrypt to view and use.
+- Governance model will need to be pseudonymous. TBD structure. 

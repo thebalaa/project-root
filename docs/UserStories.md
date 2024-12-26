@@ -17,6 +17,8 @@
 
 - As a user I want the application to automatically manage the publishing of daily data exchange assets to the DKG, so the knowledge graph can grow and provide meaningful insights but I don’t have to directly interact with the tokens(used to publish transactions). 
 
+- As a user I want the system to privately and securely manage transmission of data to and from the DKG.
+
 - As a user I want the application to have an AI microservice in place to allow me to start contributing to a federated learning system for dedicated AI agents.
 
 - As a user I want to be rewarded tokens(NEURO) for contributing data to the network.
