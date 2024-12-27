@@ -30,13 +30,13 @@
   - **Treasury management**
     - A treasury will be created to fund enhancements to the ecosystem.
   - **Fee allocation**
-    - Publishing information to the network.
-    - Processes will need to be in place to ensure the cost per KB/MB is relatively stable.
-    - Rewards for participation in governance.
-    - Rewards for contribution of data to the network.
-    - Treasury allocation to fund overall improvements to the community.
-    - Paranet operators
-    - Full node operators
+    - Publishing information to the network (30%)
+    - Processes will need to be in place to ensure the cost per KB/MB is relatively stable
+    - Rewards for participation in governance (20%) 
+    - Treasury allocation to fund overall improvements to the community (5%)
+    - Paranet operators (15%)
+    - Full node operators (30%)
+
 
 - **Centralized World Adapter**
   - **Structure**
@@ -46,9 +46,10 @@
   - **Purpose**
     - Execute real-world tasks that cannot be performed by the decentralized network
     - Tasks and responsibilities determined by community governance
+
 - **Fractal governance**
   - Using the hybrid encryption functionality, fractal governance is possible.
   - Through an organizational linker, participants can have their own private proposals.
   - Private proposals can be voted on by members running clients with the organization linker.
-  - These proposals can be obfuscated from the larger network.
+  - These proposals can be obfuscated from the larger network and implemented with logic specific to the community.
 

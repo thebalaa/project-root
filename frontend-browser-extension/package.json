@@ -1,0 +1,16 @@
+{
+    "name": "frontend-browser-extension",
+    "version": "1.0.0",
+    "scripts": {
+    "build": "...",
+    "test": "jest --config jest.config.js --coverage"
+    },
+    "dependencies": {
+    },
+    "devDependencies": {
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "@types/jest": "^29.0.0"
+
+}
+}
