@@ -1,11 +1,11 @@
 # Information Architecture 
 
-## General Architecture:
+## System Architecture:
 The system is designed with upgrades in mind meaning that any of the components that serve specific purposes can be swapped out if a better technology becomes available. The high level requirements for the architecture itself will remain constant throughout the system.
 
-## Archean System Requirements
+## System Requirements
  - Collection of data interchanged between computers to document engagement on both ends by client side end users (request, response).
- - Encryption of data collected.
+ - Client side encryption of data collected.
  - Client side anonymization of raw data through automated procedures.
  - Client side analysis and intelligence gathering on data.
  - Decentralized database of encrypted, anonymized, tokenized data assets to allow for managed access.

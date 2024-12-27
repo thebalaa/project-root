@@ -1,0 +1,62 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #f4f4f4;
+}
+
+.screenContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 350px;
+  width: 300px;
+  padding: 1rem;
+  background: linear-gradient(135deg, #3cb371 0%, #20b2aa 100%); /* green to teal gradient */
+  color: #ffffff; /* White text for contrast */
+  border-radius: 10px;
+}
+
+.screenContainer h2 {
+  margin-bottom: 1rem;
+}
+
+.inputGroup {
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputGroup label {
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
+.inputGroup input, select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  outline: none;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nextButton, .backButton {
+  background: white;
+  color: #3cb371;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nextButton:hover, .backButton:hover {
+  background: #eee;
+}

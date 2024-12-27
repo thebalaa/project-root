@@ -47,3 +47,22 @@ export class LocalCache {
 
 // Re-exporting the interface to keep references consistent
 export { CapturedData };
+
+// Example additions to localCache
+export function storeLoginDetails(username: string, password: string) {
+  // For demonstration only – DO NOT store passwords in plain text.
+  localStorage.setItem('username', username);
+  localStorage.setItem('password', password);
+}
+
+export function storeUserRole(role: string) {
+  localStorage.setItem('userRole', role);
+}
+
+export function storeOrganizationSize(size: string) {
+  localStorage.setItem('organizationSize', size);
+}
+
+export function storeIndustry(industry: string) {
+  localStorage.setItem('industry', industry);
+}

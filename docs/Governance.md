@@ -46,4 +46,9 @@
   - **Purpose**
     - Execute real-world tasks that cannot be performed by the decentralized network
     - Tasks and responsibilities determined by community governance
+- **Fractal governance**
+  - Using the hybrid encryption functionality, fractal governance is possible.
+  - Through an organizational linker, participants can have their own private proposals.
+  - Private proposals can be voted on by members running clients with the organization linker.
+  - These proposals can be obfuscated from the larger network.
 
