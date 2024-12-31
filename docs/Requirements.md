@@ -34,7 +34,7 @@
 
 - After successfully identifying that the user is sending or receiving data from internet based services the application must copy the data being sent and received.
 
-- The collector application must be able to process and store data securely and privately
+- The collector application must be able to process and store data securely and privately and anonymously.
 
 - The collector application(s) must be able to publish the agreed upon aspects of the data to the DKG in the form of a daily data exchange knowledge asset. 
 

@@ -2,7 +2,7 @@
 
 - **Decision making process**
   - **Proposal submission**
-    - Shippers can propose additional knowledge assets that they would like to see added to the ecosystem as well as other enhancements.
+    - Users can propose additional knowledge assets that they would like to see added to the ecosystem as well as other enhancements.
     - Paranet operators can provide proposals for upgrades, additional knowledge assets and enhancements.
     - Node operators can also provide proposals.
     - Changes to voting policies, fee structures and other aspects of the network can be proposed also.
@@ -15,7 +15,7 @@
     - A minimum threshold of participation will be set to validate decisions in addition to a specific approval percentage that results in the proposal being passed.
 
 - **Governance Roles**
-  - Edge node operators, token holders and data owners will individuals and businesses in the initial rollout of the network. Both will have the option to be more involved in the network by operating full nodes. When additional internet ecosystem actors are added to the ecosystem governance will likely have to change. This will be handled by the proposal system.
+  - Edge node operators, token holders and data owners will primarily be individuals and small businesses in the initial rollout of the network. Both will have the option to be more involved in the network by operating full nodes. When additional internet ecosystem actors are added to the ecosystem governance will likely have to change. This will be handled by the proposal system.
 
 - **Incentive structures**
   - Tokens distributed for submission of data to the network and active participation in proposals. The amount will be proportional to their data provided and activity in the governance community.
@@ -31,7 +31,7 @@
     - A treasury will be created to fund enhancements to the ecosystem.
   - **Fee allocation**
     - Publishing information to the network (30%)
-    - Processes will need to be in place to ensure the cost per KB/MB is relatively stable
+      - Processes will need to be in place to ensure the cost per KB/MB is relatively stable
     - Rewards for participation in governance (20%) 
     - Treasury allocation to fund overall improvements to the community (5%)
     - Paranet operators (15%)
@@ -40,16 +40,17 @@
 
 - **Centralized World Adapter**
   - **Structure**
-    - PFC template, Cayman Islands Incorporation; Magic Ramp FIAT to crypto bridge??
+    - PFC template, Cayman Islands Incorporation
     - Company structured without assets, shareholders, members, trustees, or beneficiaries
     - Independent from data contributor interests
+    - Magic Ramp FIAT to crypto bridge??
   - **Purpose**
     - Execute real-world tasks that cannot be performed by the decentralized network
     - Tasks and responsibilities determined by community governance
 
 - **Fractal governance**
   - Using the hybrid encryption functionality, fractal governance is possible.
-  - Through an organizational linker, participants can have their own private proposals.
+  - Through an device linker, participants can have their own private proposals.
   - Private proposals can be voted on by members running clients with the organization linker.
   - These proposals can be obfuscated from the larger network and implemented with logic specific to the community.
 

@@ -21,7 +21,7 @@
 - Applications will need to be configured to handle the proper use of TRAC as part of network costs. Users should not be directly interacting with the TRAC token.
 
 - AI/LLM integration
-    - Retrieval-Augmented Generation (RAG) workflow using symbolic AI to integrate the DKG reference data into an AI model to enforce structured reasoning and consistency. 
+    - Retrieval-Augmented Generation (RAG) workflow using symbolic AI to integrate the data into an AI model to enforce structured reasoning and consistency. 
 
 - Machine learning
     - ML framework will be put in place to assist with pattern recognition, adaptability and ambiguity in data sets.
@@ -53,7 +53,7 @@
     - MVP approach will use daily activity in terms of data exchanges as a knowledge asset. Future enhancements will provide robust analytics by including data captured outside of interactions the user has online, by other parties or sources.
 
 - Local custom AI agent
-    - A local AI agent trained and dedicated for needs defined by the network. This will likely take time to develop a federated learning service to handle this.
+    - A local AI agent trained and dedicated for needs defined by the users. This will likely take time to develop a federated learning service to handle this.
 
 - Additional role support
     - Role support for other actors in the internet ecosystem will be deferred. Additional functionality and application suites can be added down the road to support other players in the ecosystem shown. 

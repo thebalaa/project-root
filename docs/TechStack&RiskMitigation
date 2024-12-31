@@ -105,7 +105,7 @@ Interface on web portal to maintain them and IPFS pinning service to ensure agen
 - Ability to record data without sacrificing use of existing systems will need to be tested and verified on multiple platforms.
 - A large sample and variety of integrations will need to be tested to ensure the application doesn’t interfere with anything the customer already has in place.
 - Sample testnet DKG will need to be created in order to test LLM capabilities. Data from the collector app tests can be used to populate this in the test environment.
-- A set of questions will be put together and used for evaluation.
+- A set of questions will be put together and used for evaluation for insight capabilities.
 - Data privacy for users and security of the system must be pen tested to ensure the resilience of the application and network.
 - Unit tests will be designed and conducted on individual components to ensure modularity of the system.
 
@@ -132,4 +132,4 @@ Interface on web portal to maintain them and IPFS pinning service to ensure agen
 - Query tests with different sets of DKG data to observe responses and direct comparison and verification with the data on the DKG.
 - Security auditing of the system to ensure no data privacy issues arise.
 - Pattern recognition systems for the network will need to be developed to assist with building out a federated learning system that is accurate and effective.
-- An organizational linker will be used and processes will have to be put in place to consolidate rewards and also view data so they can be used at the organization, not instance level.
+- An device linker will be used and processes will have to be put in place to consolidate rewards and also view data so they can be used at the organization, not instance level.
