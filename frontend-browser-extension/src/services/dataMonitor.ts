@@ -1,4 +1,4 @@
-// src/services/apiMonitor.ts
+// src/services/dataMonitor.ts
 export function monitorAPIRequests() {
     // Listen for outgoing requests
     chrome.webRequest.onBeforeRequest.addListener(

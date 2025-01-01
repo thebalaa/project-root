@@ -1,5 +1,5 @@
 import fastq from 'fastq'
-import { IDataIngestion } from '../interfaces/IDataIngestion'
+import { IDataIngestion } from '../interfaces/iDataIngestion'
 
 export interface CapturedData {
     id: string;
@@ -41,7 +41,7 @@ export class DataIdentifier implements IDataIngestion {
     /**
      * The internal function that runs for each item in the queue.
      */
-    private handleData(data: CapturedData, callback: (err?: Error | null) => void): void {
+    private handleData(data: CapturedData, callback: (err: Error | null) => void): void {
         try {
             // After final transformation/detection, pass data forward
             console.log('DataIdentifier handling data:', data);
@@ -50,7 +50,7 @@ export class DataIdentifier implements IDataIngestion {
                 this.onProcessedCallback(data);
             }
 
-            callback();
+            callback(null); // Explicitly pass null when there's no error
         } catch (error) {
             callback(error as Error);
         }

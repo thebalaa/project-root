@@ -130,15 +130,14 @@ export function encryptGroupSymmetricKey(symmetricKeyHex: string, memberPublicKe
  * @param userPrivateKeyHex - Hex-encoded user's private key
  * @returns Decrypted symmetric key in hex format
  */
-export function decryptGroupSymmetricKey(encryptedSymmetricKeyHex: string, userPrivateKeyHex: string): Promise<string> {
-  return decapsulatePQ(userPrivateKeyHex, encryptedSymmetricKeyHex)
-    .then(sharedSecret => {
-      return sharedSecret; // Assuming sharedSecret is the symmetric key
-    })
-    .catch(err => {
-      console.error('Decryption of group symmetric key failed:', err);
-      throw err;
-    });
+export async function decryptGroupSymmetricKey(encryptedSymmetricKeyHex: string, userPrivateKeyHex: string): Promise<string> {
+  try {
+    const sharedSecret = await decapsulatePQ(userPrivateKeyHex, encryptedSymmetricKeyHex);
+    return sharedSecret; // Assuming sharedSecret is the symmetric key
+  } catch (err) {
+    console.error('Decryption of group symmetric key failed:', err);
+    throw err;
+  }
 }
 
 /**

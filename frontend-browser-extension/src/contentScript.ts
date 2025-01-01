@@ -5,12 +5,17 @@
         const clonedResponse = response.clone();
         const responseBody = await clonedResponse.text();
 
+        const headersArray: [string, string][] = [];
+        clonedResponse.headers.forEach((value, key) => {
+            headersArray.push([key, value]);
+        });
+
         chrome.runtime.sendMessage({
             type: 'FETCH_RESPONSE',
             url: clonedResponse.url,
             status: clonedResponse.status,
             body: responseBody,
-            headers: [...clonedResponse.headers.entries()], // Capture headers for context
+            headers: Object.fromEntries(headersArray), // Capture headers for context
         });
 
         return response;
