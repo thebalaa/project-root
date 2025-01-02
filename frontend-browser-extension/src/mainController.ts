@@ -1,42 +1,28 @@
 import { DataIdentifier } from './localCache/dataIdentification';
-import { LocalCache } from './localCache/localCache';
-import { BackendUploader } from './services/backendUploader';
-import { encryptData, generateKey } from './encryption/src/encryption';
+import { monitorAPIRequests } from './services/dataMonitor';
 
-(async function initApp() {
-  const dataIdentifier = new DataIdentifier();
-  const localCache = new LocalCache();
-  const backendUploader = new BackendUploader('http://localhost:3000/data');
+// This background script is our single entry point
+console.log('Background script is loading...');
 
-  // Example: generate a local AES key for encryption
-  const cryptoKey = await generateKey();
+// Create your DataIdentifier instance
+const dataIdentifier = new DataIdentifier();
+// If you have other references, e.g. LocalCache, do so here as well
 
-  // Configure the ingestion pipeline
-  dataIdentifier.setCallback(async (captured: any) => {
-    // E.g., you might want to encrypt the JSON data
-    const encryptedJson = await encryptData(JSON.stringify(captured), cryptoKey);
-    
-    // Build a new object for storing
-    const storedData = {
-      ...captured,
-      body: encryptedJson, // store encrypted content
-    };
-    localCache.saveToCache(storedData);
-  });
+// Option A: Use the dataMonitor approach
+monitorAPIRequests(); 
+// This sets up chrome.webRequest.onBeforeRequest + onCompleted to store request data and inject the content script.
 
-  // Some periodic or manual trigger to upload data
-  async function syncToBackend() {
-    const batchedData = localCache.getAllData();
-    if (batchedData.length === 0) return;
+// Listen for messages from content scripts
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  console.log('Background got a message:', message);
 
-    try {
-      await backendUploader.upload(batchedData);
-      localCache.clearCache();
-    } catch (err) {
-      console.error('Upload failed, data remains cached:', err);
-    }
+  if (message.type === "FETCH_RESPONSE" || message.type === "XHR_RESPONSE") {
+    console.log("Received response data from content script:", message);
+    // e.g. store them in dataIdentifier or localCache
   }
 
-  // Possibly call syncToBackend() on an interval or user action
-  setInterval(syncToBackend, 60000); // e.g., every minute
-})();
+  sendResponse({ status: "ok" });
+  return true; // Keep the message channel open if needed for async
+});
+
+console.log('Background script finished loading.');

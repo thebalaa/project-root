@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './App';
 import './styles/popup.css';  // or any additional styles
 
@@ -11,4 +11,5 @@ function Popup() {
   );
 }
 
-ReactDOM.render(<Popup />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root')!)
+root.render(<App />)

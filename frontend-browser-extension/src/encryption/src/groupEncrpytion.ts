@@ -1,164 +1,98 @@
 /**
  * groupEncryption.ts
  * 
- * Handles group-specific encryption tasks using hybrid encryption.
- * 
- * Features:
- * - Generate group symmetric keys.
- * - Encrypt data with group symmetric keys.
- * - Encrypt group symmetric keys with authorized members' public keys.
- * - Decrypt group symmetric keys.
+ * Temporarily stubbing out group encryption for testing/development.
+ * Remove or revert when real encryption is integrated.
  */
 
 import { generatePQKeyPair, encapsulatePQ, decapsulatePQ } from './postQuantumCrypto';
-import { bufferToHex, hexToBuffer } from '../utils/common';
+import { bufferToHex, hexToBuffer } from '../../utils/common';
 
-/**
- * Interface representing an encrypted group symmetric key for a member.
- */
 export interface EncryptedGroupKey {
-  memberId: string; // Unique identifier for the group member
-  encryptedSymmetricKey: string; // Encrypted with member's public key (hex)
+  memberId: string;
+  encryptedSymmetricKey: string;
 }
 
 /**
- * Generates a new AES symmetric key for a group.
- * 
- * @returns Hex-encoded AES key
+ * STUB: Return a fake hex just for demonstration.
  */
 export function generateGroupSymmetricKey(): string {
-  // Using a cryptographically secure method to generate a 256-bit (32-byte) AES key
+  // Original logic commented out:
+  /*
   const symmetricKey = crypto.getRandomValues(new Uint8Array(32));
   return bufferToHex(symmetricKey);
+  */
+  return 'FAKE_SYMMETRIC_KEY_HEX';
 }
 
 /**
- * Encrypts data using a group symmetric key.
- * 
- * @param plaintext - The data to encrypt
- * @param symmetricKeyHex - Hex-encoded AES symmetric key
- * @returns Encrypted data in hex format (IV + ciphertext)
+ * STUB: Return the plaintext in hex for now.
  */
 export function encryptDataWithGroupKey(plaintext: string, symmetricKeyHex: string): Promise<string> {
-  const symmetricKey = hexToBuffer(symmetricKeyHex);
-  // Use AES-GCM for symmetric encryption
-  const iv = crypto.getRandomValues(new Uint8Array(12)); // 96-bit IV for AES-GCM
-  const encoder = new TextEncoder();
-  const data = encoder.encode(plaintext);
-  const cryptoKeyPromise = crypto.subtle.importKey(
-    'raw',
-    symmetricKey,
-    { name: 'AES-GCM' },
-    false,
-    ['encrypt']
-  );
-
-  return cryptoKeyPromise.then(key => {
-    return crypto.subtle.encrypt(
-      { name: 'AES-GCM', iv },
-      key,
-      data
-    ).then(encrypted => {
-      // Combine IV and encrypted data for storage/transmission
-      const combined = new Uint8Array(iv.length + encrypted.byteLength);
-      combined.set(iv, 0);
-      combined.set(new Uint8Array(encrypted), iv.length);
-      return bufferToHex(combined);
-    });
-  }).catch(err => {
-    console.error('Encryption with group key failed:', err);
-    throw err;
-  });
+  // Original logic commented out:
+  /*
+  ... real encryption with AES-GCM ...
+  */
+  return Promise.resolve(bufferToHex(new TextEncoder().encode(plaintext)));
 }
 
 /**
- * Decrypts data using a group symmetric key.
- * 
- * @param encryptedDataHex - Hex-encoded encrypted data (IV + ciphertext)
- * @param symmetricKeyHex - Hex-encoded AES symmetric key
- * @returns Decrypted plaintext
+ * STUB: Return the hex-decoded plaintext as string.
  */
 export function decryptDataWithGroupKey(encryptedDataHex: string, symmetricKeyHex: string): Promise<string> {
-  const combined = hexToBuffer(encryptedDataHex);
-  const iv = combined.slice(0, 12); // Extract IV
-  const ciphertext = combined.slice(12);
-  const symmetricKey = hexToBuffer(symmetricKeyHex);
-  const cryptoKeyPromise = crypto.subtle.importKey(
-    'raw',
-    symmetricKey,
-    { name: 'AES-GCM' },
-    false,
-    ['decrypt']
-  );
-
-  return cryptoKeyPromise.then(key => {
-    return crypto.subtle.decrypt(
-      { name: 'AES-GCM', iv },
-      key,
-      ciphertext
-    );
-  }).then(decrypted => {
-    const decoder = new TextDecoder();
-    return decoder.decode(new Uint8Array(decrypted));
-  }).catch(err => {
-    console.error('Decryption with group key failed:', err);
-    throw err;
-  });
+  // Original logic commented out:
+  /*
+  ... real AES-GCM decryption ...
+  */
+  const decoded = new TextDecoder().decode(hexToBuffer(encryptedDataHex));
+  return Promise.resolve(decoded);
 }
 
 /**
- * Encrypts a group symmetric key with authorized members' public keys.
- * 
- * @param symmetricKeyHex - Hex-encoded AES symmetric key
- * @param memberPublicKeys - Array of hex-encoded public keys of authorized members
- * @returns Array of EncryptedGroupKey objects
+ * STUB: Return dummy encrypted group key objects.
  */
 export function encryptGroupSymmetricKey(symmetricKeyHex: string, memberPublicKeys: string[]): EncryptedGroupKey[] {
-  return memberPublicKeys.map((pubKeyHex, index) => {
-    const encrypted = encapsulatePQ(pubKeyHex); // Encrypt symmetric key with member's public key
-    return {
-      memberId: `member_${index + 1}`, // Replace with actual member IDs
-      encryptedSymmetricKey: encrypted.cipherText, // Assuming cipherText contains the encrypted symmetric key
-    };
-  });
+  // Original logic commented out:
+  /*
+  ... real PQC encapsulation ...
+  */
+  return memberPublicKeys.map((_, index) => ({
+    memberId: `member_${index + 1}`,
+    encryptedSymmetricKey: 'FAKE_ENCRYPTED_SYM_KEY',
+  }));
 }
 
 /**
- * Decrypts an encrypted group symmetric key using the user's private key.
- * 
- * @param encryptedSymmetricKeyHex - Hex-encoded encrypted symmetric key
- * @param userPrivateKeyHex - Hex-encoded user's private key
- * @returns Decrypted symmetric key in hex format
+ * STUB: Return the original symmetric key, ignoring decryption.
  */
 export async function decryptGroupSymmetricKey(encryptedSymmetricKeyHex: string, userPrivateKeyHex: string): Promise<string> {
-  try {
-    const sharedSecret = await decapsulatePQ(userPrivateKeyHex, encryptedSymmetricKeyHex);
-    return sharedSecret; // Assuming sharedSecret is the symmetric key
-  } catch (err) {
-    console.error('Decryption of group symmetric key failed:', err);
-    throw err;
-  }
+  // Original logic commented out:
+  /*
+  const sharedSecret = await decapsulatePQ(userPrivateKeyHex, encryptedSymmetricKeyHex);
+  return sharedSecret;
+  */
+  return Promise.resolve('FAKE_SYMMETRIC_KEY_HEX');
 }
 
 /**
- * Prepares encrypted data and encrypted symmetric keys for storage.
- * 
- * @param plaintextData - The data to encrypt
- * @param authorizedMemberPublicKeys - Array of hex-encoded public keys of authorized members
- * @returns Object containing encrypted data and encrypted symmetric keys
+ * STUB: Just packages the data and returns them in a trivial object.
  */
 export async function prepareEncryptedDataForStorage(plaintextData: string, authorizedMemberPublicKeys: string[]) {
-  // Generate a unique symmetric key for the group
+  // Original logic commented out:
+  /*
   const symmetricKeyHex = generateGroupSymmetricKey();
-
-  // Encrypt the data with the symmetric key
   const encryptedData = await encryptDataWithGroupKey(plaintextData, symmetricKeyHex);
-
-  // Encrypt the symmetric key with each authorized member's public key
   const encryptedSymmetricKeys = encryptGroupSymmetricKey(symmetricKeyHex, authorizedMemberPublicKeys);
-
   return {
     encryptedData,
     encryptedSymmetricKeys,
+  };
+  */
+  return {
+    encryptedData: btoa(plaintextData),
+    encryptedSymmetricKeys: authorizedMemberPublicKeys.map((_, i) => ({
+      memberId: `member_${i + 1}`,
+      encryptedSymmetricKey: 'FAKE_ENCRYPTED_SYM_KEY',
+    })),
   };
 }

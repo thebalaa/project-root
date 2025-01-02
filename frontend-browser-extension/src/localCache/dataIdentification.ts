@@ -69,7 +69,20 @@ export class DataIdentifier implements IDataIngestion {
     }
 
     private detectSensitiveData(data: CapturedData): boolean {
+        let bodyString = '';
+        try {
+            // data.body might be FormData, an ArrayBuffer, or something else that JSON.stringify won't handle well.
+            // Convert safely, or skip if it fails.
+            if (data.body !== undefined) {
+                bodyString = JSON.stringify(data.body);
+            }
+        } catch (e) {
+            console.warn('Failed to stringify request body in detectSensitiveData()', e);
+            // If stringification fails, just skip checking for sensitive data:
+            bodyString = '';
+        }
+
         const sensitiveKeywords = ["password", "credit card"];
-        return sensitiveKeywords.some(keyword => JSON.stringify(data.body).includes(keyword));
+        return sensitiveKeywords.some(keyword => bodyString.includes(keyword));
     }
 }

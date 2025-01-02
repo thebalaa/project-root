@@ -12,7 +12,7 @@
   },
   "include": [
     "./src/**/*"
-  ],
+, "src/popup.tsx", "dist/contentScript.js"  ],
   "exclude": [
     "node_modules",
     "./src/encryption/tests/**/*"  // Exclude tests if needed

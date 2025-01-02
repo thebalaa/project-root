@@ -5,7 +5,7 @@
         const clonedResponse = response.clone();
         const responseBody = await clonedResponse.text();
 
-        const headersArray: [string, string][] = [];
+        const headersArray = [];
         clonedResponse.headers.forEach((value, key) => {
             headersArray.push([key, value]);
         });
