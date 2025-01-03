@@ -25,7 +25,7 @@ Application Specific Integrated Software are software solutions designed to opti
   - **Objective:** This architecture solves the problem of aggregating and analyzing data in a meaningful way while still upholding user privacy. 
   - **Key Features:**
     - A front end data collection layer with client side encryption can be modified to target data for any system the user desires.
-    - Local backend to handle several data related tasks.
+    - Local proxy backend to handle several data related tasks.
     - Connecting to the front end securely stores and privatizes the data sufficiently before publishing to a Decentralized Knowledge Graph (DKG) network.
     - Utilizing federated learning framework to train on their local data set, using the DKG as a distributed aggregator for model changes.
     - AI/ML framework to analyze and identify patterns in the data on the network and provide specific user insights without the user having to share raw data.
@@ -38,12 +38,12 @@ Application Specific Integrated Software are software solutions designed to opti
 
 ## Front End Overlay Application
 **Module Name: Data Identification and Caching Layer**
-- **Purpose:** The Data Identification and Caching Layer is responsible for intercepting and identifying user activity data from various sources in real-time. It determines which data is relevant, applies caching mechanisms to store it temporarily, and ensures efficient communication with backend systems for further processing. This module forms the backbone of data ingestion in the Front-End Overlay Application, enabling seamless, secure, and real-time data management.
+- **Purpose:** The Data Identification and Caching Layer is responsible for intercepting and identifying user activity data from various sources in real-time. It determines which data is relevant and ensures efficient communication with the backend proxy where it is sent for further processing. This module forms the backbone of data ingestion in the Front-End Overlay Application, enabling seamless, secure, and real-time data management.
 - **Input:**
   - User activity data (e.g., browsing, interactions) from the User Interface.
   - Security and identity tokens (e.g., JWT, DID) from the Security & Identity module for ensuring user authentication and authorization.
 - **Output:**
-  - Filtered, formatted, and cached data ready for processing by the backend.
+  - Cache data, sent to local backend proxy for processing.
   - Temporary storage of identified data for asynchronous processing by backend services.
   - Alerts or logs for invalid or unauthorized data activities.
 - **Key Interfaces:**
@@ -52,7 +52,7 @@ Application Specific Integrated Software are software solutions designed to opti
   - **Security & Identity Module:**
       - Verifies user credentials and ensures only authenticated data is processed and cached.
   - **Encryption and Key Management:**
-      - Data will be encrypted before sending to the backend middleware.
+      - Data will be encrypted before sending to the backend local proxy middleware.
   - **Backend Middleware:**
       - Sends identified and cached data to the backend API for further anonymization, transformation, and storage.
 - **Dependencies:**
@@ -63,7 +63,7 @@ Application Specific Integrated Software are software solutions designed to opti
    - **Caching Mechanisms:**
       - Uses in-memory caches or lightweight storage (e.g., IndexedDB, LocalStorage) to temporarily store identified data for efficiency.
    - **Data Parsing Libraries:**
-      - To standardize and structure raw user data into usable formats before transmission.
+      - To standardize and structure raw user data into usable format for local proxy.
    - **Encryption Libraries:**
       - Secures cached data to prevent unauthorized access before it is transmitted to the backend.
 
@@ -99,8 +99,8 @@ Application Specific Integrated Software are software solutions designed to opti
         - Implements key rotation schedules to enhance security and mitigate risks of key compromise.
 
 ## Backend Middleware
-**Module Name: API Server (user backend)**
-- **Purpose:** The API Server acts as the primary communication hub between the front-end overlay application and the backend systems. It handles incoming requests, processes them according to business logic, and routes them to appropriate backend modules. Additionally, it ensures secure, efficient, and scalable data transfer between components, enforcing access control and data validation.
+**Module Name: Local Proxy API Server (user backend)**
+- **Purpose:** The Local Proxy API Server acts as the primary communication hub between the front-end overlay application and the backend systems. It handles incoming requests, processes them according to business logic, and routes them to appropriate backend modules. Additionally, it ensures secure, efficient, and scalable data transfer between components, enforcing access control and data validation.
 - **Input:**
   - Requests from the front-end (e.g., user activity data, configuration updates, or queries).
   - Data from backend modules (e.g., transformed, anonymized, or cached data).
@@ -123,7 +123,7 @@ Application Specific Integrated Software are software solutions designed to opti
   - **Federated Learning AI Microservice:**
       - Routes data and requests related to model training or insights to the AI microservice.
 - **Dependencies:**
-  - **API Framework (e.g., Fastify or Express.js):**
+  - **Local Proxy API Framework (e.g., Fastify or Express.js):**
       - Provides a scalable and high-performance framework for handling HTTP and WebSocket requests.
       - **Security Modules:**
         - Uses authentication and authorization mechanisms (e.g., JWT or OAuth) to ensure secure access to APIs.

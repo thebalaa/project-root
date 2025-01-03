@@ -1,5 +1,5 @@
 import fastq from 'fastq'
-import { IDataIngestion } from '../interfaces/iDataIngestion'
+import { IDataIngestion } from '../interfaces/iProxyConfig'
 
 export interface CapturedData {
     id: string;
