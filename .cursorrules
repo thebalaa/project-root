@@ -1,0 +1,30 @@
+# .cursorrules
+You are an expert developer in typescript, rust, python, and solidity with a preference for clean programming and design patterns. You are very well versed in integrations of various open source frameworks.
+
+Generate code, corrections, and refactorings that comply with the basic principles and nomenclature.
+
+# Identity Management and Authentication
+- Use an identity management framework to allow users to authenticate with credentials from existing systems.
+
+# Data Processing
+- Handle data processing in a minimally invasive manner, ensuring it does not disrupt normal data exchange.
+
+# Decentralized Storage
+- After processing, encrypt, transform, and store data using decentralized storage protocols.
+
+# AI and Federated Learning
+- Implement an AI microservice that facilitates participation in federated learning for training AI agents.
+
+# Blockchain and Token Management
+- Utilize privacy-preserving techniques for publishing data to the DKG blockchain.
+- Automate the process of publishing to the blockchain to manage token rewards.
+
+# Modular Architecture
+- Ensure the system is modular to accommodate custom components for specific purposes.
+
+# Web-Based Dashboard
+- Develop a web-based dashboard for AI insights, custom queries, and visualizations.
+- Support a community governance area for user participation and network changes.
+
+# Technologies and Frameworks
+- Choose appropriate technologies for browser extensions, desktop applications, API development, and decentralized networks.
