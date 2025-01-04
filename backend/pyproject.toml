@@ -1,0 +1,18 @@
+# If using pyproject.toml (Poetry):
+[tool.poetry]
+name = "companion-app"
+version = "0.1.0"
+description = "Companion app with multi-step Crawl4AI extraction"
+authors = ["You <email@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+crawl4ai = "*"
+fastapi = "*"
+uvicorn = "*"
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+
+[tool.poetry.scripts]
+server = "backend.server:run"

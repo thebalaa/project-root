@@ -1,55 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 function Popup() {
-  const [proxyEnabled, setProxyEnabled] = useState<boolean>(false);
-  const [status, setStatus] = useState<string>('');
+  const [isForwardingOn, setIsForwardingOn] = useState(false);
 
   useEffect(() => {
-    // On mount, read 'proxyEnabled' from local storage
-    chrome.storage.local.get(['proxyEnabled'], (result) => {
-      setProxyEnabled(!!result.proxyEnabled);
+    chrome.storage.local.get(['forwardUrlsEnabled'], (res) => {
+      setIsForwardingOn(!!res.forwardUrlsEnabled);
     });
   }, []);
 
-  function handleToggle() {
-    // If currently disabled and user toggles on => enable
-    if (!proxyEnabled) {
-      chrome.runtime.sendMessage({ command: 'enableProxy' }, (response) => {
-        console.log('enableProxy response:', response);
-        if (response.status === 'ok') {
-          setProxyEnabled(true);
-          setStatus(response.message || '');
-        } else {
-          setStatus(`Error: ${response.error || 'unknown'}`);
-        }
-      });
-    } else {
-      // If currently enabled and user toggles off => disable
-      chrome.runtime.sendMessage({ command: 'disableProxy' }, (response) => {
-        console.log('disableProxy response:', response);
-        if (response.status === 'ok') {
-          setProxyEnabled(false);
-          setStatus(response.message || '');
-        } else {
-          setStatus(`Error: ${response.error || 'unknown'}`);
-        }
-      });
-    }
-  }
+  const toggleForwarding = () => {
+    const nextState = !isForwardingOn;
+    setIsForwardingOn(nextState);
+    chrome.storage.local.set({ forwardUrlsEnabled: nextState }, () => {
+      console.log('Forwarding state updated:', nextState);
+    });
+  };
 
   return (
-    <div style={{ padding: '10px', width: '200px' }}>
-      <h3>Local Proxy</h3>
+    <div style={{ padding: '1rem', width: '220px' }}>
+      <h2>Forward Visited URLs</h2>
       <label>
         <input
           type="checkbox"
-          checked={proxyEnabled}
-          onChange={handleToggle}
+          checked={isForwardingOn}
+          onChange={toggleForwarding}
         />
-        Enable Proxy
+        Enable forwarding
       </label>
-      {status && <p>{status}</p>}
     </div>
   );
 }
