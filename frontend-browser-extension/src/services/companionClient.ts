@@ -1,26 +1,49 @@
 /**
- * companionClient.ts
- *
- * Sends a visited URL to the local companion app for scraping/extraction.
- * Adjust the endpoint to match your local service's port/path.
+ * Handles communication with the local companion app
  */
 
-export async function sendUrlToCompanion(url: string): Promise<void> {
-  try {
-    const response = await fetch("http://127.0.0.1:5000/scrape", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ url })
-    });
+export interface CompanionResponse {
+  page_id: number;
+  message: string;
+}
 
-    if (!response.ok) {
-      console.error(`Failed to send URL to companion app: ${response.statusText}`);
-    } else {
-      console.log(`Successfully sent URL to companion: ${url}`);
+export class CompanionClient {
+  private baseUrl = 'http://127.0.0.1:5000';
+
+  /**
+   * Send a URL to the companion app for processing
+   */
+  async sendUrl(url: string): Promise<CompanionResponse> {
+    try {
+      const response = await fetch(`${this.baseUrl}/process-url`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ url })
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Failed to send URL: ${errorText}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error sending URL to companion:', error);
+      throw error;
     }
-  } catch (error) {
-    console.error("Error communicating with companion app:", error);
+  }
+
+  /**
+   * Check if the companion app is running
+   */
+  async checkHealth(): Promise<boolean> {
+    try {
+      const response = await fetch(`${this.baseUrl}/health`);
+      return response.ok;
+    } catch {
+      return false;
+    }
   }
 }

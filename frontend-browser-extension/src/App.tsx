@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import LoginScreen from './screens/LoginScreen';
-import SelectRoleScreen from './screens/SelectRoleScreen';
-import SelectOrgSizeScreen from './screens/SelectOrgSizeScreen';
-import SelectIndustryScreen from './screens/SelectIndustryScreen';
+import { LoginScreen } from './screens/LoginScreen';
+import { SelectRoleScreen } from './screens/SelectRoleScreen';
+import { SelectOrgSizeScreen } from './screens/SelectOrgSizeScreen';
+import { SelectIndustryScreen } from './screens/SelectIndustryScreen';
 import DeviceLinkerScreen from './screens/DeviceLinkerScreen';
 import CongratulationsScreen from './screens/CongratulationsScreen';
 import StatusViewScreen from './screens/StatusViewScreen';

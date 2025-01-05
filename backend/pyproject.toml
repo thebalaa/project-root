@@ -2,17 +2,24 @@
 [tool.poetry]
 name = "companion-app"
 version = "0.1.0"
-description = "Companion app with multi-step Crawl4AI extraction"
-authors = ["You <email@example.com>"]
+description     = "Companion app with multi-step Crawl4AI extraction"
+authors = ["Matt <m.hans93@gmail.com>"]
+
+# Make sure Poetry knows about your package code:
+packages = [
+  { include = "companion_app" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
 crawl4ai = "*"
 fastapi = "*"
 uvicorn = "*"
+numpy = "<2"
+python-dotenv = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
 
 [tool.poetry.scripts]
-server = "backend.server:run"
+server = "companion_app.server:run"

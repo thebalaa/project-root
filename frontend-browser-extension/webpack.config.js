@@ -2,33 +2,29 @@
 const path = require('path');
 
 module.exports = {
-  // You can keep 'development', but be sure to add a devtool that does NOT use eval.
-  // If you want to create a production build, set mode to 'production' and devtool to 'source-map'.
-  mode: 'development',
-
-  // IMPORTANT: set a devtool that doesn't rely on eval(), e.g., 'source-map' or 'inline-source-map'
-  // 'inline-source-map' still inlines the source map but doesn't rely on eval
-  // For a final extension build, you might opt for devtool: 'source-map' or devtool: false
-  devtool: 'inline-source-map',
-
-  entry: './src/mainController.ts',
+  entry: {
+    popup: './src/popup.tsx',
+    mainController: './src/mainController.ts'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js'
+  },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(ts|tsx)$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
-    ],
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.css']
   },
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-  stats: {
-    errorDetails: true,
-  },
+  devtool: 'cheap-source-map'
 };

@@ -1,20 +1,22 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "es6",
     "module": "commonjs",
-    "lib": ["ES2015", "DOM"],
     "strict": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "jsx": "react"
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "lib": ["dom", "es2015"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "moduleResolution": "node"
   },
   "include": [
-    "./src/**/*"
-, "src/popup.tsx", "dist/contentScript.js"  ],
+    "src/**/*"
+  ],
   "exclude": [
     "node_modules",
-    "./src/encryption/tests/**/*"  // Exclude tests if needed
+    "dist"
   ]
 }

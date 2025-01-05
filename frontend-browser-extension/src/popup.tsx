@@ -1,36 +1,67 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import { StorageService, UserSettings } from './services/storageService';
+import { SettingsPanel } from './components/SettingsPanel';
+import './styles/popup.css';
 
 function Popup() {
-  const [isForwardingOn, setIsForwardingOn] = useState(false);
+  const [settings, setSettings] = useState<UserSettings>({
+    forwardUrlsEnabled: false,
+    preferences: {
+      dataCollection: {
+        enabled: false,
+        types: []
+      }
+    }
+  });
+  const [companionStatus, setCompanionStatus] = useState<'checking' | 'online' | 'offline'>('checking');
 
   useEffect(() => {
-    chrome.storage.local.get(['forwardUrlsEnabled'], (res) => {
-      setIsForwardingOn(!!res.forwardUrlsEnabled);
-    });
+    const loadSettings = async () => {
+      const userSettings = await StorageService.getUserSettings();
+      setSettings(userSettings);
+    };
+
+    loadSettings();
+    checkCompanionStatus();
   }, []);
 
-  const toggleForwarding = () => {
-    const nextState = !isForwardingOn;
-    setIsForwardingOn(nextState);
-    chrome.storage.local.set({ forwardUrlsEnabled: nextState }, () => {
-      console.log('Forwarding state updated:', nextState);
+  const checkCompanionStatus = () => {
+    chrome.runtime.sendMessage({ type: 'CHECK_COMPANION' }, (response) => {
+      setCompanionStatus(response?.isHealthy ? 'online' : 'offline');
     });
   };
 
+  const handleToggleForwarding = async (enabled: boolean) => {
+    const updatedSettings: UserSettings = {
+      ...settings,
+      forwardUrlsEnabled: enabled,
+      preferences: {
+        dataCollection: {
+          enabled,
+          types: settings.preferences?.dataCollection?.types || []
+        }
+      }
+    };
+    
+    await StorageService.updateUserSettings(updatedSettings);
+    setSettings(updatedSettings);
+  };
+
   return (
-    <div style={{ padding: '1rem', width: '220px' }}>
-      <h2>Forward Visited URLs</h2>
-      <label>
-        <input
-          type="checkbox"
-          checked={isForwardingOn}
-          onChange={toggleForwarding}
-        />
-        Enable forwarding
-      </label>
+    <div className="popup-container">
+      <h2>Web Data Collector</h2>
+      <div className="status-indicator">
+        Companion Status: <span className={`status-${companionStatus}`}>{companionStatus.toUpperCase()}</span>
+      </div>
+      <SettingsPanel
+        settings={settings}
+        onToggleForwarding={handleToggleForwarding}
+        companionStatus={companionStatus}
+      />
     </div>
   );
 }
 
-ReactDOM.render(<Popup />, document.getElementById('root'));
+const root = createRoot(document.getElementById('root')!);
+root.render(<Popup />);

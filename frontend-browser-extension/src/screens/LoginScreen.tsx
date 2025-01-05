@@ -1,42 +1,37 @@
 import React, { useState } from 'react';
-import { storeLoginDetails } from '../localCache/localCache';
+import { LocalCache } from '../localCache/localCache';
 
 interface LoginScreenProps {
   onNext: () => void;
 }
 
-const LoginScreen: React.FC<LoginScreenProps> = ({ onNext }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+export const LoginScreen: React.FC<LoginScreenProps> = ({ onNext }) => {
+  const [email, setEmail] = useState('');
 
-  const handleLogin = () => {
-    // Example: Interact with localCache or a service
-    storeLoginDetails(username, password);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await LocalCache.saveUserProfile({ email });
     onNext();
   };
 
   return (
     <div className="screenContainer">
       <h2>Login</h2>
-      <div className="inputGroup">
-        <label>Username</label>
-        <input 
-          value={username}
-          onChange={(e) => setUsername(e.target.value)} 
-          type="text" 
-        />
-      </div>
-      <div className="inputGroup">
-        <label>Password</label>
-        <input 
-          value={password}
-          onChange={(e) => setPassword(e.target.value)} 
-          type="password" 
-        />
-      </div>
-      <button className="nextButton" onClick={handleLogin}>Login</button>
+      <form onSubmit={handleSubmit}>
+        <div className="inputGroup">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="buttonRow">
+          <button type="submit" className="nextButton">Next</button>
+        </div>
+      </form>
     </div>
   );
-};
-
-export default LoginScreen; 
+}; 
