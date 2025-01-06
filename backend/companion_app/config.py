@@ -1,13 +1,27 @@
 import os
 from dotenv import load_dotenv
+import pathlib
 
-# Load environment variables from a .env file in the project root
-load_dotenv()
+# Debug: Print current working directory
+print(f"DEBUG: Current working directory: {os.getcwd()}")
 
-API_KEY = os.getenv("API_KEY", "")
-os.environ["OPENAI_API_KEY"] = API_KEY  # crawl4ai needs this
+# Debug: Check if .env file exists
+env_path = "companion_app/.env"
+print(f"DEBUG: .env file exists at {env_path}? {pathlib.Path(env_path).exists()}")
 
-# DeepSeek's OpenAI-compatible endpoint
-DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1"
+load_dotenv(dotenv_path=env_path)
 
-# You could include other config items here as well 
+# Switch to OpenAI key
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+
+print(f"DEBUG: OpenAI key found? {repr(OPENAI_API_KEY)}") 
+# Optionally, define a BASE_URL if you want, but for most OpenAI usage,
+# you can rely on the default endpoint. For example:
+# OPENAI_BASE_URL = "https://api.openai.com"  # Typically default
+
+# You can include other config items below as well 
+
+# Debug: Print all environment variables (be careful with sensitive data)
+print("DEBUG: All environment variables:")
+for key in ["OPENAI_API_KEY", "PATH", "PWD"]:
+    print(f"  {key}: {'[exists]' if os.getenv(key) else '[missing]'}") 

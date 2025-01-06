@@ -5,4 +5,6 @@
 
 /target
 node_modules
-.env
+
+# Ignore all .env files anywhere in the repo
+**/.env

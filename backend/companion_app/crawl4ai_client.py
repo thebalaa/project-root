@@ -16,7 +16,8 @@ from .db_utils import (
     db_insert_llm,
     db_insert_cosine
 )
-from .config import API_KEY, DEEPSEEK_BASE_URL
+from .config import OPENAI_API_KEY
+from .models import KnowledgeGraph
 
 async def scrape_url(url: str, verbose: bool = True) -> dict:
     """
@@ -92,29 +93,42 @@ async def scrape_and_extract(url: str, use_jsoncss: bool = True,
 
         # LLM example
         if use_llm:
+            print("Initializing LLM extraction with OpenAI...")
             knowledge_graph_strategy = LLMExtractionStrategy(
-                model="deepseek-chat",
-                api_key=API_KEY,
-                api_base=DEEPSEEK_BASE_URL,
-                headers={
-                    "Content-Type": "application/json",
-                    "Authorization": f"Bearer {API_KEY}"
-                },
-                config={
-                    "temperature": 0.7,
-                    "max_tokens": 2000,
-                    "model": "deepseek-chat"
-                },
-                schema={"entities": [], "relationships": []},
+                provider="openai/gpt-4o",
+                api_token=OPENAI_API_KEY,
+                schema=KnowledgeGraph.schema(),
                 extraction_type="schema",
-                instruction="Extract key entities and relationships from the text. Provide a JSON structure."
+                instruction="""
+                    Extract entities and their relationships from the content to build a knowledge graph.
+                    For each entity, provide a name and description.
+                    For each relationship, identify two entities and describe how they are connected.
+                """,
+                chunk_token_threshold=3000,
+                overlap_rate=0.2
             )
             
-            llm_res = await crawler.arun(url=url,
-                                         extraction_strategy=knowledge_graph_strategy,
-                                         cache_mode=CacheMode.BYPASS)
-            if llm_res.extracted_content:
-                db_insert_llm(page_id, "knowledge_graph", llm_res.extracted_content)
+            try:
+                llm_res = await crawler.arun(
+                    url=url,
+                    extraction_strategy=knowledge_graph_strategy,
+                    cache_mode=CacheMode.BYPASS
+                )
+                print(f"LLM Response: {llm_res}")
+                print(f"Extracted Content: {llm_res.extracted_content}")
+                print(f"LLM extraction completed. Success: {bool(llm_res.extracted_content)}")
+                if llm_res.extracted_content:
+                    db_insert_llm(page_id, "knowledge_graph", llm_res.extracted_content)
+            except Exception as e:
+                print(f"LLM extraction failed: {str(e)}")
+                print(f"Error type: {type(e)}")
+                # Still store the error in the database for tracking
+                error_content = json.dumps([{
+                    "error": True,
+                    "message": str(e),
+                    "error_type": str(type(e))
+                }])
+                db_insert_llm(page_id, "knowledge_graph", error_content)
 
         # Cosine example
         if use_cosine:

@@ -11,12 +11,13 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 crawl4ai = "*"
 fastapi = "*"
 uvicorn = "*"
 numpy = "<2"
 python-dotenv = "^1.0.1"
+openai = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
