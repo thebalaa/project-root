@@ -8,3 +8,19 @@ node_modules
 
 # Ignore all .env files anywhere in the repo
 **/.env
+
+# Add to your existing .gitignore
+backend/eliza-starter/.git/
+backend/eliza-starter/.github/
+backend/eliza-starter/.vscode/
+backend/eliza-starter/.vscode-test/
+backend/eliza-starter/.vscode-test-server/
+backend/eliza-starter/.vscode-test-server-2/
+backend/eliza-starter/.vscode-test-server-3/
+backend/eliza-starter/.vscode-test-server-4/
+backend/eliza-starter/.vscode-test-server-5/
+backend/eliza-starter/.vscode-test-server-6/
+backend/eliza-starter/.vscode-test-server-7/
+backend/eliza-starter/.vscode-test-server-8/
+backend/eliza-starter/.vscode-test-server-9/
+backend/eliza-starter/.vscode-test-server-10/
