@@ -24,3 +24,6 @@ backend/eliza-starter/.vscode-test-server-7/
 backend/eliza-starter/.vscode-test-server-8/
 backend/eliza-starter/.vscode-test-server-9/
 backend/eliza-starter/.vscode-test-server-10/
+
+# Ignore nested .git directories
+**/.git/

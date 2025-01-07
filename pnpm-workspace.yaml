@@ -1,8 +1,0 @@
-packages:
-  # Workspace packages
-  - 'packages/*'
-  - 'backend/*'
-  
-  # Exclude build artifacts and dependencies
-  - '!**/node_modules'
-  - '!**/dist' 
