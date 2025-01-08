@@ -66,6 +66,47 @@ def init_db():
     )
     """)
 
+    # New internal knowledge tables
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS extractions_jsoncss_internal (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        page_id INTEGER NOT NULL,
+        schema_name TEXT,
+        extracted_data TEXT,
+        confidence_score FLOAT,
+        metadata TEXT,
+        created_at TEXT,
+        FOREIGN KEY(page_id) REFERENCES pages(id)
+    )
+    """)
+
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS extractions_llm_internal (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        page_id INTEGER NOT NULL,
+        strategy_type TEXT,
+        extracted_content TEXT,
+        raw_extraction_text TEXT,
+        confidence_score FLOAT,
+        metadata TEXT,
+        created_at TEXT,
+        FOREIGN KEY(page_id) REFERENCES pages(id)
+    )
+    """)
+
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS extractions_cosine_internal (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        page_id INTEGER NOT NULL,
+        cluster_data TEXT,
+        params TEXT,
+        confidence_score FLOAT,
+        metadata TEXT,
+        created_at TEXT,
+        FOREIGN KEY(page_id) REFERENCES pages(id)
+    )
+    """)
+
     conn.commit()
     conn.close()
 
@@ -128,5 +169,47 @@ def db_insert_cosine(page_id: int, cluster_data: str, params: str = None):
     INSERT INTO extractions_cosine (page_id, cluster_data, params, created_at)
     VALUES (?, ?, ?, ?)
     """, (page_id, cluster_data, params, datetime.now().isoformat()))
+    conn.commit()
+    conn.close()
+
+# Add new database utility functions for internal knowledge
+def db_insert_jsoncss_internal(page_id: int, schema_name: str, extracted_data: str, 
+                              confidence_score: float = None, metadata: str = None):
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute("""
+    INSERT INTO extractions_jsoncss_internal 
+    (page_id, schema_name, extracted_data, confidence_score, metadata, created_at)
+    VALUES (?, ?, ?, ?, ?, ?)
+    """, (page_id, schema_name, extracted_data, confidence_score, metadata, 
+          datetime.now().isoformat()))
+    conn.commit()
+    conn.close()
+
+def db_insert_llm_internal(page_id: int, strategy_type: str, extracted_content: str, 
+                          raw_text: str = None, confidence_score: float = None, 
+                          metadata: str = None):
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute("""
+    INSERT INTO extractions_llm_internal 
+    (page_id, strategy_type, extracted_content, raw_extraction_text, 
+     confidence_score, metadata, created_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+    """, (page_id, strategy_type, extracted_content, raw_text, 
+          confidence_score, metadata, datetime.now().isoformat()))
+    conn.commit()
+    conn.close()
+
+def db_insert_cosine_internal(page_id: int, cluster_data: str, params: str = None,
+                             confidence_score: float = None, metadata: str = None):
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute("""
+    INSERT INTO extractions_cosine_internal 
+    (page_id, cluster_data, params, confidence_score, metadata, created_at)
+    VALUES (?, ?, ?, ?, ?, ?)
+    """, (page_id, cluster_data, params, confidence_score, metadata, 
+          datetime.now().isoformat()))
     conn.commit()
     conn.close() 
