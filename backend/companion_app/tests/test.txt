@@ -1,0 +1,662 @@
+                               'Guide 40 Types of Bully Breeds List: Facts, '
+                               'Myths, and Care Tips Brindle French Bulldog: '
+                               'Vet Guide Discover the unique charm of brindle '
+                               'French Bulldogs! Unveil their history, coat '
+                               'patterns, and AKC recognition since 1898. '
+                               'Learn essential care tips, from diet to '
+                               'training, and find trusted sources for '
+                               "adoption or breeding. Ensure your pet's health "
+                               'and happiness by verifying breeder credibility '
+                               'and ethical practices for a lifelong '
+                               'companion. Fluffy French Bulldog: Vet Ultimate '
+                               'Guide Discover the charm of fluffy French '
+                               'Bulldogs! Explore their unique heritage, '
+                               'temperament, and physical traits, along with '
+                               'essential tips on health care and finding '
+                               'reputable breeders. Learn why these rare, '
+                               'long-haired Frenchies make loving companions '
+                               'despite not being AKC-recognized. From costs '
+                               'to breeder selection, this guide has '
+                               'everything you need to know about fluffy '
+                               'French Bulldogs. America’s 2024 Favorite Dog: '
+                               'French Bulldog Victory! French Bulldog Puppy '
+                               'for Sale: Expert Tips French Bulldog Mixes: '
+                               'Guide to Frenchie Designer Breeds What Is '
+                               'Retro Pug? A Complete Guide Guide to the Best '
+                               'French Bulldog Jackets in 2023 Luxating '
+                               'Patella in French Bulldogs Top 12 French '
+                               'Bulldog Christmas Outfits in 2023 Top 14 '
+                               'French Bulldog Beds In 2024 Page 1 Page 2 Page '
+                               '3 … Page 24',
+                       'format': 'jpg',
+                       'group_id': 27,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2023/11/BLOG-600x120.jpg',
+                       'type': 'image',
+                       'width': '600w,'},
+                      {'alt': 'BLOG',
+                       'desc': 'French Bulldog News Welcome to the Frenchie '
+                               'News section of our blog, where we celebrate '
+                               'over 10 years of passion and dedication to '
+                               'French Bulldogs. Our journey began a decade '
+                               'ago with a mission to understand and cater to '
+                               'the unique needs of these charming canines. '
+                               'Today, we’re proud to share our wealth of '
+                               'knowledge and experience with French Bulldog '
+                               'enthusiasts worldwide. In this space, we delve '
+                               'deep into the world of Frenchies, covering '
+                               'everything from essential health tips to the '
+                               'latest trends in French Bulldog care. Our '
+                               'articles are carefully crafted, combining our '
+                               'decade-long expertise with the latest '
+                               'research, to provide you with accurate, '
+                               'insightful, and engaging content. Health is at '
+                               'the forefront of our concerns. We understand '
+                               'that the well-being of your Frenchie is '
+                               'paramount. Hence, our health-focused articles '
+                               'offer practical advice on nutrition, exercise, '
+                               'and common health issues specific to the '
+                               'breed. We believe in proactive care, helping '
+                               'you keep your French Bulldog happy and healthy '
+                               'for years to come. We also explore the unique '
+                               'characteristics and quirks of French Bulldogs. '
+                               'Our breed information sections are rich with '
+                               'details about their behavior, personality, and '
+                               'how to cater to their specific needs. Whether '
+                               'you’re a new owner or a seasoned Frenchie '
+                               'enthusiast, there’s always something new to '
+                               'learn about these lovable dogs. Trends in '
+                               'French Bulldog care and lifestyle are '
+                               'constantly evolving, and we’re here to keep '
+                               'you updated. From the latest in fashionable '
+                               'accessories and clothes tailored for Frenchies '
+                               'to innovative care products, we ensure you’re '
+                               'always in the know. Join us on this journey as '
+                               'we continue to explore the delightful world of '
+                               'French Bulldogs. Our Frenchie News is more '
+                               'than just a blog; it’s a community for '
+                               'sharing, learning, and celebrating the joy '
+                               'these wonderful dogs bring into our lives. '
+                               'What Is The Frug? Essential Tips & Ultimate '
+                               'Guide 40 Types of Bully Breeds List: Facts, '
+                               'Myths, and Care Tips Brindle French Bulldog: '
+                               'Vet Guide Discover the unique charm of brindle '
+                               'French Bulldogs! Unveil their history, coat '
+                               'patterns, and AKC recognition since 1898. '
+                               'Learn essential care tips, from diet to '
+                               'training, and find trusted sources for '
+                               "adoption or breeding. Ensure your pet's health "
+                               'and happiness by verifying breeder credibility '
+                               'and ethical practices for a lifelong '
+                               'companion. Fluffy French Bulldog: Vet Ultimate '
+                               'Guide Discover the charm of fluffy French '
+                               'Bulldogs! Explore their unique heritage, '
+                               'temperament, and physical traits, along with '
+                               'essential tips on health care and finding '
+                               'reputable breeders. Learn why these rare, '
+                               'long-haired Frenchies make loving companions '
+                               'despite not being AKC-recognized. From costs '
+                               'to breeder selection, this guide has '
+                               'everything you need to know about fluffy '
+                               'French Bulldogs. America’s 2024 Favorite Dog: '
+                               'French Bulldog Victory! French Bulldog Puppy '
+                               'for Sale: Expert Tips French Bulldog Mixes: '
+                               'Guide to Frenchie Designer Breeds What Is '
+                               'Retro Pug? A Complete Guide Guide to the Best '
+                               'French Bulldog Jackets in 2023 Luxating '
+                               'Patella in French Bulldogs Top 12 French '
+                               'Bulldog Christmas Outfits in 2023 Top 14 '
+                               'French Bulldog Beds In 2024 Page 1 Page 2 Page '
+                               '3 … Page 24',
+                       'format': 'jpg',
+                       'group_id': 27,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2023/11/BLOG-768x154.jpg',
+                       'type': 'image',
+                       'width': '768w,'},
+                      {'alt': 'BLOG',
+                       'desc': 'French Bulldog News Welcome to the Frenchie '
+                               'News section of our blog, where we celebrate '
+                               'over 10 years of passion and dedication to '
+                               'French Bulldogs. Our journey began a decade '
+                               'ago with a mission to understand and cater to '
+                               'the unique needs of these charming canines. '
+                               'Today, we’re proud to share our wealth of '
+                               'knowledge and experience with French Bulldog '
+                               'enthusiasts worldwide. In this space, we delve '
+                               'deep into the world of Frenchies, covering '
+                               'everything from essential health tips to the '
+                               'latest trends in French Bulldog care. Our '
+                               'articles are carefully crafted, combining our '
+                               'decade-long expertise with the latest '
+                               'research, to provide you with accurate, '
+                               'insightful, and engaging content. Health is at '
+                               'the forefront of our concerns. We understand '
+                               'that the well-being of your Frenchie is '
+                               'paramount. Hence, our health-focused articles '
+                               'offer practical advice on nutrition, exercise, '
+                               'and common health issues specific to the '
+                               'breed. We believe in proactive care, helping '
+                               'you keep your French Bulldog happy and healthy '
+                               'for years to come. We also explore the unique '
+                               'characteristics and quirks of French Bulldogs. '
+                               'Our breed information sections are rich with '
+                               'details about their behavior, personality, and '
+                               'how to cater to their specific needs. Whether '
+                               'you’re a new owner or a seasoned Frenchie '
+                               'enthusiast, there’s always something new to '
+                               'learn about these lovable dogs. Trends in '
+                               'French Bulldog care and lifestyle are '
+                               'constantly evolving, and we’re here to keep '
+                               'you updated. From the latest in fashionable '
+                               'accessories and clothes tailored for Frenchies '
+                               'to innovative care products, we ensure you’re '
+                               'always in the know. Join us on this journey as '
+                               'we continue to explore the delightful world of '
+                               'French Bulldogs. Our Frenchie News is more '
+                               'than just a blog; it’s a community for '
+                               'sharing, learning, and celebrating the joy '
+                               'these wonderful dogs bring into our lives. '
+                               'What Is The Frug? Essential Tips & Ultimate '
+                               'Guide 40 Types of Bully Breeds List: Facts, '
+                               'Myths, and Care Tips Brindle French Bulldog: '
+                               'Vet Guide Discover the unique charm of brindle '
+                               'French Bulldogs! Unveil their history, coat '
+                               'patterns, and AKC recognition since 1898. '
+                               'Learn essential care tips, from diet to '
+                               'training, and find trusted sources for '
+                               "adoption or breeding. Ensure your pet's health "
+                               'and happiness by verifying breeder credibility '
+                               'and ethical practices for a lifelong '
+                               'companion. Fluffy French Bulldog: Vet Ultimate '
+                               'Guide Discover the charm of fluffy French '
+                               'Bulldogs! Explore their unique heritage, '
+                               'temperament, and physical traits, along with '
+                               'essential tips on health care and finding '
+                               'reputable breeders. Learn why these rare, '
+                               'long-haired Frenchies make loving companions '
+                               'despite not being AKC-recognized. From costs '
+                               'to breeder selection, this guide has '
+                               'everything you need to know about fluffy '
+                               'French Bulldogs. America’s 2024 Favorite Dog: '
+                               'French Bulldog Victory! French Bulldog Puppy '
+                               'for Sale: Expert Tips French Bulldog Mixes: '
+                               'Guide to Frenchie Designer Breeds What Is '
+                               'Retro Pug? A Complete Guide Guide to the Best '
+                               'French Bulldog Jackets in 2023 Luxating '
+                               'Patella in French Bulldogs Top 12 French '
+                               'Bulldog Christmas Outfits in 2023 Top 14 '
+                               'French Bulldog Beds In 2024 Page 1 Page 2 Page '
+                               '3 … Page 24',
+                       'format': 'jpg',
+                       'group_id': 27,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2023/11/BLOG-1536x308.jpg',
+                       'type': 'image',
+                       'width': '1536'},
+                      {'alt': 'Frug',
+                       'desc': 'What Is The Frug? Essential Tips & Ultimate '
+                               'Guide',
+                       'format': 'jpg',
+                       'group_id': 28,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/08/frug.jpg',
+                       'type': 'image',
+                       'width': None},
+                      {'alt': 'Frug',
+                       'desc': 'What Is The Frug? Essential Tips & Ultimate '
+                               'Guide',
+                       'format': 'jpg',
+                       'group_id': 28,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/08/frug-768x432.jpg',
+                       'type': 'image',
+                       'width': '768w,'},
+                      {'alt': 'Frug',
+                       'desc': 'What Is The Frug? Essential Tips & Ultimate '
+                               'Guide',
+                       'format': 'jpg',
+                       'group_id': 28,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/08/frug-600x338.jpg',
+                       'type': 'image',
+                       'width': '600'},
+                      {'alt': 'Bully Breeds',
+                       'desc': '40 Types of Bully Breeds List: Facts, Myths, '
+                               'and Care Tips',
+                       'format': 'jpg',
+                       'group_id': 29,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/07/bully-breeds.jpg',
+                       'type': 'image',
+                       'width': None},
+                      {'alt': 'Bully Breeds',
+                       'desc': '40 Types of Bully Breeds List: Facts, Myths, '
+                               'and Care Tips',
+                       'format': 'jpg',
+                       'group_id': 29,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/07/bully-breeds-768x432.jpg',
+                       'type': 'image',
+                       'width': '768w,'},
+                      {'alt': 'Bully Breeds',
+                       'desc': '40 Types of Bully Breeds List: Facts, Myths, '
+                               'and Care Tips',
+                       'format': 'jpg',
+                       'group_id': 29,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/07/bully-breeds-600x338.jpg',
+                       'type': 'image',
+                       'width': '600'},
+                      {'alt': 'Brindle French Bulldog',
+                       'desc': 'Brindle French Bulldog: Vet Guide Discover the '
+                               'unique charm of brindle French Bulldogs! '
+                               'Unveil their history, coat patterns, and AKC '
+                               'recognition since 1898. Learn essential care '
+                               'tips, from diet to training, and find trusted '
+                               'sources for adoption or breeding. Ensure your '
+                               "pet's health and happiness by verifying "
+                               'breeder credibility and ethical practices for '
+                               'a lifelong companion.',
+                       'format': 'jpg',
+                       'group_id': 30,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/07/Brindle-French-Bulldog.jpg',
+                       'type': 'image',
+                       'width': None},
+                      {'alt': 'Brindle French Bulldog',
+                       'desc': 'Brindle French Bulldog: Vet Guide Discover the '
+                               'unique charm of brindle French Bulldogs! '
+                               'Unveil their history, coat patterns, and AKC '
+                               'recognition since 1898. Learn essential care '
+                               'tips, from diet to training, and find trusted '
+                               'sources for adoption or breeding. Ensure your '
+                               "pet's health and happiness by verifying "
+                               'breeder credibility and ethical practices for '
+                               'a lifelong companion.',
+                       'format': 'jpg',
+                       'group_id': 30,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/07/Brindle-French-Bulldog-768x432.jpg',
+                       'type': 'image',
+                       'width': '768w,'},
+                      {'alt': 'Brindle French Bulldog',
+                       'desc': 'Brindle French Bulldog: Vet Guide Discover the '
+                               'unique charm of brindle French Bulldogs! '
+                               'Unveil their history, coat patterns, and AKC '
+                               'recognition since 1898. Learn essential care '
+                               'tips, from diet to training, and find trusted '
+                               'sources for adoption or breeding. Ensure your '
+                               "pet's health and happiness by verifying "
+                               'breeder credibility and ethical practices for '
+                               'a lifelong companion.',
+                       'format': 'jpg',
+                       'group_id': 30,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/07/Brindle-French-Bulldog-600x338.jpg',
+                       'type': 'image',
+                       'width': '600'},
+                      {'alt': 'Fluffy French Bulldog',
+                       'desc': 'Fluffy French Bulldog: Vet Ultimate Guide '
+                               'Discover the charm of fluffy French Bulldogs! '
+                               'Explore their unique heritage, temperament, '
+                               'and physical traits, along with essential tips '
+                               'on health care and finding reputable breeders. '
+                               'Learn why these rare, long-haired Frenchies '
+                               'make loving companions despite not being '
+                               'AKC-recognized. From costs to breeder '
+                               'selection, this guide has everything you need '
+                               'to know about fluffy French Bulldogs.',
+                       'format': 'jpg',
+                       'group_id': 31,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/07/fluffy-french-bulldog.jpg',
+                       'type': 'image',
+                       'width': None},
+                      {'alt': 'Fluffy French Bulldog',
+                       'desc': 'Fluffy French Bulldog: Vet Ultimate Guide '
+                               'Discover the charm of fluffy French Bulldogs! '
+                               'Explore their unique heritage, temperament, '
+                               'and physical traits, along with essential tips '
+                               'on health care and finding reputable breeders. '
+                               'Learn why these rare, long-haired Frenchies '
+                               'make loving companions despite not being '
+                               'AKC-recognized. From costs to breeder '
+                               'selection, this guide has everything you need '
+                               'to know about fluffy French Bulldogs.',
+                       'format': 'jpg',
+                       'group_id': 31,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/07/fluffy-french-bulldog-768x463.jpg',
+                       'type': 'image',
+                       'width': '768w,'},
+                      {'alt': 'Fluffy French Bulldog',
+                       'desc': 'Fluffy French Bulldog: Vet Ultimate Guide '
+                               'Discover the charm of fluffy French Bulldogs! '
+                               'Explore their unique heritage, temperament, '
+                               'and physical traits, along with essential tips '
+                               'on health care and finding reputable breeders. '
+                               'Learn why these rare, long-haired Frenchies '
+                               'make loving companions despite not being '
+                               'AKC-recognized. From costs to breeder '
+                               'selection, this guide has everything you need '
+                               'to know about fluffy French Bulldogs.',
+                       'format': 'jpg',
+                       'group_id': 31,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/07/fluffy-french-bulldog-600x362.jpg',
+                       'type': 'image',
+                       'width': '600'},
+                      {'alt': "America's 2024 Favorite Dog",
+                       'desc': 'America’s 2024 Favorite Dog: French Bulldog '
+                               'Victory!',
+                       'format': 'jpg',
+                       'group_id': 32,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/04/Americas-2024-Favorite-Dog.jpg',
+                       'type': 'image',
+                       'width': None},
+                      {'alt': "America's 2024 Favorite Dog",
+                       'desc': 'America’s 2024 Favorite Dog: French Bulldog '
+                               'Victory!',
+                       'format': 'jpg',
+                       'group_id': 32,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/04/Americas-2024-Favorite-Dog-768x768.jpg',
+                       'type': 'image',
+                       'width': '768w,'},
+                      {'alt': "America's 2024 Favorite Dog",
+                       'desc': 'America’s 2024 Favorite Dog: French Bulldog '
+                               'Victory!',
+                       'format': 'jpg',
+                       'group_id': 32,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/04/Americas-2024-Favorite-Dog-600x600.jpg',
+                       'type': 'image',
+                       'width': '600w,'},
+                      {'alt': "America's 2024 Favorite Dog",
+                       'desc': 'America’s 2024 Favorite Dog: French Bulldog '
+                               'Victory!',
+                       'format': 'jpg',
+                       'group_id': 32,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/04/Americas-2024-Favorite-Dog-100x100.jpg',
+                       'type': 'image',
+                       'width': '100w,'},
+                      {'alt': "America's 2024 Favorite Dog",
+                       'desc': 'America’s 2024 Favorite Dog: French Bulldog '
+                               'Victory!',
+                       'format': 'jpg',
+                       'group_id': 32,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/04/Americas-2024-Favorite-Dog-50x50.jpg',
+                       'type': 'image',
+                       'width': '50'},
+                      {'alt': 'French bulldog puppy for sale in black pied '
+                              'color',
+                       'desc': 'French Bulldog Puppy for Sale: Expert Tips',
+                       'format': 'jpg',
+                       'group_id': 33,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/04/french-bulldog-puppy-for-sale-pied-color.jpg',
+                       'type': 'image',
+                       'width': None},
+                      {'alt': 'French bulldog puppy for sale in black pied '
+                              'color',
+                       'desc': 'French Bulldog Puppy for Sale: Expert Tips',
+                       'format': 'jpg',
+                       'group_id': 33,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/04/french-bulldog-puppy-for-sale-pied-color-768x768.jpg',
+                       'type': 'image',
+                       'width': '768w,'},
+                      {'alt': 'French bulldog puppy for sale in black pied '
+                              'color',
+                       'desc': 'French Bulldog Puppy for Sale: Expert Tips',
+                       'format': 'jpg',
+                       'group_id': 33,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/04/french-bulldog-puppy-for-sale-pied-color-600x600.jpg',
+                       'type': 'image',
+                       'width': '600w,'},
+                      {'alt': 'French bulldog puppy for sale in black pied '
+                              'color',
+                       'desc': 'French Bulldog Puppy for Sale: Expert Tips',
+                       'format': 'jpg',
+                       'group_id': 33,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/04/french-bulldog-puppy-for-sale-pied-color-100x100.jpg',
+                       'type': 'image',
+                       'width': '100w,'},
+                      {'alt': 'French bulldog puppy for sale in black pied '
+                              'color',
+                       'desc': 'French Bulldog Puppy for Sale: Expert Tips',
+                       'format': 'jpg',
+                       'group_id': 33,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/04/french-bulldog-puppy-for-sale-pied-color-50x50.jpg',
+                       'type': 'image',
+                       'width': '50'},
+                      {'alt': 'French Bulldog mixes showing by black Frenchie '
+                              'and small Chihuahua',
+                       'desc': 'French Bulldog Mixes: Guide to Frenchie '
+                               'Designer Breeds',
+                       'format': 'jpg',
+                       'group_id': 34,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/02/French-Bulldog-Mixes.jpg',
+                       'type': 'image',
+                       'width': None},
+                      {'alt': 'French Bulldog mixes showing by black Frenchie '
+                              'and small Chihuahua',
+                       'desc': 'French Bulldog Mixes: Guide to Frenchie '
+                               'Designer Breeds',
+                       'format': 'jpg',
+                       'group_id': 34,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/02/French-Bulldog-Mixes-768x512.jpg',
+                       'type': 'image',
+                       'width': '768w,'},
+                      {'alt': 'French Bulldog mixes showing by black Frenchie '
+                              'and small Chihuahua',
+                       'desc': 'French Bulldog Mixes: Guide to Frenchie '
+                               'Designer Breeds',
+                       'format': 'jpg',
+                       'group_id': 34,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/02/French-Bulldog-Mixes-600x400.jpg',
+                       'type': 'image',
+                       'width': '600'},
+                      {'alt': 'Retro Pug',
+                       'desc': 'What Is Retro Pug? A Complete Guide',
+                       'format': 'jpg',
+                       'group_id': 35,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/02/the-retro-pug.jpg',
+                       'type': 'image',
+                       'width': None},
+                      {'alt': 'Retro Pug',
+                       'desc': 'What Is Retro Pug? A Complete Guide',
+                       'format': 'jpg',
+                       'group_id': 35,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/02/the-retro-pug-768x768.jpg',
+                       'type': 'image',
+                       'width': '768w,'},
+                      {'alt': 'Retro Pug',
+                       'desc': 'What Is Retro Pug? A Complete Guide',
+                       'format': 'jpg',
+                       'group_id': 35,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/02/the-retro-pug-600x600.jpg',
+                       'type': 'image',
+                       'width': '600w,'},
+                      {'alt': 'Retro Pug',
+                       'desc': 'What Is Retro Pug? A Complete Guide',
+                       'format': 'jpg',
+                       'group_id': 35,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/02/the-retro-pug-100x100.jpg',
+                       'type': 'image',
+                       'width': '100w,'},
+                      {'alt': 'Retro Pug',
+                       'desc': 'What Is Retro Pug? A Complete Guide',
+                       'format': 'jpg',
+                       'group_id': 35,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2024/02/the-retro-pug-50x50.jpg',
+                       'type': 'image',
+                       'width': '50'},
+                      {'alt': 'Guide to the Best French Bulldog Jackets in '
+                              '2023',
+                       'desc': 'Guide to the Best French Bulldog Jackets in '
+                               '2023',
+                       'format': 'jpg',
+                       'group_id': 36,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2023/10/Guide-to-the-Best-French-Bulldog-Jackets-in-2023.jpg',
+                       'type': 'image',
+                       'width': None},
+                      {'alt': 'Guide to the Best French Bulldog Jackets in '
+                              '2023',
+                       'desc': 'Guide to the Best French Bulldog Jackets in '
+                               '2023',
+                       'format': 'jpg',
+                       'group_id': 36,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2023/10/Guide-to-the-Best-French-Bulldog-Jackets-in-2023-600x600.jpg',
+                       'type': 'image',
+                       'width': '600w,'},
+                      {'alt': 'Guide to the Best French Bulldog Jackets in '
+                              '2023',
+                       'desc': 'Guide to the Best French Bulldog Jackets in '
+                               '2023',
+                       'format': 'jpg',
+                       'group_id': 36,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2023/10/Guide-to-the-Best-French-Bulldog-Jackets-in-2023-100x100.jpg',
+                       'type': 'image',
+                       'width': '100w,'},
+                      {'alt': 'Guide to the Best French Bulldog Jackets in '
+                              '2023',
+                       'desc': 'Guide to the Best French Bulldog Jackets in '
+                               '2023',
+                       'format': 'jpg',
+                       'group_id': 36,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2023/10/Guide-to-the-Best-French-Bulldog-Jackets-in-2023-768x768.jpg',
+                       'type': 'image',
+                       'width': '768'},
+                      {'alt': 'luxating patella in french bulldogs',
+                       'desc': 'Luxating Patella in French Bulldogs',
+                       'format': 'jpg',
+                       'group_id': 37,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2022/04/female-frenchie.jpg',
+                       'type': 'image',
+                       'width': None},
+                      {'alt': 'luxating patella in french bulldogs',
+                       'desc': 'Luxating Patella in French Bulldogs',
+                       'format': 'jpg',
+                       'group_id': 37,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2022/04/female-frenchie-600x400.jpg',
+                       'type': 'image',
+                       'width': '600'},
+                      {'alt': '',
+                       'desc': 'Top 12 French Bulldog Christmas Outfits in '
+                               '2023',
+                       'format': 'jpg',
+                       'group_id': 38,
+                       'score': 4,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2020/11/my-frenchie_t20_E4gZKJ.jpg',
+                       'type': 'image',
+                       'width': None},
+                      {'alt': '',
+                       'desc': 'Top 12 French Bulldog Christmas Outfits in '
+                               '2023',
+                       'format': 'jpg',
+                       'group_id': 38,
+                       'score': 4,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2020/11/my-frenchie_t20_E4gZKJ-600x413.jpg',
+                       'type': 'image',
+                       'width': '600w,'},
+                      {'alt': '',
+                       'desc': 'Top 12 French Bulldog Christmas Outfits in '
+                               '2023',
+                       'format': 'jpg',
+                       'group_id': 38,
+                       'score': 4,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2020/11/my-frenchie_t20_E4gZKJ-768x528.jpg',
+                       'type': 'image',
+                       'width': '768'},
+                      {'alt': 'luxating pattella in french bulldogs',
+                       'desc': 'Top 14 French Bulldog Beds In 2024',
+                       'format': 'jpg',
+                       'group_id': 39,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2023/09/frenchie-9.jpg',
+                       'type': 'image',
+                       'width': None},
+                      {'alt': 'luxating pattella in french bulldogs',
+                       'desc': 'Top 14 French Bulldog Beds In 2024',
+                       'format': 'jpg',
+                       'group_id': 39,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2023/09/frenchie-9-600x401.jpg',
+                       'type': 'image',
+                       'width': '600w,'},
+                      {'alt': 'luxating pattella in french bulldogs',
+                       'desc': 'Top 14 French Bulldog Beds In 2024',
+                       'format': 'jpg',
+                       'group_id': 39,
+                       'score': 5,
+                       'src': 'https://www.frenchbulldogbreed.net/wp-content/uploads/2023/09/frenchie-9-768x513.jpg',
+                       'type': 'image',
+                       'width': '768'}],
+           'videos': []},
+ 'metadata': {'author': None,
+              'description': None,
+              'keywords': None,
+              'og:locale': 'en_US',
+              'og:site_name': 'French Bulldog Breed Essentials: Shop & Learn',
+              'og:title': 'Blog - French Bulldog Breed Essentials: Shop & '
+                          'Learn',
+              'og:type': 'article',
+              'og:url': 'https://www.frenchbulldogbreed.net/category/blog/',
+              'title': 'Blog - French Bulldog Breed Essentials: Shop & Learn',
+              'twitter:card': 'summary_large_image',
+              'twitter:title': 'Blog - French Bulldog Breed Essentials: Shop & '
+                               'Learn'},
+ 'pdf': None,
+ 'response_headers': {'accept-ranges': 'bytes',
+                      'alt-svc': 'h3=":443"; ma=2592000, h3-29=":443"; '
+                                 'ma=2592000, h3-Q050=":443"; ma=2592000, '
+                                 'h3-Q046=":443"; ma=2592000, h3-Q043=":443"; '
+                                 'ma=2592000, quic=":443"; ma=2592000; '
+                                 'v="43,46"',
+                      'cache-control': 'max-age=0, no-cache, no-store, '
+                                       'must-revalidate',
+                      'content-encoding': 'br',
+                      'content-length': '31583',
+                      'content-security-policy': 'upgrade-insecure-requests;',
+                      'content-type': 'text/html',
+                      'date': 'Thu, 09 Jan 2025 01:12:15 GMT',
+                      'expires': 'Mon, 29 Oct 1923 20:30:00 GMT',
+                      'last-modified': 'Mon, 18 Nov 2024 11:48:33 GMT',
+                      'pragma': 'no-cache',
+                      'server': 'LiteSpeed',
+                      'strict-transport-security': 'max-age=31536000; '
+                                                   'includeSubDomains; preload',
+                      'vary': 'Accept-Encoding'},
+ 'screenshot': None,
+ 'session_id': None,
+ 'ssl_certificate': None,
+ 'status_code': 200,
+ 'success': True,
+ 'url': 'https://www.frenchbulldogbreed.net/category/blog/'}
+
+Extracted Content:
+'[]'
+
+Press Enter to continue to next extraction method...

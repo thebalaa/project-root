@@ -1,16 +1,31 @@
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List, Optional, Dict
 
 class Entity(BaseModel):
-    name: str = Field(..., description="Name of the entity")
-    description: str = Field(..., description="Description of the entity")
+    name: str
+    type: str
+    description: Optional[str] = None
+    urls: Optional[List[str]] = Field(default_factory=list)
+    metadata: Optional[Dict] = Field(default_factory=dict)
 
 class Relationship(BaseModel):
-    entity1: Entity = Field(..., description="First entity in the relationship")
-    entity2: Entity = Field(..., description="Second entity in the relationship")
-    description: str = Field(..., description="Description of how the entities are related")
-    relation_type: str = Field(..., description="Type of relationship between the entities")
+    source: str
+    target: str
+    relation_type: str
+    description: Optional[str] = None
+    urls: Optional[List[str]] = Field(default_factory=list)
+    metadata: Optional[Dict] = Field(default_factory=dict)
+    entity1: Optional[str] = None
+    entity2: Optional[str] = None
 
 class KnowledgeGraph(BaseModel):
-    entities: List[Entity] = Field(..., description="List of entities in the knowledge graph")
-    relationships: List[Relationship] = Field(..., description="List of relationships between entities") 
+    entities: List[Entity] = Field(default_factory=list)
+    relationships: List[Relationship] = Field(default_factory=list)
+
+class KnowledgeGraphResponse(BaseModel):
+    url: str
+    knowledge_graph: KnowledgeGraph
+    metadata: Dict = Field(default_factory=dict)
+    extraction_timestamp: str
+    source_authority: float
+    context: Optional[Dict] = Field(default_factory=dict) 

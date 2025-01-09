@@ -1,0 +1,120 @@
+[
+  {
+    "entities": [
+      {
+        "name": "French Bulldog",
+        "type": "BreedSpecific",
+        "description": "French Bulldogs are small, sassy, and make wonderful companions. They are known for their stubbornness and require training from a young age.",
+        "urls": [
+          "https://poeticfrenchbulldogs.com/french-bulldog-puppy-the-dos-and-donts-of-training-a-puppy/"
+        ]
+      },
+      {
+        "name": "Training a Puppy",
+        "type": "Care",
+        "description": "Training a puppy involves starting young, finding their motivation, keeping sessions quick and exciting, and being consistent.",
+        "urls": null
+      },
+      {
+        "name": "Start While They’re Young",
+        "type": "Prevention",
+        "description": "It's best to start training puppies while they are young as they are more eager to learn.",
+        "urls": null
+      },
+      {
+        "name": "Find Their Motivation",
+        "type": "Care",
+        "description": "Puppies are motivated by treats, toys, or affection. Finding what works best for your puppy is crucial for effective training.",
+        "urls": null
+      },
+      {
+        "name": "Keep It Quick & Exciting",
+        "type": "Care",
+        "description": "Training sessions should be upbeat and commands should be given in quick succession to maintain the puppy's interest.",
+        "urls": null
+      },
+      {
+        "name": "Be Consistent",
+        "type": "Care",
+        "description": "Consistency in rewarding good behavior and reprimanding bad behavior is key to successful puppy training.",
+        "urls": null
+      },
+      {
+        "name": "Don’t Leave Your Puppy Unsupervised",
+        "type": "Prevention",
+        "description": "Puppies should be supervised to prevent them from creating chaos or getting into dangerous situations.",
+        "urls": null
+      },
+      {
+        "name": "Don’t Overwhelm Your Dog",
+        "type": "Prevention",
+        "description": "Avoid overwhelming puppies by focusing on one or two commands at a time and recognizing their limitations.",
+        "urls": null
+      },
+      {
+        "name": "Don’t Use Harsh & Negative Emotions",
+        "type": "Prevention",
+        "description": "Using harsh tones can make puppies afraid or resistant. It's important to use a firm but encouraging tone.",
+        "urls": null
+      }
+    ],
+    "relationships": [
+      {
+        "source": "French Bulldog",
+        "target": "Training a Puppy",
+        "relation_type": "requires",
+        "description": "French Bulldogs require training from a young age due to their stubborn nature.",
+        "urls": null
+      },
+      {
+        "source": "Training a Puppy",
+        "target": "Start While They’re Young",
+        "relation_type": "includes",
+        "description": "Training should start when the puppy is young for better results.",
+        "urls": null
+      },
+      {
+        "source": "Training a Puppy",
+        "target": "Find Their Motivation",
+        "relation_type": "includes",
+        "description": "Finding what motivates the puppy is essential for effective training.",
+        "urls": null
+      },
+      {
+        "source": "Training a Puppy",
+        "target": "Keep It Quick & Exciting",
+        "relation_type": "includes",
+        "description": "Training sessions should be quick and exciting to keep the puppy engaged.",
+        "urls": null
+      },
+      {
+        "source": "Training a Puppy",
+        "target": "Be Consistent",
+        "relation_type": "includes",
+        "description": "Consistency is crucial in rewarding and reprimanding during training.",
+        "urls": null
+      },
+      {
+        "source": "Training a Puppy",
+        "target": "Don’t Leave Your Puppy Unsupervised",
+        "relation_type": "avoid",
+        "description": "Puppies should not be left unsupervised to prevent chaos.",
+        "urls": null
+      },
+      {
+        "source": "Training a Puppy",
+        "target": "Don’t Overwhelm Your Dog",
+        "relation_type": "avoid",
+        "description": "Avoid overwhelming puppies by focusing on a few commands at a time.",
+        "urls": null
+      },
+      {
+        "source": "Training a Puppy",
+        "target": "Don’t Use Harsh & Negative Emotions",
+        "relation_type": "avoid",
+        "description": "Harsh tones should be avoided to prevent fear and resistance.",
+        "urls": null
+      }
+    ]
+  }
+]

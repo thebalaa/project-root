@@ -172,4 +172,57 @@ details li {
   50% {
     opacity: 0.8;
   }
+}
+
+.faq-category {
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.faq-category > summary {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  color: #67f0c2;
+  padding: 1rem;
+  background: rgba(103, 240, 194, 0.1);
+  border-radius: 6px;
+}
+
+.faq-category-content {
+  padding: 1rem 0.5rem;
+}
+
+.faq-category-content details {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 0;
+}
+
+.faq-category-content details:last-child {
+  border-bottom: none;
+}
+
+.faq-category-content summary {
+  color: #b3ecec;
+  font-weight: 500;
+}
+
+/* Update existing details styles */
+details summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary::before {
+  content: '+';
+  margin-right: 0.5rem;
+}
+
+details[open] summary::before {
+  content: '-';
 } 
