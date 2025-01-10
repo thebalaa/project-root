@@ -2,6 +2,33 @@ import readline from 'readline';
 import { SimpleAgentRuntime } from '../myAgentRuntime.js';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
+import cors from 'cors';
+import express from 'express';
+
+const app = express();
+
+// Dynamic CORS configuration
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://localhost:3000',
+  'http://localhost:3002',
+  'https://localhost:3002'
+];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    // Allow requests with no origin
+    if (!origin) return callback(null, true);
+    
+    // Allow ngrok domains or local development
+    if (origin.endsWith('.ngrok-free.app') || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 
 async function main() {
   try {
@@ -9,20 +36,19 @@ async function main() {
       .option('character', {
         alias: 'c',
         type: 'string',
-        description: 'Path to character JSON file',
-        demandOption: true
+        description: 'Path to character JSON file'
+      })
+      .option('discord', {
+        alias: 'd',
+        type: 'boolean',
+        description: 'Start Discord bot'
       })
       .option('discord-url', {
         type: 'boolean',
-        description: 'Get Discord authorization URL',
-        default: false
+        description: 'Get Discord authorization URL'
       })
-      .option('discord', {
-        type: 'boolean',
-        description: 'Start Discord bot',
-        default: false
-      })
-      .argv;
+      .strict()
+      .parse();
 
     console.log('Loading character from:', argv.character);
     

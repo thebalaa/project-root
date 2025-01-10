@@ -8,6 +8,8 @@ import sys
 import os
 from .crawl4ai_client import scrape_and_extract, AsyncWebCrawler
 import asyncio
+from fastapi.middleware.cors import CORSMiddleware
+import re
 
 # Add the project root to Python path
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,6 +23,25 @@ app = FastAPI(
     title="Knowledge Graph API",
     description="API endpoints for retrieving knowledge graphs from the database",
     version="1.0.0"
+)
+
+def is_ngrok_url(origin: str) -> bool:
+    return origin.endswith('.ngrok-free.app')
+
+allowed_origins = [
+    "http://localhost:3000",
+    "https://localhost:3000",
+    "http://localhost:3002",
+    "https://localhost:3002"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_origin_regex=r"https?://.*\.ngrok-free\.app",  # Allow any ngrok-free.app domain
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 @app.get("/")

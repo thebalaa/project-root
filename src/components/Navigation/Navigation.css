@@ -1,0 +1,31 @@
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  /* Add flex-wrap for mobile */
+  flex-wrap: wrap;
+}
+
+/* Add responsive rules for images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Adjust menu for mobile */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+} 

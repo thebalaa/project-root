@@ -104,4 +104,43 @@
 
 .send-button:hover {
   background: #4cd1a4;
+}
+
+.typing-indicator {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+.message-input:disabled,
+.send-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@keyframes blink {
+  0% { opacity: .2; }
+  20% { opacity: 1; }
+  100% { opacity: .2; }
+}
+
+.typing-indicator::after {
+  content: '...';
+  animation: blink 1.4s infinite both;
+}
+
+.chat-link {
+  color: #67f0c2;
+  text-decoration: underline;
+  word-break: break-all;
+  transition: color 0.2s ease;
+}
+
+.chat-link:hover {
+  color: #4cd1a4;
+  text-decoration: none;
+}
+
+.message-content p {
+  white-space: pre-wrap;
+  word-break: break-word;
 } 

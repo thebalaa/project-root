@@ -1,9 +1,13 @@
 import os
 from dotenv import load_dotenv
 import pathlib
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Debug: Print current working directory
-print(f"DEBUG: Current working directory: {os.getcwd()}")
+logger.debug(f"Current working directory: {os.getcwd()}")
 
 # Debug: Check if .env file exists
 env_path = "companion_app/.env"

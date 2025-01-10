@@ -1,0 +1,38 @@
+.main-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  flex: 1;
+  padding: 1rem;
+  /* Add container constraints */
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Make tables responsive */
+table {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+/* Add media query for mobile adjustments */
+@media screen and (max-width: 768px) {
+  .content-container {
+    padding: 0.5rem;
+  }
+  
+  /* Adjust table cell display for mobile */
+  table {
+    font-size: 0.9rem;
+  }
+  
+  td, th {
+    padding: 0.5rem;
+    white-space: nowrap;
+  }
+} 
