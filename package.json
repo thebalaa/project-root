@@ -4,12 +4,17 @@
   "type": "module",
   "scripts": {
     "start": "./node_modules/.bin/tsx src/index.ts",
-    "build": "tsc",
+    "build": "pnpm -r build",
+    "build:agent": "cd backend/eliza-starter && tsup myAgentRuntime.ts --format esm --dts --external=fsevents --external=@discordjs/voice --external=opusscript --external=ffmpeg-static --external=prism-media --ignore-watch",
     "dev": "./node_modules/.bin/tsx watch src/index.ts"
   },
   "dependencies": {
     "node-fetch": "^3.3.2",
-    "undici": "^6.6.1"
+    "undici": "^6.6.1",
+    "@discordjs/voice": "latest",
+    "@discordjs/opus": "latest",
+    "ffmpeg-static": "latest",
+    "prism-media": "latest"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",

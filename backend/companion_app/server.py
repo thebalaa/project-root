@@ -3,7 +3,7 @@ import uvicorn
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from .crawl4ai_client import scrape_and_extract
+from companion_app.crawl4ai_client import scrape_and_extract
 from .db_utils import init_db
 import os
 from dotenv import load_dotenv
@@ -43,6 +43,6 @@ def run():
         reload=True,
         reload_dirs=["backend/companion_app"]
     )
-
 if __name__ == "__main__":
     run()
+

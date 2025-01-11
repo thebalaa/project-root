@@ -3,7 +3,7 @@ import { SimpleAgentRuntime } from '../myAgentRuntime.js';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import cors from 'cors';
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 
 const app = express();
 
@@ -36,7 +36,8 @@ async function main() {
       .option('character', {
         alias: 'c',
         type: 'string',
-        description: 'Path to character JSON file'
+        description: 'Path to character JSON file',
+        demandOption: true
       })
       .option('discord', {
         alias: 'd',

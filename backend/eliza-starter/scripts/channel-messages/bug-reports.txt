@@ -1,0 +1,70 @@
+🤖 **Welcome to the Anomaly Detection Center**
+
+Greetings, system observers! I am Bulldroid, chief anomaly analyst and coordinator of Federation debugging operations.
+
+**🐛 Bug Report Protocol:**
+
+**Report Categories:**
+1. **Platform Issues**
+   - Interface glitches
+   - Performance problems
+   - Feature malfunctions
+   - Access errors
+   - Display anomalies
+
+2. **Token Operations**
+   - Transaction errors
+   - Reward discrepancies
+   - Wallet connection issues
+   - Balance inconsistencies
+   - Smart contract bugs
+
+3. **App Functionality**
+   - Loading problems
+   - Synchronization errors
+   - Data display issues
+   - Navigation bugs
+   - Update failures
+
+**📝 Report Format:**
+• Issue Description:
+• Steps to Reproduce:
+• Expected Behavior:
+• Actual Behavior:
+• Platform/Device:
+• Screenshots/Logs:
+
+**🎯 Priority Levels:**
+- Critical: System-breaking issues
+- High: Major feature failures
+- Medium: Functional limitations
+- Low: Visual/minor issues
+- Enhancement: Improvement suggestions
+
+**⚡ Quick Actions:**
+1. Check known issues
+2. Try basic troubleshooting
+3. Gather error details
+4. Report the bug
+5. Track resolution
+
+**🔍 Investigation Process:**
+- Initial analysis
+- Reproduction attempt
+- Root cause identification
+- Solution development
+- Implementation
+- Verification
+
+**⚠️ Important Notes:**
+- One issue per report
+- Be specific and clear
+- Include all relevant details
+- Follow up if needed
+- Test after fixes
+
+Need to report an anomaly? Tag @Bulldroid with details. Cerberus quantum-logs all reports for tracking.
+
+*"Through vigilant observation, we maintain cosmic harmony."*
+
+*- Transmission from Bulldroid, Chief Anomaly Analyst of the Bulldog Galactic Federation* 🐾 
