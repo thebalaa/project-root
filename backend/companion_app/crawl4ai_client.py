@@ -1,26 +1,28 @@
-# crawl4ai_client.py
+"""
+Search engine module for querying multiple search engines for dog and bulldog health/lifestyle information.
+"""
 import asyncio
-from crawl4ai import AsyncWebCrawler, CacheMode
 from typing import Optional, List, Dict
 import json
 from datetime import datetime
+import os
+from crawl4ai import AsyncWebCrawler, CacheMode
 from crawl4ai.extraction_strategy import (
     JsonCssExtractionStrategy,
     LLMExtractionStrategy,
     CosineStrategy
 )
-from .db_utils import (
+from companion_app.db_utils import (
     get_or_create_url,
     store_extraction,
     init_db
 )
-from .config import OPENAI_API_KEY
-from .models import KnowledgeGraph
+from companion_app.config import OPENAI_API_KEY
+from companion_app.models import KnowledgeGraph
 from pydantic import BaseModel, Field
 import traceback
 from pprint import pprint
 import re
-import os
 import hashlib
 
 # Initialize the database when the module is imported

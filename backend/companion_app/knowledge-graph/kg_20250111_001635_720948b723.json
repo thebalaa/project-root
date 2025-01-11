@@ -1,0 +1,319 @@
+[
+  {
+    "entities": [
+      {
+        "name": "American Bulldog",
+        "type": "BreedSpecific",
+        "description": "American Bulldogs are known for being excellent guard dogs, courageous, dependable, confident, steady, fearless, intelligent, easy to train, energetic, active, athletic, good with children, and having a short, easy-to-care-for coat.",
+        "urls": [
+          "https://www.mainstreetvetclinic.com/client-resources/breed-info/american-bulldog/"
+        ],
+        "metadata": null
+      },
+      {
+        "name": "Exercise Needs",
+        "type": "Lifestyle",
+        "description": "American Bulldogs need a lot of exercise.",
+        "urls": null,
+        "metadata": null
+      },
+      {
+        "name": "Rambunctious and Rowdy",
+        "type": "BreedCharacteristic",
+        "description": "American Bulldogs can be rambunctious and rowdy, especially as younger dogs.",
+        "urls": null,
+        "metadata": null
+      },
+      {
+        "name": "Territorial Behavior",
+        "type": "BreedCharacteristic",
+        "description": "American Bulldogs can be territorial with larger dogs, especially of the same sex.",
+        "urls": null,
+        "metadata": null
+      },
+      {
+        "name": "Socialization",
+        "type": "Prevention",
+        "description": "American Bulldogs must be properly socialized as puppies to avoid aggression as adults.",
+        "urls": null,
+        "metadata": null
+      },
+      {
+        "name": "Willful and Stubborn",
+        "type": "BreedCharacteristic",
+        "description": "American Bulldogs can be willful and stubborn if not shown strong leadership.",
+        "urls": null,
+        "metadata": null
+      },
+      {
+        "name": "Gassy and Drooling",
+        "type": "Symptom",
+        "description": "American Bulldogs can be gassy and drool a lot.",
+        "urls": null,
+        "metadata": null
+      }
+    ],
+    "relationships": [
+      {
+        "source": "American Bulldog",
+        "target": "Exercise Needs",
+        "relation_type": "requires",
+        "description": "American Bulldogs require a lot of exercise.",
+        "urls": null,
+        "metadata": null
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Rambunctious and Rowdy",
+        "relation_type": "characteristic",
+        "description": "American Bulldogs can be rambunctious and rowdy, especially as younger dogs.",
+        "urls": null,
+        "metadata": null
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Territorial Behavior",
+        "relation_type": "characteristic",
+        "description": "American Bulldogs can be territorial with larger dogs, especially of the same sex.",
+        "urls": null,
+        "metadata": null
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Socialization",
+        "relation_type": "prevention",
+        "description": "Proper socialization as puppies is necessary to prevent aggression in American Bulldogs.",
+        "urls": null,
+        "metadata": null
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Willful and Stubborn",
+        "relation_type": "characteristic",
+        "description": "American Bulldogs can be willful and stubborn if not shown strong leadership.",
+        "urls": null,
+        "metadata": null
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Gassy and Drooling",
+        "relation_type": "symptom",
+        "description": "American Bulldogs can be gassy and drool a lot.",
+        "urls": null,
+        "metadata": null
+      }
+    ],
+    "error": false
+  },
+  {
+    "entities": [
+      {
+        "name": "American Bulldog",
+        "type": "BreedSpecific",
+        "description": "The American Bulldog is a powerful and athletic all-purpose working dog, known for being fearless and steady guard dogs. They are typically gentle and loving family companions but may not tolerate other dogs, especially those of the same sex.",
+        "urls": [
+          "https://www.mainstreetvetclinic.com/client-resources/breed-info/american-bulldog/"
+        ]
+      },
+      {
+        "name": "Dental Disease",
+        "type": "HealthCondition",
+        "description": "Dental disease is the most common chronic problem in pets, affecting 80% of all dogs by age two. American Bulldogs are more likely than other dogs to have problems with their teeth.",
+        "urls": null
+      },
+      {
+        "name": "Tartar build-up",
+        "type": "Symptom",
+        "description": "Starts with tartar build-up on the teeth and progresses to infection of the gums and roots of the teeth.",
+        "urls": null
+      },
+      {
+        "name": "Infections",
+        "type": "HealthCondition",
+        "description": "American Bulldogs are susceptible to bacterial and viral infections such as parvo, rabies, and distemper.",
+        "urls": null
+      },
+      {
+        "name": "Obesity",
+        "type": "HealthCondition",
+        "description": "Obesity can lead to various health issues in American Bulldogs.",
+        "urls": null
+      },
+      {
+        "name": "Parasites",
+        "type": "HealthCondition",
+        "description": "American Bulldogs can be infested by fleas, ticks, ear mites, hookworms, roundworms, heartworms, and whipworms.",
+        "urls": null
+      },
+      {
+        "name": "Spay or Neuter",
+        "type": "Prevention",
+        "description": "Spaying or neutering decreases the likelihood of certain types of cancers and eliminates the possibility of unwanted puppies.",
+        "urls": null
+      },
+      {
+        "name": "Hip and Elbow Dysplasia",
+        "type": "HealthCondition",
+        "description": "An inherited disease that causes the joints to develop improperly and results in arthritis.",
+        "urls": [
+          "https://www.mainstreetvetclinic.com/client-resources/breed-info/american-bulldog/"
+        ]
+      },
+      {
+        "name": "Nerve Disease",
+        "type": "HealthCondition",
+        "description": "Neuronal Ceroid Lipofuscinosis (NCL) is a progressive neurologic disease found in American Bulldogs.",
+        "urls": null
+      },
+      {
+        "name": "Thyroid Problems",
+        "type": "HealthCondition",
+        "description": "Bulldogs are prone to hypothyroidism, where the body doesn’t make enough thyroid hormone.",
+        "urls": null
+      },
+      {
+        "name": "Ichthyosis",
+        "type": "HealthCondition",
+        "description": "A severe flaking skin condition called ichthyosis, characterized by large dry flakes resembling fish scales.",
+        "urls": null
+      },
+      {
+        "name": "Eyelid Abnormality",
+        "type": "HealthCondition",
+        "description": "Entropion is a condition where the eyelid rolls inward, causing the eyelashes to rub against the cornea.",
+        "urls": [
+          "https://www.mainstreetvetclinic.com/client-resources/breed-info/american-bulldog/"
+        ]
+      },
+      {
+        "name": "Cataracts",
+        "type": "HealthCondition",
+        "description": "A common cause of blindness in older Bulldogs.",
+        "urls": null
+      },
+      {
+        "name": "Mange",
+        "type": "HealthCondition",
+        "description": "Demodex is a microscopic mite that lives in the hair follicles of dogs, causing skin issues.",
+        "urls": [
+          "https://www.mainstreetvetclinic.com/client-resources/breed-info/american-bulldog/"
+        ]
+      },
+      {
+        "name": "Bladder or Kidney Stones",
+        "type": "HealthCondition",
+        "description": "American Bulldogs are more likely to develop stones in the kidney or bladder.",
+        "urls": [
+          "https://www.mainstreetvetclinic.com/client-resources/breed-info/american-bulldog/"
+        ]
+      },
+      {
+        "name": "Respiratory Distress Syndrome",
+        "type": "HealthCondition",
+        "description": "Also known as brachycephalic syndrome, affects dogs with a short nose, like the American Bulldog.",
+        "urls": [
+          "https://www.mainstreetvetclinic.com/client-resources/breed-info/american-bulldog/"
+        ]
+      },
+      {
+        "name": "Routine Care, Diet, and Exercise",
+        "type": "Care",
+        "description": "Includes supervising the pet, grooming, brushing teeth, cleaning ears, and providing a proper diet and exercise.",
+        "urls": null
+      },
+      {
+        "name": "Pet Health Insurance",
+        "type": "Prevention",
+        "description": "Signing up for pet health insurance to cover medical tests and procedures throughout the dog's life.",
+        "urls": null
+      }
+    ],
+    "relationships": [
+      {
+        "source": "American Bulldog",
+        "target": "Dental Disease",
+        "relation_type": "is prone to"
+      },
+      {
+        "source": "Dental Disease",
+        "target": "Tartar build-up",
+        "relation_type": "starts with"
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Infections",
+        "relation_type": "is susceptible to"
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Obesity",
+        "relation_type": "is prone to"
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Parasites",
+        "relation_type": "can be infested by"
+      },
+      {
+        "source": "Spay or Neuter",
+        "target": "American Bulldog",
+        "relation_type": "recommended for"
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Hip and Elbow Dysplasia",
+        "relation_type": "is prone to"
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Nerve Disease",
+        "relation_type": "is prone to"
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Thyroid Problems",
+        "relation_type": "is prone to"
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Ichthyosis",
+        "relation_type": "is prone to"
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Eyelid Abnormality",
+        "relation_type": "is prone to"
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Cataracts",
+        "relation_type": "is prone to"
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Mange",
+        "relation_type": "is prone to"
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Bladder or Kidney Stones",
+        "relation_type": "is prone to"
+      },
+      {
+        "source": "American Bulldog",
+        "target": "Respiratory Distress Syndrome",
+        "relation_type": "is prone to"
+      },
+      {
+        "source": "Routine Care, Diet, and Exercise",
+        "target": "American Bulldog",
+        "relation_type": "recommended for"
+      },
+      {
+        "source": "Pet Health Insurance",
+        "target": "American Bulldog",
+        "relation_type": "recommended for"
+      }
+    ]
+  }
+]

@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "tsc --project tsconfig.build.json && tsup",
+    "build": "tsc -p tsconfig.build.json && tsup",
     "start": "node dist/src/index.js",
-    "dev": "tsx watch myAgentRuntime.ts",
+    "dev": "tsx watch src/index.ts",
     "init-db": "tsx src/db/initDb.ts"
   },
   "dependencies": {
@@ -22,6 +22,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "fs": "0.0.1-security",
+    "glob": "^10.3.10",
     "opusscript": "^0.0.8",
     "path": "0.12.7",
     "readline": "1.3.0",

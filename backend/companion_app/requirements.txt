@@ -6,3 +6,7 @@ sentence-transformers
 crawl4ai
 asyncio
 python-multipart
+googlesearch-python
+duckduckgo-search
+aiohttp
+beautifulsoup4

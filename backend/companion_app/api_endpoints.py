@@ -7,6 +7,7 @@ from datetime import datetime
 import sys
 import os
 from .crawl4ai_client import scrape_and_extract, AsyncWebCrawler
+from .search_engines import DogHealthSearcher
 import asyncio
 from fastapi.middleware.cors import CORSMiddleware
 import re
@@ -240,6 +241,59 @@ async def scrape_url(request: ScrapeRequest):
             status_code=500,
             detail=f"Error scraping URL: {str(e)}"
         )
+
+class SearchResponse(BaseModel):
+    """Response model for search results"""
+    filepath: str
+    timestamp: str
+    categories: List[str]
+    total_results: int
+
+@app.post("/search/dog-health")
+async def search_dog_health() -> SearchResponse:
+    """
+    Run searches across multiple engines for dog and bulldog health/lifestyle information.
+    Returns the path to the JSON file containing results.
+    """
+    try:
+        searcher = DogHealthSearcher()
+        results = await searcher.run_all_searches()
+        filepath = searcher.save_results_to_file(results)
+        
+        # Count total results
+        total_results = 0
+        for category in results.values():
+            for query in category.values():
+                for engine_results in query.values():
+                    total_results += len(engine_results)
+        
+        return SearchResponse(
+            filepath=filepath,
+            timestamp=datetime.now().isoformat(),
+            categories=list(results.keys()),
+            total_results=total_results
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Search failed: {str(e)}")
+
+@app.get("/search/results/{filename}")
+async def get_search_results(filename: str):
+    """
+    Retrieve search results from a specific results file.
+    """
+    try:
+        results_dir = os.path.join(os.path.dirname(__file__), 'search_results')
+        filepath = os.path.join(results_dir, filename)
+        
+        if not os.path.exists(filepath):
+            raise HTTPException(status_code=404, detail="Results file not found")
+            
+        with open(filepath, 'r', encoding='utf-8') as f:
+            results = json.load(f)
+            
+        return results
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to retrieve results: {str(e)}")
 
 if __name__ == "__main__":
     import uvicorn
